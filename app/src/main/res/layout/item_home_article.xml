@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/tvStick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="0dp"
+        android:paddingEnd="10dp"
+        android:text="@string/stick"
+        android:textSize="12sp"
+        android:textColor="@android:color/holo_red_light"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvNew"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="0dp"
+        android:paddingEnd="10dp"
+        android:text="@string/new_"
+        android:textSize="12sp"
+        android:textColor="@android:color/holo_red_light"
+        app:layout_constraintStart_toEndOf="@id/tvStick"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvAuthor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="0dp"
+        android:paddingEnd="10dp"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@id/tvNew"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:maxLines="2"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/tvAuthor" />
+
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textSize="10sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        tools:ignore="SmallSp" />
+
+    <com.coorchice.library.SuperTextView
+        android:id="@+id/tvLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:paddingStart="3dp"
+        android:paddingEnd="3dp"
+        android:textColor="@color/white"
+        android:textSize="10sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/tvDate"
+        app:layout_constraintLeft_toRightOf="@id/tvDate"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:stv_corner="2dp"
+        app:stv_solid="@color/solid_green"
+        tools:ignore="SmallSp" />
+
+    <com.coorchice.library.SuperTextView
+        android:id="@+id/tvLabel2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:paddingStart="3dp"
+        android:paddingEnd="3dp"
+        android:textColor="@color/white"
+        android:textSize="10sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/tvDate"
+        app:layout_constraintLeft_toRightOf="@id/tvLabel"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:stv_corner="2dp"
+        app:stv_solid="@color/solid_red"
+        tools:ignore="SmallSp" />
+
+    <ImageView
+        android:id="@+id/ivCollection"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="5dp"
+        android:contentDescription="@string/collection"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,70 @@
+package com.cyl.wandroid.http.api
+
+import com.cyl.wandroid.http.bean.*
+import retrofit2.http.*
+
+interface ApiService {
+    companion object {
+        const val BASE_URL = "https://www.wanandroid.com/"
+    }
+
+    // 首页热门博文(热门博文 = 置顶文章 + 首页文章) - 置顶文章
+    @GET("article/top/json")
+    suspend fun getHomeTopArticles(): ApiCommonResponse<List<ArticleBean>>
+
+    // 首页热门博文(热门博文 = 置顶文章 + 首页文章) - 首页文章列表
+    @GET("article/list/{page}/json")
+    suspend fun getHomePageArticles(@Path("page") page: Int): ApiCommonResponse<CommonArticleData<ArticleBean>>
+
+    // 首页Banner
+    @GET("banner/json")
+    suspend fun getHomeBanner(): ApiCommonResponse<List<HomeBannerBean>>
+
+    // 获取最新项目（首页第二个TAB）
+    @GET("article/listproject/{page}/json")
+    suspend fun getHomeNewestProjects(@Path("page") page: Int): ApiCommonResponse<CommonArticleData<ArticleBean>>
+
+    // 首页最新分享（广场）
+    @GET("user_article/list/{page}/json")
+    suspend fun getHomeNewestShare(@Path("page") page: Int): ApiCommonResponse<CommonArticleData<ArticleBean>>
+
+    // 首页公众号列表
+    @GET("wxarticle/chapters/json")
+    suspend fun getPublicAccountList(): ApiCommonResponse<List<PublicAccountBean>>
+
+    // 首页公众号文章列表
+    @GET("wxarticle/list/{id}/{page}/json")
+    suspend fun getPublicAccountArticles(
+        @Path("id") id: Int, @Path("page") page: Int
+    ): ApiCommonResponse<CommonArticleData<ArticleBean>>
+
+    @GET("project/tree/json")
+    suspend fun getProjectCategory(): ApiCommonResponse<List<ProjectCategoryBean>>
+
+    // 项目文章
+    @GET("project/list/{page}/json")
+    suspend fun getProjectArticles(
+        @Path("page") page: Int, @Query("cid") cid: Int
+    ): ApiCommonResponse<CommonArticleData<ArticleBean>>
+
+    // 体系分类
+    @GET("tree/json")
+    suspend fun getSystemCategory(): ApiCommonResponse<List<SystemCategoryBean>>
+
+    // 体系文章
+    @GET("article/list/{page}/json")
+    suspend fun getSystemArticles(
+        @Path("page") page: Int, @Query("cid") cid: Int
+    ): ApiCommonResponse<CommonArticleData<ArticleBean>>
+
+    // 导航分类
+    @GET("navi/json")
+    suspend fun getNavigation(): ApiCommonResponse<List<NavigationBean>>
+
+    // 登录
+    @POST("user/login")
+    suspend fun login(
+        @Field("username") username: String,
+        @Field("password") password: String
+    ): ApiCommonResponse<UserBean>
+}

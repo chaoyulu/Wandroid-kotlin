@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Wandroid</string>
+    <string name="home_main">Home</string>
+    <string name="home_project">Project</string>
+    <string name="home_system">System</string>
+    <string name="home_navigation">Navigation</string>
+    <string name="home_mine">Mine</string>
+    <string name="home_newest_article">NewestArticle</string>
+    <string name="home_newest_project">NewestProject</string>
+    <string name="home_newest_share">NewestShare</string>
+    <string name="home_public_account">PublicAccount</string>
+    <string name="home_search">Search</string>
+    <string name="collection">Collection</string>
+    <string name="stick">Stick</string>
+    <string name="new_">New</string>
+    <string name="project_image">ProjectImage</string>
+    <string name="back">Back</string>
+    <string name="more">More</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="todo">TODO</string>
+    <string name="question_answer">Q&amp;A</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+</resources>

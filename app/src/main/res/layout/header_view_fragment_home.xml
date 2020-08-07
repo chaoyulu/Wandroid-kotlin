@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.youth.banner.Banner
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/banner">
+
+        <com.cyl.wandroid.ui.widget.HomeItemView
+            android:id="@+id/hivProject"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:icon="@mipmap/home_header_icon_project"
+            app:title="@string/home_project" />
+
+        <com.cyl.wandroid.ui.widget.HomeItemView
+            android:id="@+id/hivPublicAccount"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:icon="@mipmap/home_header_icon_pub_account"
+            app:tint="@color/green_4CAF50"
+            app:title="@string/home_public_account" />
+
+        <com.cyl.wandroid.ui.widget.HomeItemView
+            android:id="@+id/hivQA"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:icon="@mipmap/home_header_icon_qa"
+            app:tint="@color/blue_3691FF"
+            app:title="@string/question_answer" />
+
+        <com.cyl.wandroid.ui.widget.HomeItemView
+            android:id="@+id/hivTodo"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:tint="@color/purple_958BFF"
+            app:icon="@mipmap/home_header_icon_todo"
+            app:title="@string/todo" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

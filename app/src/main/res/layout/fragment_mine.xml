@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.fragment.MineFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/colorPrimary"
+        android:elevation="1dp"
+        android:gravity="center"
+        android:text="@string/home_mine"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.cyl.wandroid.ui.widget.MyInfoCardView
+                android:id="@+id/myInfoCard"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_margin="20dp" />
+
+            <!-- 积分 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:orientation="vertical">
+
+                <com.allen.library.SuperTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    app:sBottomDividerLineMarginLR="40dp"
+                    app:sLeftIconHeight="30dp"
+                    app:sLeftIconRes="@mipmap/home_header_icon_todo"
+                    app:sLeftIconWidth="30dp"
+                    app:sLeftTextColor="@color/white"
+                    app:sLeftTextString="我的积分"
+                    app:sLeftViewMarginLeft="20dp"
+                    app:sShapeCornersTopLeftRadius="20dp"
+                    app:sShapeCornersTopRightRadius="20dp"
+                    app:sShapeSelectorNormalColor="@color/blue_804F9EFF"
+                    app:sShapeSelectorPressedColor="@color/blue_772196F3"
+                    app:sUseShape="true" />
+
+                <com.allen.library.SuperTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    app:sLeftIconHeight="30dp"
+                    app:sLeftIconRes="@mipmap/home_header_icon_todo"
+                    app:sLeftIconWidth="30dp"
+                    app:sLeftTextColor="@color/white"
+                    app:sLeftTextString="积分排行"
+                    app:sLeftViewMarginLeft="20dp"
+                    app:sShapeCornersBottomLeftRadius="20dp"
+                    app:sShapeCornersBottomRightRadius="20dp"
+                    app:sShapeSelectorNormalColor="@color/blue_804F9EFF"
+                    app:sShapeSelectorPressedColor="@color/blue_772196F3"
+                    app:sUseShape="true" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="vertical">
+
+                <com.allen.library.SuperTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    app:sBottomDividerLineMarginLR="40dp"
+                    app:sLeftIconHeight="30dp"
+                    app:sLeftIconRes="@mipmap/home_header_icon_todo"
+                    app:sLeftIconWidth="30dp"
+                    app:sLeftTextColor="@color/white"
+                    app:sLeftTextString="我的收藏"
+                    app:sLeftViewMarginLeft="20dp"
+                    app:sShapeCornersTopLeftRadius="20dp"
+                    app:sShapeCornersTopRightRadius="20dp"
+                    app:sShapeSelectorNormalColor="@color/solid_green"
+                    app:sShapeSelectorPressedColor="@color/green_804CAF50"
+                    app:sUseShape="true" />
+
+                <com.allen.library.SuperTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    app:sLeftIconHeight="30dp"
+                    app:sLeftIconRes="@mipmap/home_header_icon_todo"
+                    app:sLeftIconWidth="30dp"
+                    app:sLeftTextColor="@color/white"
+                    app:sLeftTextString="我的分享"
+                    app:sLeftViewMarginLeft="20dp"
+                    app:sShapeSelectorNormalColor="@color/solid_green"
+                    app:sShapeSelectorPressedColor="@color/green_804CAF50"
+                    app:sUseShape="true" />
+
+
+                <com.allen.library.SuperTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    app:sLeftIconHeight="30dp"
+                    app:sLeftIconRes="@mipmap/home_header_icon_todo"
+                    app:sLeftIconWidth="30dp"
+                    app:sLeftTextColor="@color/white"
+                    app:sLeftTextString="浏览历史"
+                    app:sLeftViewMarginLeft="20dp"
+                    app:sShapeCornersBottomLeftRadius="20dp"
+                    app:sShapeCornersBottomRightRadius="20dp"
+                    app:sShapeSelectorNormalColor="@color/solid_green"
+                    app:sShapeSelectorPressedColor="@color/green_804CAF50"
+                    app:sUseShape="true" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:orientation="vertical">
+
+                <com.allen.library.SuperTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    app:sBottomDividerLineMarginLR="40dp"
+                    app:sLeftIconHeight="30dp"
+                    app:sLeftIconRes="@mipmap/home_header_icon_todo"
+                    app:sLeftIconWidth="30dp"
+                    app:sLeftTextColor="@color/white"
+                    app:sLeftTextString="我的收藏"
+                    app:sLeftViewMarginLeft="20dp"
+                    app:sShapeCornersTopLeftRadius="20dp"
+                    app:sShapeCornersTopRightRadius="20dp"
+                    app:sShapeSelectorNormalColor="@color/solid_red"
+                    app:sShapeSelectorPressedColor="@color/red_80FF0000"
+                    app:sUseShape="true" />
+
+                <com.allen.library.SuperTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    app:sLeftIconHeight="30dp"
+                    app:sLeftIconRes="@mipmap/home_header_icon_todo"
+                    app:sLeftIconWidth="30dp"
+                    app:sLeftTextColor="@color/white"
+                    app:sLeftTextString="我的分享"
+                    app:sLeftViewMarginLeft="20dp"
+                    app:sShapeSelectorNormalColor="@color/solid_red"
+                    app:sShapeSelectorPressedColor="@color/red_80FF0000"
+                    app:sUseShape="true" />
+
+
+                <com.allen.library.SuperTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    app:sLeftIconHeight="30dp"
+                    app:sLeftIconRes="@mipmap/home_header_icon_todo"
+                    app:sLeftIconWidth="30dp"
+                    app:sLeftTextColor="@color/white"
+                    app:sLeftTextString="浏览历史"
+                    app:sLeftViewMarginLeft="20dp"
+                    app:sShapeCornersBottomLeftRadius="20dp"
+                    app:sShapeCornersBottomRightRadius="20dp"
+                    app:sShapeSelectorNormalColor="@color/solid_red"
+                    app:sShapeSelectorPressedColor="@color/red_80FF0000"
+                    app:sUseShape="true" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

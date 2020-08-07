@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="HomeItemView">
+        <attr name="title" format="string" />
+        <attr name="text_color" format="color" />
+        <attr name="text_size" format="dimension" />
+        <attr name="icon" format="reference" />
+        <attr name="tint" format="color" />
+    </declare-styleable>
+</resources>
