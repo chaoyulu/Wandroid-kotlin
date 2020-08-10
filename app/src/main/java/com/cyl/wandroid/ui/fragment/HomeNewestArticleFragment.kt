@@ -17,6 +17,7 @@ import com.cyl.wandroid.http.bean.ArticleBean
 import com.cyl.wandroid.http.bean.HomeBannerBean
 import com.cyl.wandroid.tools.IntentTools
 import com.cyl.wandroid.ui.activity.AgentWebActivity
+import com.cyl.wandroid.ui.activity.PublicAccountContainerActivity
 import com.cyl.wandroid.ui.adapter.HomeArticleAdapter
 import com.cyl.wandroid.ui.adapter.HomeBannerAdapter
 import com.cyl.wandroid.viewmodel.HomeNewestArticleViewModel
@@ -83,6 +84,10 @@ class HomeNewestArticleFragment :
     private fun setHeaderMenuClick(headerView: View) {
         headerView.hivProject.setOnClickListener {
             Bus.post(JUMP_TO_PROJECT_FRAGMENT, R.id.project)
+        }
+
+        headerView.hivPublicAccount.setOnClickListener {
+            IntentTools.start(mContext, PublicAccountContainerActivity::class.java, null)
         }
     }
 

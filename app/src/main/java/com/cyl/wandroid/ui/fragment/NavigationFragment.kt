@@ -34,6 +34,11 @@ class NavigationFragment : BaseRecyclerViewModelFragment<NavigationBean, Navigat
 
     override fun getSwipeRefreshLayout(): SwipeRefreshLayout = swipeRefreshLayout
 
+    override fun initView() {
+        setCenterText(R.string.home_navigation)
+        super.initView()
+    }
+
     override fun initRecyclerView() {
         val manager = LinearLayoutManager(mContext)
         recyclerView.layoutManager = manager

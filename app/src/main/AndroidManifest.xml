@@ -17,10 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="n">
-        <activity android:name=".ui.activity.LoginActivity"></activity>
-        <activity
-            android:name=".ui.login.LoginActivity"
-            android:label="@string/title_activity_login" />
+        <activity android:name=".ui.activity.PublicAccountContainerActivity"></activity>
 
         <meta-data
             android:name="android.max_aspect"
@@ -44,6 +41,8 @@
         <activity android:name=".ui.activity.AgentWebActivity" />
         <activity android:name=".ui.activity.SystemDetailActivity" />
         <activity android:name=".ui.activity.PublicAccountArticlesActivity" />
+        <activity android:name=".ui.activity.LoginActivity" />
+        <activity android:name=".ui.activity.FragmentContainerActivity" />
     </application>
 
 </manifest>

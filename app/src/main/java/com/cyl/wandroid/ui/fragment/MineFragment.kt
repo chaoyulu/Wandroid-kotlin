@@ -17,4 +17,8 @@ class MineFragment : BaseFragment() {
             IntentTools.start(mContext, LoginActivity::class.java, null)
         }
     }
+
+    override fun initView() {
+        setCenterText(R.string.home_mine)
+    }
 }

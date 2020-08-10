@@ -1,7 +1,8 @@
 package com.cyl.wandroid.base
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.cyl.wandroid.R
 import com.gyf.immersionbar.ImmersionBar
 import kotlinx.android.synthetic.main.toolbar_activity.*
@@ -42,14 +43,25 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     fun setRightIcon(iconRes: Int) {
-        ivRight?.setBackgroundResource(iconRes)
+        ivRight?.let {
+            it.isVisible = true
+            it.setImageResource(iconRes)
+        }
     }
 
     fun setBackText(text: String) {
         tvBack?.text = text
     }
 
+    fun setBackText(text: Int) {
+        tvBack?.setText(text)
+    }
+
     fun setCenterText(text: String) {
         tvCenter?.text = text
+    }
+
+    fun setCenterText(text: Int) {
+        tvCenter?.setText(text)
     }
 }

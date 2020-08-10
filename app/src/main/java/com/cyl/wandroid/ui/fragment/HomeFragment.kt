@@ -51,4 +51,8 @@ class HomeFragment : BaseFragment() {
 
     override fun lazyInitData() {
     }
+
+    override fun initView() {
+
+    }
 }

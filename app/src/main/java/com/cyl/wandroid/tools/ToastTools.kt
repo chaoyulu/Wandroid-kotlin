@@ -10,6 +10,18 @@ private const val TYPE_NORMAL = 0
 private const val TYPE_ERROR = 1
 
 private fun customToast(
+    text: Int,
+    textSize: Int = 12,
+    type: Int = TYPE_NORMAL,
+    gravity: Int = Gravity.TOP,
+    xOffset: Int = 0,
+    yOffset: Int = 100,
+    duration: Int = Toast.LENGTH_SHORT
+) {
+    customToast(App.app.getString(text), textSize, type, gravity, xOffset, yOffset, duration)
+}
+
+private fun customToast(
     text: String,
     textSize: Int = 12,
     type: Int = TYPE_NORMAL,
@@ -34,16 +46,32 @@ private fun customToast(
     }
 }
 
+fun showNormal(msg: Int) {
+    customToast(text = msg)
+}
+
 fun showNormal(msg: String) {
     customToast(text = msg)
+}
+
+fun showNormalLong(msg: Int) {
+    customToast(msg, duration = Toast.LENGTH_LONG)
 }
 
 fun showNormalLong(msg: String) {
     customToast(msg, duration = Toast.LENGTH_LONG)
 }
 
+fun showNormalCenter(msg: Int) {
+    customToast(msg, gravity = Gravity.CENTER, yOffset = 0)
+}
+
 fun showNormalCenter(msg: String) {
     customToast(msg, gravity = Gravity.CENTER, yOffset = 0)
+}
+
+fun showError(msg: Int) {
+    customToast(msg, type = TYPE_ERROR)
 }
 
 fun showError(msg: String) {

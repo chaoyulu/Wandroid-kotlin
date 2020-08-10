@@ -7,15 +7,7 @@
     android:orientation="vertical"
     tools:context=".ui.fragment.NavigationFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="@color/colorPrimary"
-        android:elevation="1dp"
-        android:gravity="center"
-        android:text="@string/home_navigation"
-        android:textColor="@color/black"
-        android:textSize="18sp" />
+    <include layout="@layout/toolbar_fragment" />
 
     <include layout="@layout/fragment_home_newest_article" />
 

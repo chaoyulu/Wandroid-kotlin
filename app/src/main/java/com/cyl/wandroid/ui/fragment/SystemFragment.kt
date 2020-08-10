@@ -1,6 +1,7 @@
 package com.cyl.wandroid.ui.fragment
 
 import android.os.Bundle
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -11,10 +12,13 @@ import com.cyl.wandroid.base.BaseRecyclerViewModelFragment
 import com.cyl.wandroid.http.bean.SystemCategoryBean
 import com.cyl.wandroid.listener.OnTagClickListener
 import com.cyl.wandroid.tools.IntentTools
+import com.cyl.wandroid.tools.showError
 import com.cyl.wandroid.ui.activity.SystemDetailActivity
 import com.cyl.wandroid.ui.adapter.SystemCategoryAdapter
+import com.cyl.wandroid.ui.widget.LocateRecyclerViewDialog
 import com.cyl.wandroid.viewmodel.SystemCategoryViewModel
 import kotlinx.android.synthetic.main.fragment_home_newest_article.*
+import kotlinx.android.synthetic.main.toolbar_fragment.*
 
 /**
  * 体系
@@ -33,6 +37,12 @@ class SystemFragment :
 
     override fun getSwipeRefreshLayout(): SwipeRefreshLayout = swipeRefreshLayout
 
+    override fun initView() {
+        super.initView()
+        setCenterText(R.string.home_system)
+        setRightIcon(R.mipmap.icon_system_locate)
+    }
+
     override fun initRecyclerView() {
         val manager = LinearLayoutManager(mContext)
         recyclerView.layoutManager = manager
@@ -49,7 +59,13 @@ class SystemFragment :
     override fun observe() {
         super.observe()
         mViewModel.apply {
-            categories.observe(viewLifecycleOwner, Observer { adapter.setList(it) })
+            categories.observe(viewLifecycleOwner, Observer {
+                adapter.setList(it)
+                ivRight.isVisible = !categories.value.isNullOrEmpty()
+//                val scroller = SmoothTopScroller(mContext)
+//                scroller.targetPosition = 13
+//                recyclerView.layoutManager?.startSmoothScroll(scroller)
+            })
         }
     }
 
@@ -58,5 +74,26 @@ class SystemFragment :
             putInt("tagPosition", tagPosition)
             putParcelable("category", mViewModel.categories.value?.get(itemPosition))
         })
+    }
+
+    override fun onRightIconClick() {
+        super.onRightIconClick()
+        val categories: List<SystemCategoryBean>? = mViewModel.categories.value
+        if (categories.isNullOrEmpty()) {
+            // 没有数据
+            showError(R.string.no_valid_data)
+        } else {
+            val titles = getTitles(categories)
+            LocateRecyclerViewDialog(mContext, titles).show()
+        }
+    }
+
+    private fun getTitles(categories: List<SystemCategoryBean>?): List<String> {
+        if (categories.isNullOrEmpty()) return emptyList()
+        val titles = mutableListOf<String>()
+        categories.forEach {
+            titles.add(it.name)
+        }
+        return titles
     }
 }

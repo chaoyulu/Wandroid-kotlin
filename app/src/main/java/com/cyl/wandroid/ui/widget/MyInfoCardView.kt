@@ -12,7 +12,7 @@ class MyInfoCardView(context: Context, attributeSet: AttributeSet) :
     ConstraintLayout(context, attributeSet) {
 
     private var borderRadius: Float = 50f
-    private var backColor = R.color.yellow_77F8D073
+    private var backColor = R.color.yellow_F8D073
     private lateinit var headText: String
     private lateinit var nickname: String
     private lateinit var myId: String

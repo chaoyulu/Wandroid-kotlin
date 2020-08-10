@@ -7,15 +7,7 @@
     android:orientation="vertical"
     tools:context=".ui.fragment.MineFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="@color/colorPrimary"
-        android:elevation="1dp"
-        android:gravity="center"
-        android:text="@string/home_mine"
-        android:textColor="@color/black"
-        android:textSize="18sp" />
+    <include layout="@layout/toolbar_fragment" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -33,11 +25,14 @@
                 android:layout_margin="20dp" />
 
             <!-- 积分 -->
-            <LinearLayout
+            <com.cyl.wandroid.ui.widget.WatermarkLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:orientation="vertical">
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:orientation="vertical"
+                app:wll_text="@string/wan">
 
                 <com.allen.library.SuperTextView
                     android:layout_width="match_parent"
@@ -71,14 +66,15 @@
                     app:sShapeSelectorNormalColor="@color/blue_804F9EFF"
                     app:sShapeSelectorPressedColor="@color/blue_772196F3"
                     app:sUseShape="true" />
-            </LinearLayout>
+            </com.cyl.wandroid.ui.widget.WatermarkLinearLayout>
 
-            <LinearLayout
+            <com.cyl.wandroid.ui.widget.WatermarkLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                app:wll_text="@string/an">
 
                 <com.allen.library.SuperTextView
                     android:layout_width="match_parent"
@@ -120,20 +116,21 @@
                     app:sLeftIconRes="@mipmap/home_header_icon_todo"
                     app:sLeftIconWidth="30dp"
                     app:sLeftTextColor="@color/white"
-                    app:sLeftTextString="浏览历史"
+                    app:sLeftTextString="我的待办"
                     app:sLeftViewMarginLeft="20dp"
                     app:sShapeCornersBottomLeftRadius="20dp"
                     app:sShapeCornersBottomRightRadius="20dp"
                     app:sShapeSelectorNormalColor="@color/solid_green"
                     app:sShapeSelectorPressedColor="@color/green_804CAF50"
                     app:sUseShape="true" />
-            </LinearLayout>
+            </com.cyl.wandroid.ui.widget.WatermarkLinearLayout>
 
-            <LinearLayout
+            <com.cyl.wandroid.ui.widget.WatermarkLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                app:wll_text="@string/zhuo">
 
                 <com.allen.library.SuperTextView
                     android:layout_width="match_parent"
@@ -144,7 +141,7 @@
                     app:sLeftIconRes="@mipmap/home_header_icon_todo"
                     app:sLeftIconWidth="30dp"
                     app:sLeftTextColor="@color/white"
-                    app:sLeftTextString="我的收藏"
+                    app:sLeftTextString="浏览历史"
                     app:sLeftViewMarginLeft="20dp"
                     app:sShapeCornersTopLeftRadius="20dp"
                     app:sShapeCornersTopRightRadius="20dp"
@@ -160,7 +157,7 @@
                     app:sLeftIconRes="@mipmap/home_header_icon_todo"
                     app:sLeftIconWidth="30dp"
                     app:sLeftTextColor="@color/white"
-                    app:sLeftTextString="我的分享"
+                    app:sLeftTextString="关于作者"
                     app:sLeftViewMarginLeft="20dp"
                     app:sShapeSelectorNormalColor="@color/solid_red"
                     app:sShapeSelectorPressedColor="@color/red_80FF0000"
@@ -175,14 +172,14 @@
                     app:sLeftIconRes="@mipmap/home_header_icon_todo"
                     app:sLeftIconWidth="30dp"
                     app:sLeftTextColor="@color/white"
-                    app:sLeftTextString="浏览历史"
+                    app:sLeftTextString="系统设置"
                     app:sLeftViewMarginLeft="20dp"
                     app:sShapeCornersBottomLeftRadius="20dp"
                     app:sShapeCornersBottomRightRadius="20dp"
                     app:sShapeSelectorNormalColor="@color/solid_red"
                     app:sShapeSelectorPressedColor="@color/red_80FF0000"
                     app:sUseShape="true" />
-            </LinearLayout>
+            </com.cyl.wandroid.ui.widget.WatermarkLinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </LinearLayout>

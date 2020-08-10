@@ -7,4 +7,10 @@
         <attr name="icon" format="reference" />
         <attr name="tint" format="color" />
     </declare-styleable>
+
+    <declare-styleable name="WatermarkLinearLayout">
+        <attr name="wll_text" format="string" />
+        <attr name="wll_text_color" format="color" />
+        <attr name="wll_text_size" format="dimension" />
+    </declare-styleable>
 </resources>

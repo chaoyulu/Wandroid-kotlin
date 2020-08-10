@@ -20,4 +20,8 @@
     <string name="more">更多</string>
     <string name="todo">待办</string>
     <string name="question_answer">问答</string>
+    <string name="wan">玩</string>
+    <string name="an">安</string>
+    <string name="zhuo">卓</string>
+    <string name="no_valid_data">无有效数据</string>
 </resources>

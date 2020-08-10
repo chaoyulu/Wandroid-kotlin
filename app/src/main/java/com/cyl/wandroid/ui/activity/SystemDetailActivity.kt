@@ -53,20 +53,19 @@ class SystemDetailActivity : BaseActivity() {
         viewPager.offscreenPageLimit = fragments.size
         viewPager.setCurrentItem(tagPosition, true)
         tabLayout.getTabAt(tagPosition)?.select()
-
-        setCenterText(titles[tagPosition])
+        setCenterText("${category?.name} - ${titles[tagPosition]}")
 
         tabLayout.addOnTabChangeListener(
             selected = {
                 it?.let {
-                    setCenterText(it.text.toString())
+                    setCenterText("${category?.name} - ${it.text.toString()}")
                     viewPager.setCurrentItem(it.position, true)
                 }
             },
             reselected = {})
 
         viewPager.addOnPageChangedListener {
-            setCenterText(titles[it])
+            setCenterText("${category?.name} - ${titles[it]}")
             tabLayout.getTabAt(it)?.select()
         }
     }
