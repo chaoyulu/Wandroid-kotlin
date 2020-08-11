@@ -25,4 +25,16 @@
     <string name="an">AN</string>
     <string name="zhuo">ZHUO</string>
     <string name="no_valid_data">No Valid Data</string>
+    <string name="click_left_login">Click the icon to login on the left</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="account">Account</string>
+    <string name="password">Password</string>
+    <string name="wan_an_zuo">WanAnZhuo</string>
+    <string name="have_no_account">No Account ?</string>
+    <string name="repassword">Password again</string>
+    <string name="have_account">Have account ?</string>
+    <string name="lose_username_password">username or password is null</string>
+    <string name="login_register">Login / Register</string>
+    <string name="ID" translatable="false">ID</string>
 </resources>

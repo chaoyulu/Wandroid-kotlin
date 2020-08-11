@@ -23,21 +23,21 @@ class MyInfoCardView(context: Context, attributeSet: AttributeSet) :
         LayoutInflater.from(context).inflate(R.layout.layout_my_info, this)
     }
 
-    public fun setInfo(
-        borderRadius: Float,
-        backColor: Int,
+    public fun setStyle(
         headText: String,
         nickname: String,
-        nickTextColor: Int = R.color.white,
         myId: String,
+        borderRadius: Float = 50f,
+        backColor: Int = R.color.yellow_F8D073,
+        nickTextColor: Int = R.color.white,
         idTextColor: Int = R.color.white
     ) {
         this.borderRadius = borderRadius
         this.backColor = backColor
         this.headText = headText
         this.nickname = nickname
-        this.nickTextColor = nickTextColor
         this.myId = myId
+        this.nickTextColor = nickTextColor
         this.idTextColor = idTextColor
     }
 

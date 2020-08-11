@@ -5,9 +5,10 @@ import androidx.lifecycle.viewModelScope
 import com.cyl.wandroid.http.api.ApiException
 import com.cyl.wandroid.tools.showError
 import com.google.gson.JsonParseException
-import kotlinx.coroutines.*
-import org.json.JSONException
-import java.lang.Exception
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 import java.net.ConnectException
 import java.net.SocketTimeoutException
 
@@ -41,9 +42,6 @@ open class BaseViewModel : ViewModel() {
                     -1001 -> {
                         // TODO 未登录
                         showError("未登录")
-                    }
-                    -1 -> {
-                        // TODO 其他错误
                     }
                     else -> {
                         // TODO 其他错误

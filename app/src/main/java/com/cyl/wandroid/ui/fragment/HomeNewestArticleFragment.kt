@@ -16,6 +16,8 @@ import com.cyl.wandroid.common.bus.JUMP_TO_PROJECT_FRAGMENT
 import com.cyl.wandroid.http.bean.ArticleBean
 import com.cyl.wandroid.http.bean.HomeBannerBean
 import com.cyl.wandroid.tools.IntentTools
+import com.cyl.wandroid.tools.checkLoginThenAction
+import com.cyl.wandroid.tools.showNormal
 import com.cyl.wandroid.ui.activity.AgentWebActivity
 import com.cyl.wandroid.ui.activity.PublicAccountContainerActivity
 import com.cyl.wandroid.ui.adapter.HomeArticleAdapter
@@ -79,6 +81,12 @@ class HomeNewestArticleFragment :
             )
         )
         adapter.setOnItemClickListener(this)
+        adapter.setOnItemChildClickListener { _, view, _ ->
+            if (view.id == R.id.ivCollection && checkLoginThenAction(mContext)) {
+                // 收藏
+                showNormal("已登录，收藏操作")
+            }
+        }
     }
 
     private fun setHeaderMenuClick(headerView: View) {
@@ -87,7 +95,7 @@ class HomeNewestArticleFragment :
         }
 
         headerView.hivPublicAccount.setOnClickListener {
-            IntentTools.start(mContext, PublicAccountContainerActivity::class.java, null)
+            IntentTools.start(mContext, PublicAccountContainerActivity::class.java)
         }
     }
 

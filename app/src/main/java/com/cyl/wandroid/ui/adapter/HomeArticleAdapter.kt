@@ -7,11 +7,13 @@ import com.chad.library.adapter.base.module.LoadMoreModule
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.cyl.wandroid.R
 import com.cyl.wandroid.http.bean.ArticleBean
+import com.cyl.wandroid.tools.setCollectionImgState
 import kotlinx.android.synthetic.main.item_home_article.view.*
 
 class HomeArticleAdapter(layoutResId: Int = R.layout.item_home_article) :
     BaseQuickAdapter<ArticleBean, BaseViewHolder>(layoutResId), LoadMoreModule {
     override fun convert(holder: BaseViewHolder, item: ArticleBean) {
+        addChildClickViewIds(R.id.ivCollection)
         holder.itemView.apply {
             tvStick.isVisible = item.stick
             tvNew.isVisible = item.fresh
@@ -50,6 +52,8 @@ class HomeArticleAdapter(layoutResId: Int = R.layout.item_home_article) :
                 TextUtils.isEmpty(item.superChapterName) && !TextUtils.isEmpty(item.chapterName) -> item.chapterName
                 else -> ""
             }
+
+            setCollectionImgState(context, ivCollection, item.collect)
         }
     }
 }

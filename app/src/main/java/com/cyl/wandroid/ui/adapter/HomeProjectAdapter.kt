@@ -8,6 +8,7 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.cyl.wandroid.R
 import com.cyl.wandroid.ext.loadImage
 import com.cyl.wandroid.http.bean.ArticleBean
+import com.cyl.wandroid.tools.setCollectionImgState
 import kotlinx.android.synthetic.main.item_home_article.view.tvAuthor
 import kotlinx.android.synthetic.main.item_home_article.view.tvCategory
 import kotlinx.android.synthetic.main.item_home_article.view.tvDate
@@ -57,6 +58,8 @@ class HomeProjectAdapter(layoutResId: Int = R.layout.item_home_project) :
 
             tvDesc.text = item.desc
             ivProjectImage.loadImage(item.envelopePic)
+
+            setCollectionImgState(context, ivCollection, item.collect)
         }
     }
 }

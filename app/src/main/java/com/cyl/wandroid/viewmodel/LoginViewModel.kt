@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.cyl.wandroid.base.BaseViewModel
 import com.cyl.wandroid.http.bean.UserBean
 import com.cyl.wandroid.repository.LoginRepository
+import com.cyl.wandroid.sp.UserSpHelper
 
 class LoginViewModel : BaseViewModel() {
     private val loginRepository by lazy { LoginRepository() }
@@ -11,7 +12,9 @@ class LoginViewModel : BaseViewModel() {
 
     fun login(username: String, password: String) {
         launch(block = {
-            userBeanLiveData.value = loginRepository.login(username, password)
+            val userBean = loginRepository.login(username, password)
+            userBeanLiveData.value = userBean
+            UserSpHelper.newHelper().saveUserInfo(userBean)
         })
     }
 }

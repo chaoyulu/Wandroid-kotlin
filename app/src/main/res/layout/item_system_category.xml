@@ -9,7 +9,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="标题"
         android:textColor="@android:color/black"
         android:textSize="16sp"
         android:textStyle="bold"

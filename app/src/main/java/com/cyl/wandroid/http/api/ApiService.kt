@@ -63,8 +63,18 @@ interface ApiService {
 
     // 登录
     @POST("user/login")
+    @FormUrlEncoded
     suspend fun login(
         @Field("username") username: String,
         @Field("password") password: String
+    ): ApiCommonResponse<UserBean>
+
+    // 注册
+    @POST("user/register")
+    @FormUrlEncoded
+    suspend fun register(
+        @Field("username") username: String,
+        @Field("password") password: String,
+        @Field("repassword") repassword: String
     ): ApiCommonResponse<UserBean>
 }

@@ -15,7 +15,8 @@ import com.cyl.wandroid.tools.IntentTools
 import com.cyl.wandroid.tools.showError
 import com.cyl.wandroid.ui.activity.SystemDetailActivity
 import com.cyl.wandroid.ui.adapter.SystemCategoryAdapter
-import com.cyl.wandroid.ui.widget.LocateRecyclerViewDialog
+import com.cyl.wandroid.ui.widget.LocateTagViewDialog
+import com.cyl.wandroid.ui.widget.SmoothTopScroller
 import com.cyl.wandroid.viewmodel.SystemCategoryViewModel
 import kotlinx.android.synthetic.main.fragment_home_newest_article.*
 import kotlinx.android.synthetic.main.toolbar_fragment.*
@@ -62,9 +63,6 @@ class SystemFragment :
             categories.observe(viewLifecycleOwner, Observer {
                 adapter.setList(it)
                 ivRight.isVisible = !categories.value.isNullOrEmpty()
-//                val scroller = SmoothTopScroller(mContext)
-//                scroller.targetPosition = 13
-//                recyclerView.layoutManager?.startSmoothScroll(scroller)
             })
         }
     }
@@ -84,7 +82,13 @@ class SystemFragment :
             showError(R.string.no_valid_data)
         } else {
             val titles = getTitles(categories)
-            LocateRecyclerViewDialog(mContext, titles).show()
+            LocateTagViewDialog(mContext, titles, object : OnTagClickListener {
+                override fun onTagClick(itemPosition: Int, tagPosition: Int) {
+                    val scroller = SmoothTopScroller(mContext)
+                    scroller.targetPosition = itemPosition
+                    recyclerView.layoutManager?.startSmoothScroll(scroller)
+                }
+            }).show()
         }
     }
 

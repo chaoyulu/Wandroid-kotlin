@@ -9,5 +9,5 @@
     app:sCenterTextSize="10sp"
     app:sRightTextColor="@color/white"
     app:sShapeSelectorNormalColor="@color/yellow_F8D073"
-    app:sShapeSelectorPressedColor="@color/yellow_F1D073"
+    app:sShapeSelectorPressedColor="@color/yellow_DFD073"
     app:sUseShape="true" />

@@ -2,6 +2,9 @@ package com.cyl.wandroid.http.api
 
 import android.util.Log
 import com.cyl.wandroid.base.App
+import com.franmontiel.persistentcookiejar.PersistentCookieJar
+import com.franmontiel.persistentcookiejar.cache.SetCookieCache
+import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -9,8 +12,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.File
 import java.io.UnsupportedEncodingException
-import java.net.URLDecoder
-import java.net.URLEncoder
 import java.util.concurrent.TimeUnit
 
 object ApiEngine {
@@ -33,6 +34,8 @@ object ApiEngine {
         val cacheFile = File(App.app.cacheDir, "OKHttpCache")
         val cache = Cache(cacheFile, size)
 
+        val cookieJar = PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(App.app))
+
         val client = OkHttpClient.Builder().apply {
             connectTimeout(DEFAULT_TIME_OUT, TimeUnit.SECONDS)
             readTimeout(DEFAULT_TIME_OUT, TimeUnit.SECONDS)
@@ -40,6 +43,8 @@ object ApiEngine {
             addNetworkInterceptor(NetworkInterceptor())
             addInterceptor(httpLogging)
             cache(cache)
+            callTimeout(10, TimeUnit.SECONDS)
+            cookieJar(cookieJar)
         }.build()
 
         retrofit = Retrofit.Builder().apply {

@@ -24,4 +24,15 @@
     <string name="an">安</string>
     <string name="zhuo">卓</string>
     <string name="no_valid_data">无有效数据</string>
+    <string name="click_left_login">点击左侧头像登录</string>
+    <string name="login">登录</string>
+    <string name="register">注册</string>
+    <string name="account">账号</string>
+    <string name="password">密码</string>
+    <string name="wan_an_zuo">玩安卓</string>
+    <string name="have_no_account">还没有账号？</string>
+    <string name="repassword">确认密码</string>
+    <string name="have_account">已有账号？</string>
+    <string name="lose_username_password">用户名或密码为空</string>
+    <string name="login_register">登录 / 注册</string>
 </resources>

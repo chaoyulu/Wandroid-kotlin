@@ -35,6 +35,7 @@
                 app:wll_text="@string/wan">
 
                 <com.allen.library.SuperTextView
+                    android:id="@+id/stvPoints"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="15dp"
@@ -52,6 +53,7 @@
                     app:sUseShape="true" />
 
                 <com.allen.library.SuperTextView
+                    android:id="@+id/stvPointsRank"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="15dp"
@@ -77,6 +79,7 @@
                 app:wll_text="@string/an">
 
                 <com.allen.library.SuperTextView
+                    android:id="@+id/stvMyCollections"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="15dp"
@@ -94,6 +97,7 @@
                     app:sUseShape="true" />
 
                 <com.allen.library.SuperTextView
+                    android:id="@+id/stvMyShare"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="15dp"
@@ -109,6 +113,7 @@
 
 
                 <com.allen.library.SuperTextView
+                    android:id="@+id/stvMyTodo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="15dp"
@@ -133,6 +138,7 @@
                 app:wll_text="@string/zhuo">
 
                 <com.allen.library.SuperTextView
+                    android:id="@+id/stvLookHistory"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="15dp"
@@ -150,6 +156,7 @@
                     app:sUseShape="true" />
 
                 <com.allen.library.SuperTextView
+                    android:id="@+id/stvAboutAuthor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="15dp"
@@ -165,6 +172,7 @@
 
 
                 <com.allen.library.SuperTextView
+                    android:id="@+id/stvSystemSetting"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="15dp"

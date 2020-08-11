@@ -7,6 +7,7 @@ import com.chad.library.adapter.base.module.LoadMoreModule
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.cyl.wandroid.R
 import com.cyl.wandroid.http.bean.ArticleBean
+import com.cyl.wandroid.tools.setCollectionImgState
 import kotlinx.android.synthetic.main.item_home_article.view.*
 
 class HomeShareAdapter(layoutResId: Int = R.layout.item_home_share) :
@@ -21,6 +22,8 @@ class HomeShareAdapter(layoutResId: Int = R.layout.item_home_share) :
             } else if (!TextUtils.isEmpty(item.shareUser)) {
                 tvAuthor.text = item.shareUser
             }
+
+            setCollectionImgState(context, ivCollection, item.collect)
         }
     }
 }

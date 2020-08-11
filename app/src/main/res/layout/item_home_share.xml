@@ -58,7 +58,6 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:contentDescription="@string/collection"
-        android:src="@mipmap/ic_launcher"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

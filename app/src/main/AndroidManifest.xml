@@ -17,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="n">
-        <activity android:name=".ui.activity.PublicAccountContainerActivity"></activity>
+        <activity android:name=".ui.activity.MyPointsActivity"></activity>
 
         <meta-data
             android:name="android.max_aspect"
@@ -41,8 +41,14 @@
         <activity android:name=".ui.activity.AgentWebActivity" />
         <activity android:name=".ui.activity.SystemDetailActivity" />
         <activity android:name=".ui.activity.PublicAccountArticlesActivity" />
-        <activity android:name=".ui.activity.LoginActivity" />
+        <activity
+            android:name=".ui.activity.LoginActivity"
+            android:launchMode="singleTask" />
         <activity android:name=".ui.activity.FragmentContainerActivity" />
+        <activity
+            android:name=".ui.activity.RegisterActivity"
+            android:launchMode="singleTask" />
+        <activity android:name=".ui.activity.PublicAccountContainerActivity" />
     </application>
 
 </manifest>

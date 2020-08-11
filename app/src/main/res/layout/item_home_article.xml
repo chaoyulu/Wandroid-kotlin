@@ -109,7 +109,6 @@
         android:layout_height="20dp"
         android:layout_marginTop="5dp"
         android:contentDescription="@string/collection"
-        android:src="@mipmap/ic_launcher"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 </androidx.constraintlayout.widget.ConstraintLayout>

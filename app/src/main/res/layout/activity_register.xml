@@ -2,11 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/shape_login_gradient"
-    tools:context=".ui.activity.LoginActivity">
+    android:background="@drawable/shape_register_gradient"
+    tools:context=".ui.activity.RegisterActivity">
 
     <ImageView
         android:id="@+id/iv_icon"
@@ -56,7 +55,6 @@
                 android:src="@mipmap/home_header_icon_todo" />
 
             <EditText
-                android:id="@+id/etUsername"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:autofillHints="@string/account"
@@ -85,7 +83,6 @@
                 android:src="@mipmap/home_header_icon_todo" />
 
             <EditText
-                android:id="@+id/etPassword"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:autofillHints="@string/password"
@@ -95,10 +92,35 @@
                 android:paddingStart="20dp"
                 android:paddingEnd="10dp" />
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/shape_login_et_bg"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:contentDescription="@string/wan_an_zuo"
+                android:src="@mipmap/home_header_icon_todo" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:autofillHints="@string/password"
+                android:background="@null"
+                android:hint="@string/repassword"
+                android:inputType="textPassword"
+                android:paddingStart="20dp"
+                android:paddingEnd="10dp" />
+        </LinearLayout>
     </LinearLayout>
 
     <com.allen.library.SuperTextView
-        android:id="@+id/stvLogin"
+        android:id="@+id/stvRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -109,10 +131,10 @@
         app:layout_constraintTop_toTopOf="@+id/guideline3"
         app:sCenterTextColor="@color/white"
         app:sCenterTextSize="16sp"
-        app:sCenterTextString="@string/login"
+        app:sCenterTextString="@string/register"
         app:sShapeCornersRadius="10dp"
-        app:sShapeSelectorNormalColor="@color/orange_FF9800"
-        app:sShapeSelectorPressedColor="@color/yellow_DFB073"
+        app:sShapeSelectorNormalColor="@color/purple_958BFF"
+        app:sShapeSelectorPressedColor="@color/solid_purple"
         app:sUseShape="true" />
 
     <TextView
@@ -121,13 +143,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:gravity="center"
-        android:text="@string/have_no_account"
+        android:text="@string/have_account"
         android:textColor="@color/white"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/stvLogin" />
+        app:layout_constraintTop_toBottomOf="@id/stvRegister" />
 
     <com.allen.library.SuperTextView
-        android:id="@+id/stvRegister"
+        android:id="@+id/stvLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -139,10 +161,10 @@
         app:layout_constraintTop_toBottomOf="@id/no_account_tip"
         app:sCenterTextColor="@color/white"
         app:sCenterTextSize="16sp"
-        app:sCenterTextString="@string/register"
+        app:sCenterTextString="@string/login"
         app:sShapeCornersRadius="10dp"
-        app:sShapeSelectorNormalColor="@color/purple_958BFF"
-        app:sShapeSelectorPressedColor="@color/solid_purple"
+        app:sShapeSelectorNormalColor="@color/orange_FF9800"
+        app:sShapeSelectorPressedColor="@color/yellow_DFB073"
         app:sUseShape="true" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -164,5 +186,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.3" />
+        app:layout_constraintGuide_percent="0.25" />
 </androidx.constraintlayout.widget.ConstraintLayout>
