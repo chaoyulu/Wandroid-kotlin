@@ -41,4 +41,16 @@
     <string name="points_level">Level:%1$d</string>
     <string name="points_rank">Rank:%1$s</string>
     <string name="points_rank_title">Points Rank</string>
+    <string name="my_collections">Collections</string>
+    <string name="anonymity">Anonymity</string>
+    <string name="my_shared">Share</string>
+    <string name="add_share">Add Share</string>
+    <string name="add_share_tip">1. As long as it is any good article can be Shared ha, it does not have to be original! Posts will enter the square TAB; \n2. CSDN, Nuggets, Books and other official blog sites will be directly approved, no audit is required; \n3. Other personal sites will enter the audit stage, do not post any invalid links, please delete the tested ones as soon as possible, otherwise it may affect your account; \n4. Currently in the testing stage, if you find 500 errors, you can submit the log to me, so that we can make the website better together. \n5. Since I am the only one to develop and maintain this site, I will try my best to ensure the review within 24 hours. Of course, some days may be too tired, so it will be delayed.</string>
+    <string name="share_user">Share User</string>
+    <string name="warm_remind">Warm Remind</string>
+    <string name="title">Title</string>
+    <string name="link">Link</string>
+    <string name="fill_share_title">Fill share article`s title</string>
+    <string name="fill_share_link">Fill share article`s link</string>
+    <string name="share_success">Share Success</string>
 </resources>

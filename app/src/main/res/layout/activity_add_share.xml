@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.activity.AddShareActivity">
+
+    <include layout="@layout/toolbar_activity" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title"
+                android:textColor="@color/black"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/etTitle"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/shape_add_share_et_bg"
+                android:lines="1"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:textCursorDrawable="@drawable/shape_cursor"
+                android:textSize="12sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+            <TextView
+                android:id="@+id/tvLink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="@string/link"
+                android:textColor="@color/black"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etTitle"
+                app:layout_goneMarginTop="20dp" />
+
+            <EditText
+                android:id="@+id/etLink"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/shape_add_share_et_bg"
+                android:gravity="start"
+                android:lines="2"
+                android:padding="10dp"
+                android:textCursorDrawable="@drawable/shape_cursor"
+                android:textSize="12sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvLink" />
+
+            <TextView
+                android:id="@+id/shareUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="@string/share_user"
+                android:textColor="@color/black"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etLink"
+                app:layout_goneMarginTop="20dp" />
+
+            <TextView
+                android:id="@+id/tvShareUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/shape_add_share_et_bg"
+                android:padding="10dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/shareUser" />
+
+            <TextView
+                android:id="@+id/tvTip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:text="@string/warm_remind"
+                android:textColor="@color/black"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvShareUser" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:text="@string/add_share_tip"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvTip" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

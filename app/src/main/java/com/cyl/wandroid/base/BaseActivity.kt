@@ -25,17 +25,21 @@ abstract class BaseActivity : AppCompatActivity() {
 
     private fun initToolbar() {
         ivBack?.setOnClickListener {
-            onBackClick()
-            finish()
+            if (onBackClick()) {
+                finish()
+            }
         }
 
         ivRight?.setOnClickListener {
             onRightIconClick()
         }
+
+        ivClose?.setOnClickListener { finish() }
     }
 
-    fun onBackClick() {
+    open fun onBackClick(): Boolean {
         // 返回额外的工作
+        return true
     }
 
     open fun onRightIconClick() {
@@ -55,5 +59,9 @@ abstract class BaseActivity : AppCompatActivity() {
 
     fun setCenterText(text: Int) {
         tvCenter?.setText(text)
+    }
+
+    fun showCloseIcon() {
+        ivClose?.isVisible = true
     }
 }

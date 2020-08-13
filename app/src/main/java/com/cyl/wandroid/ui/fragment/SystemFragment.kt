@@ -15,7 +15,7 @@ import com.cyl.wandroid.tools.IntentTools
 import com.cyl.wandroid.tools.showError
 import com.cyl.wandroid.ui.activity.SystemDetailActivity
 import com.cyl.wandroid.ui.adapter.SystemCategoryAdapter
-import com.cyl.wandroid.ui.widget.LocateTagViewDialog
+import com.cyl.wandroid.ui.dialog.LocateTagViewDialog
 import com.cyl.wandroid.ui.widget.SmoothTopScroller
 import com.cyl.wandroid.viewmodel.SystemCategoryViewModel
 import kotlinx.android.synthetic.main.layout_swipe_recycler.*
@@ -82,13 +82,16 @@ class SystemFragment :
             showError(R.string.no_valid_data)
         } else {
             val titles = getTitles(categories)
-            LocateTagViewDialog(mContext, titles, object : OnTagClickListener {
-                override fun onTagClick(itemPosition: Int, tagPosition: Int) {
-                    val scroller = SmoothTopScroller(mContext)
-                    scroller.targetPosition = itemPosition
-                    recyclerView.layoutManager?.startSmoothScroll(scroller)
-                }
-            }).show()
+            LocateTagViewDialog(
+                mContext,
+                titles,
+                object : OnTagClickListener {
+                    override fun onTagClick(itemPosition: Int, tagPosition: Int) {
+                        val scroller = SmoothTopScroller(mContext)
+                        scroller.targetPosition = itemPosition
+                        recyclerView.layoutManager?.startSmoothScroll(scroller)
+                    }
+                }).show()
         }
     }
 

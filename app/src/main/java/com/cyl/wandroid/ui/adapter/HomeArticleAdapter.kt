@@ -12,8 +12,11 @@ import kotlinx.android.synthetic.main.item_home_article.view.*
 
 class HomeArticleAdapter(layoutResId: Int = R.layout.item_home_article) :
     BaseQuickAdapter<ArticleBean, BaseViewHolder>(layoutResId), LoadMoreModule {
-    override fun convert(holder: BaseViewHolder, item: ArticleBean) {
+    init {
         addChildClickViewIds(R.id.ivCollection)
+    }
+
+    override fun convert(holder: BaseViewHolder, item: ArticleBean) {
         holder.itemView.apply {
             tvStick.isVisible = item.stick
             tvNew.isVisible = item.fresh

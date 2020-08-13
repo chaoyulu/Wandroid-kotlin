@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.chad.library.adapter.base.BaseQuickAdapter
+import com.chad.library.adapter.base.listener.OnItemChildClickListener
 import com.chad.library.adapter.base.listener.OnItemClickListener
 import com.cyl.wandroid.R
 import com.cyl.wandroid.base.BaseRecyclerViewModelFragment
@@ -33,7 +33,8 @@ import kotlinx.android.synthetic.main.layout_swipe_recycler.*
  * 首页最新文章Tab
  */
 class HomeNewestArticleFragment :
-    BaseRecyclerViewModelFragment<ArticleBean, HomeNewestArticleViewModel>(), OnItemClickListener {
+    BaseRecyclerViewModelFragment<ArticleBean, HomeNewestArticleViewModel>(), OnItemClickListener,
+    OnItemChildClickListener {
     private lateinit var adapter: HomeArticleAdapter
     override fun getLayoutRes() = R.layout.layout_swipe_recycler
     private lateinit var banner: Banner<HomeBannerBean, HomeBannerAdapter>
@@ -75,18 +76,8 @@ class HomeNewestArticleFragment :
         adapter.addHeaderView(headerView)
         banner = headerView.findViewById(R.id.banner)
         recyclerView.adapter = adapter
-        recyclerView.addItemDecoration(
-            DividerItemDecoration(
-                mContext, DividerItemDecoration.VERTICAL
-            )
-        )
         adapter.setOnItemClickListener(this)
-        adapter.setOnItemChildClickListener { _, view, _ ->
-            if (view.id == R.id.ivCollection && checkLoginThenAction(mContext)) {
-                // 收藏
-                showNormal("已登录，收藏操作")
-            }
-        }
+        adapter.setOnItemChildClickListener(this)
     }
 
     private fun setHeaderMenuClick(headerView: View) {
@@ -133,5 +124,12 @@ class HomeNewestArticleFragment :
         IntentTools.start(mContext, AgentWebActivity::class.java, Bundle().apply {
             putString(AgentWebActivity.URL, mViewModel.articles.value?.get(position)?.link)
         })
+    }
+
+    override fun onItemChildClick(adapter: BaseQuickAdapter<*, *>, view: View, position: Int) {
+        if (view.id == R.id.ivCollection && checkLoginThenAction(mContext)) {
+            // 收藏
+            showNormal("已登录，收藏操作")
+        }
     }
 }

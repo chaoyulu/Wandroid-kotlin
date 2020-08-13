@@ -2,7 +2,6 @@ package com.cyl.wandroid.ui.fragment
 
 import android.os.Bundle
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.cyl.wandroid.R
@@ -53,11 +52,6 @@ class HomePublicAccountFragment :
         recyclerView.layoutManager = manager
         adapter = HomePublicAccountAdapter()
         recyclerView.adapter = adapter
-        recyclerView.addItemDecoration(
-            DividerItemDecoration(
-                mContext, DividerItemDecoration.VERTICAL
-            )
-        )
 
         adapter.setOnItemClickListener { _, _, position ->
             val accounts = mViewModel.accounts.value

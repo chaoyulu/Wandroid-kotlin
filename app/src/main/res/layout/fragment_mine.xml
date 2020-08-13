@@ -97,6 +97,21 @@
                     app:sUseShape="true" />
 
                 <com.allen.library.SuperTextView
+                    android:id="@+id/stvMyTodo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    app:sLeftIconHeight="30dp"
+                    app:sLeftIconRes="@mipmap/home_header_icon_todo"
+                    app:sLeftIconWidth="30dp"
+                    app:sLeftTextColor="@color/white"
+                    app:sLeftTextString="我的待办"
+                    app:sLeftViewMarginLeft="20dp"
+                    app:sShapeSelectorNormalColor="@color/solid_green"
+                    app:sShapeSelectorPressedColor="@color/green_804CAF50"
+                    app:sUseShape="true" />
+
+                <com.allen.library.SuperTextView
                     android:id="@+id/stvMyShare"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -113,7 +128,7 @@
 
 
                 <com.allen.library.SuperTextView
-                    android:id="@+id/stvMyTodo"
+                    android:id="@+id/stvAddShare"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="15dp"
@@ -121,7 +136,7 @@
                     app:sLeftIconRes="@mipmap/home_header_icon_todo"
                     app:sLeftIconWidth="30dp"
                     app:sLeftTextColor="@color/white"
-                    app:sLeftTextString="我的待办"
+                    app:sLeftTextString="我要分享"
                     app:sLeftViewMarginLeft="20dp"
                     app:sShapeCornersBottomLeftRadius="20dp"
                     app:sShapeCornersBottomRightRadius="20dp"

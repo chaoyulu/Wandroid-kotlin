@@ -3,16 +3,17 @@ package com.cyl.wandroid.ui.fragment
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.chad.library.adapter.base.BaseQuickAdapter
+import com.chad.library.adapter.base.listener.OnItemChildClickListener
 import com.chad.library.adapter.base.listener.OnItemClickListener
 import com.cyl.wandroid.R
 import com.cyl.wandroid.base.BaseRecyclerViewModelFragment
 import com.cyl.wandroid.http.bean.ArticleBean
 import com.cyl.wandroid.tools.IntentTools
 import com.cyl.wandroid.ui.activity.AgentWebActivity
+import com.cyl.wandroid.ui.activity.OthersSharedActivity
 import com.cyl.wandroid.ui.adapter.HomeShareAdapter
 import com.cyl.wandroid.viewmodel.HomeNewestShareViewModel
 import kotlinx.android.synthetic.main.layout_swipe_recycler.*
@@ -21,7 +22,8 @@ import kotlinx.android.synthetic.main.layout_swipe_recycler.*
  * 首页最新分享Tab
  */
 class HomeNewestShareFragment :
-    BaseRecyclerViewModelFragment<ArticleBean, HomeNewestShareViewModel>(), OnItemClickListener {
+    BaseRecyclerViewModelFragment<ArticleBean, HomeNewestShareViewModel>(), OnItemClickListener,
+    OnItemChildClickListener {
     private lateinit var adapter: HomeShareAdapter
 
     override fun getLayoutRes() = R.layout.layout_swipe_recycler
@@ -39,11 +41,9 @@ class HomeNewestShareFragment :
         recyclerView.layoutManager = manager
         adapter = HomeShareAdapter()
         recyclerView.adapter = adapter
-        recyclerView.addItemDecoration(
-            DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL)
-        )
         adapter.loadMoreModule.setOnLoadMoreListener { mViewModel.loadMoreShare() }
         adapter.setOnItemClickListener(this)
+        adapter.setOnItemChildClickListener(this)
     }
 
     override fun initRefreshLayout() {
@@ -65,5 +65,16 @@ class HomeNewestShareFragment :
         IntentTools.start(mContext, AgentWebActivity::class.java, Bundle().apply {
             putString(AgentWebActivity.URL, mViewModel.articles.value?.get(position)?.link)
         })
+    }
+
+    override fun onItemChildClick(adapter: BaseQuickAdapter<*, *>, view: View, position: Int) {
+        if (view.id == R.id.tvAuthor) {
+            IntentTools.start(mContext, OthersSharedActivity::class.java, Bundle().apply {
+                mViewModel.articles.value?.get(position)?.let {
+                    putInt(OthersSharedActivity.USER_ID, it.userId)
+                    putString(OthersSharedActivity.SHARED_USER, it.shareUser)
+                }
+            })
+        }
     }
 }

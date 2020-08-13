@@ -89,4 +89,30 @@ interface ApiService {
     // 获取积分排行榜
     @GET("coin/rank/{page}/json")
     suspend fun getAllPointsRank(@Path("page") page: Int): ApiCommonResponse<CommonArticleData<PointRankBean>>
+
+    // 收藏文章列表
+    @GET("lg/collect/list/{page}/json")
+    suspend fun getMyCollections(@Path("page") page: Int): ApiCommonResponse<CommonArticleData<ArticleBean>>
+
+    // 收藏站内文章
+    @GET("lg/collect/{id}/json")
+    suspend fun collectArticle(@Path("id") id: Int)
+
+    // 我的分享列表
+    @GET("user/lg/private_articles/{page}/json")
+    suspend fun getMyShared(@Path("page") page: Int): ApiCommonResponse<ShareBean>
+
+    // 别人的分享列表
+    @GET("user/{id}/share_articles/{page}/json")
+    suspend fun getOthersShared(
+        @Path("id") id: Int,
+        @Path("page") page: Int
+    ): ApiCommonResponse<ShareBean>
+
+    // 添加分享
+    @POST("lg/user_article/add/json")
+    @FormUrlEncoded
+    suspend fun addShare(
+        @Field("title") title: String, @Field("link") link: String
+    ): ApiCommonResponse<ShareBean>
 }

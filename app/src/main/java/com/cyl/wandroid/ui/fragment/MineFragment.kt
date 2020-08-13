@@ -8,10 +8,7 @@ import com.cyl.wandroid.common.bus.REFRESH_LOGIN_SUCCESS
 import com.cyl.wandroid.http.bean.UserBean
 import com.cyl.wandroid.sp.UserSpHelper
 import com.cyl.wandroid.tools.IntentTools
-import com.cyl.wandroid.tools.checkLoginThenAction
-import com.cyl.wandroid.ui.activity.LoginActivity
-import com.cyl.wandroid.ui.activity.MyPointsActivity
-import com.cyl.wandroid.ui.activity.PointsRankActivity
+import com.cyl.wandroid.ui.activity.*
 import kotlinx.android.synthetic.main.fragment_mine.*
 import kotlinx.android.synthetic.main.layout_my_info.view.*
 
@@ -64,18 +61,29 @@ class MineFragment : BaseFragment() {
 
     private fun initClick() {
         stvPoints.setOnClickListener {
-            checkLoginThenAction(mContext, action = {
-                IntentTools.start(mContext, MyPointsActivity::class.java)
-            })
+            IntentTools.start(mContext, MyPointsActivity::class.java, needLogin = true)
         }
         stvPointsRank.setOnClickListener {
-            IntentTools.start(mContext, PointsRankActivity::class.java)
+            IntentTools.start(mContext, PointsRankActivity::class.java, needLogin = true)
         }
-        stvMyCollections.setOnClickListener { }
-        stvMyShare.setOnClickListener { }
-        stvMyTodo.setOnClickListener { }
-        stvLookHistory.setOnClickListener { }
-        stvAboutAuthor.setOnClickListener { }
-        stvSystemSetting.setOnClickListener { }
+        stvMyCollections.setOnClickListener {
+            IntentTools.start(mContext, MyCollectionsActivity::class.java, needLogin = true)
+        }
+        stvMyShare.setOnClickListener {
+            IntentTools.start(mContext, MySharedActivity::class.java, needLogin = true)
+        }
+        stvAddShare.setOnClickListener {
+            IntentTools.start(mContext, AddShareActivity::class.java, needLogin = true)
+        }
+        stvMyTodo.setOnClickListener {
+        }
+        stvLookHistory.setOnClickListener {
+        }
+        stvAboutAuthor.setOnClickListener {
+            IntentTools.start(mContext, MyCollectionsActivity::class.java)
+        }
+        stvSystemSetting.setOnClickListener {
+            IntentTools.start(mContext, MyCollectionsActivity::class.java)
+        }
     }
 }

@@ -1,4 +1,4 @@
-package com.cyl.wandroid.ui.widget
+package com.cyl.wandroid.ui.dialog
 
 import android.app.Dialog
 import android.content.Context

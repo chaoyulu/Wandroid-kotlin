@@ -17,8 +17,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="n">
-        <activity android:name=".ui.activity.PointsRankActivity"></activity>
-        <activity android:name=".ui.activity.MyPointsActivity" />
 
         <meta-data
             android:name="android.max_aspect"
@@ -50,6 +48,12 @@
             android:name=".ui.activity.RegisterActivity"
             android:launchMode="singleTask" />
         <activity android:name=".ui.activity.PublicAccountContainerActivity" />
+        <activity android:name=".ui.activity.MySharedActivity" />
+        <activity android:name=".ui.activity.OthersSharedActivity" />
+        <activity android:name=".ui.activity.MyCollectionsActivity" />
+        <activity android:name=".ui.activity.PointsRankActivity" />
+        <activity android:name=".ui.activity.MyPointsActivity" />
+        <activity android:name=".ui.activity.AddShareActivity" />
     </application>
 
 </manifest>

@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.chad.library.adapter.base.BaseQuickAdapter
@@ -60,11 +59,6 @@ class ProjectSubFragment : BaseRecyclerViewModelFragment<ArticleBean, ProjectArt
         recyclerView.layoutManager = manager
         adapter = HomeProjectAdapter()
         recyclerView.adapter = adapter
-        recyclerView.addItemDecoration(
-            DividerItemDecoration(
-                mContext, DividerItemDecoration.VERTICAL
-            )
-        )
         adapter.loadMoreModule.setOnLoadMoreListener { mViewModel.loadMoreProjectArticles(bean.id) }
         adapter.setOnItemClickListener(this)
     }

@@ -6,6 +6,7 @@ import com.chad.library.adapter.base.module.LoadMoreModule
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.cyl.wandroid.R
 import com.cyl.wandroid.http.bean.ArticleBean
+import com.cyl.wandroid.tools.setCollectionImgState
 import kotlinx.android.synthetic.main.item_home_article.view.*
 
 class PublicAccountArticlesAdapter(layoutResId: Int = R.layout.item_public_account_article) :
@@ -19,6 +20,8 @@ class PublicAccountArticlesAdapter(layoutResId: Int = R.layout.item_public_accou
             } else if (!TextUtils.isEmpty(item.shareUser)) {
                 tvAuthor.text = item.shareUser
             }
+
+            setCollectionImgState(context, ivCollection, item.collect)
         }
     }
 }

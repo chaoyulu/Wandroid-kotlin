@@ -1,5 +1,6 @@
 package com.cyl.wandroid.ui.activity
 
+import android.annotation.SuppressLint
 import android.net.Uri
 import android.view.KeyEvent
 import android.view.ViewGroup
@@ -28,8 +29,10 @@ class AgentWebActivity : BaseActivity() {
     override fun initData() {
         url = intent?.extras?.getString(URL) ?: return
         initAgentWeb()
+        showCloseIcon()
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     private fun initAgentWeb() {
         agentWeb =
             AgentWeb.with(this).setAgentWebParent(frameLayout, ViewGroup.LayoutParams(-1, -1))
@@ -60,6 +63,12 @@ class AgentWebActivity : BaseActivity() {
                         view?.loadUrl(filterJS(url))
                     }
                 }).createAgentWeb().ready().go(url)
+
+        val settings = agentWeb?.agentWebSettings?.webSettings
+        settings?.apply {
+            javaScriptEnabled = true
+            loadWithOverviewMode = true
+        }
     }
 
     override fun initView() {
@@ -132,5 +141,16 @@ class AgentWebActivity : BaseActivity() {
     override fun onDestroy() {
         agentWeb?.webLifeCycle?.onDestroy()
         super.onDestroy()
+    }
+
+    override fun onBackClick(): Boolean {
+        if (agentWeb == null) {
+            return true
+        }
+
+        if (!agentWeb!!.back()) {
+            finish()
+        }
+        return false
     }
 }
