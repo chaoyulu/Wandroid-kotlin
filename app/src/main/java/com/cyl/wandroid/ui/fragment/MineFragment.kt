@@ -11,6 +11,7 @@ import com.cyl.wandroid.tools.IntentTools
 import com.cyl.wandroid.tools.checkLoginThenAction
 import com.cyl.wandroid.ui.activity.LoginActivity
 import com.cyl.wandroid.ui.activity.MyPointsActivity
+import com.cyl.wandroid.ui.activity.PointsRankActivity
 import kotlinx.android.synthetic.main.fragment_mine.*
 import kotlinx.android.synthetic.main.layout_my_info.view.*
 
@@ -67,7 +68,9 @@ class MineFragment : BaseFragment() {
                 IntentTools.start(mContext, MyPointsActivity::class.java)
             })
         }
-        stvPointsRank.setOnClickListener { }
+        stvPointsRank.setOnClickListener {
+            IntentTools.start(mContext, PointsRankActivity::class.java)
+        }
         stvMyCollections.setOnClickListener { }
         stvMyShare.setOnClickListener { }
         stvMyTodo.setOnClickListener { }

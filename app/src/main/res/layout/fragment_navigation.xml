@@ -9,6 +9,6 @@
 
     <include layout="@layout/toolbar_fragment" />
 
-    <include layout="@layout/fragment_home_newest_article" />
+    <include layout="@layout/layout_swipe_recycler" />
 
 </LinearLayout>

@@ -18,7 +18,7 @@ import com.cyl.wandroid.tools.IntentTools
 import com.cyl.wandroid.ui.activity.AgentWebActivity
 import com.cyl.wandroid.ui.adapter.PublicAccountArticlesAdapter
 import com.cyl.wandroid.viewmodel.SystemArticlesViewModel
-import kotlinx.android.synthetic.main.fragment_home_newest_article.*
+import kotlinx.android.synthetic.main.layout_swipe_recycler.*
 
 /**
  * 体系文章列表
@@ -47,7 +47,7 @@ class SystemSubFragment : BaseRecyclerViewModelFragment<ArticleBean, SystemArtic
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
-    override fun getLayoutRes() = R.layout.fragment_home_newest_article
+    override fun getLayoutRes() = R.layout.layout_swipe_recycler
 
     override fun lazyInitData() {
         mViewModel.refreshSystemArticles(bean.id)

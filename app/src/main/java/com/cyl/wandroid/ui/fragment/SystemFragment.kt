@@ -18,7 +18,7 @@ import com.cyl.wandroid.ui.adapter.SystemCategoryAdapter
 import com.cyl.wandroid.ui.widget.LocateTagViewDialog
 import com.cyl.wandroid.ui.widget.SmoothTopScroller
 import com.cyl.wandroid.viewmodel.SystemCategoryViewModel
-import kotlinx.android.synthetic.main.fragment_home_newest_article.*
+import kotlinx.android.synthetic.main.layout_swipe_recycler.*
 import kotlinx.android.synthetic.main.toolbar_fragment.*
 
 /**

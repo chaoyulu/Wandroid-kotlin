@@ -15,7 +15,7 @@ import com.cyl.wandroid.tools.IntentTools
 import com.cyl.wandroid.ui.activity.AgentWebActivity
 import com.cyl.wandroid.ui.adapter.HomeShareAdapter
 import com.cyl.wandroid.viewmodel.HomeNewestShareViewModel
-import kotlinx.android.synthetic.main.fragment_home_newest_article.*
+import kotlinx.android.synthetic.main.layout_swipe_recycler.*
 
 /**
  * 首页最新分享Tab
@@ -24,7 +24,7 @@ class HomeNewestShareFragment :
     BaseRecyclerViewModelFragment<ArticleBean, HomeNewestShareViewModel>(), OnItemClickListener {
     private lateinit var adapter: HomeShareAdapter
 
-    override fun getLayoutRes() = R.layout.fragment_home_newest_article
+    override fun getLayoutRes() = R.layout.layout_swipe_recycler
 
     override fun getAdapter() = adapter
 
@@ -39,9 +39,8 @@ class HomeNewestShareFragment :
         recyclerView.layoutManager = manager
         adapter = HomeShareAdapter()
         recyclerView.adapter = adapter
-        recyclerView.addItemDecoration( DividerItemDecoration(
-            mContext, DividerItemDecoration.VERTICAL
-        )
+        recyclerView.addItemDecoration(
+            DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL)
         )
         adapter.loadMoreModule.setOnLoadMoreListener { mViewModel.loadMoreShare() }
         adapter.setOnItemClickListener(this)

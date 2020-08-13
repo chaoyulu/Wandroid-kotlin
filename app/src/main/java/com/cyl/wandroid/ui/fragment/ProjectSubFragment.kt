@@ -19,7 +19,7 @@ import com.cyl.wandroid.tools.IntentTools
 import com.cyl.wandroid.ui.activity.AgentWebActivity
 import com.cyl.wandroid.ui.adapter.HomeProjectAdapter
 import com.cyl.wandroid.viewmodel.ProjectArticlesViewModel
-import kotlinx.android.synthetic.main.fragment_home_newest_article.*
+import kotlinx.android.synthetic.main.layout_swipe_recycler.*
 
 class ProjectSubFragment : BaseRecyclerViewModelFragment<ArticleBean, ProjectArticlesViewModel>(),
     OnItemClickListener {
@@ -45,7 +45,7 @@ class ProjectSubFragment : BaseRecyclerViewModelFragment<ArticleBean, ProjectArt
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
-    override fun getLayoutRes() = R.layout.fragment_home_newest_article
+    override fun getLayoutRes() = R.layout.layout_swipe_recycler
 
     override fun lazyInitData() {
         mViewModel.refreshProjectArticles(bean.id)

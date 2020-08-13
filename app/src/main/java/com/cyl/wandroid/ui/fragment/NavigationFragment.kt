@@ -15,7 +15,7 @@ import com.cyl.wandroid.ui.activity.AgentWebActivity
 import com.cyl.wandroid.ui.adapter.NavigationAdapter
 import com.cyl.wandroid.ui.widget.SectionItemDecoration
 import com.cyl.wandroid.viewmodel.NavigationViewModel
-import kotlinx.android.synthetic.main.fragment_home_newest_article.*
+import kotlinx.android.synthetic.main.layout_swipe_recycler.*
 
 /**
  * 导航

@@ -15,7 +15,7 @@ import com.cyl.wandroid.tools.IntentTools
 import com.cyl.wandroid.ui.activity.AgentWebActivity
 import com.cyl.wandroid.ui.adapter.HomeProjectAdapter
 import com.cyl.wandroid.viewmodel.HomeNewestProjectViewModel
-import kotlinx.android.synthetic.main.fragment_home_newest_article.*
+import kotlinx.android.synthetic.main.layout_swipe_recycler.*
 
 /**
  * 首页最新项目Tab
@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.fragment_home_newest_article.*
 class HomeNewestProjectFragment :
     BaseRecyclerViewModelFragment<ArticleBean, HomeNewestProjectViewModel>(), OnItemClickListener {
     private lateinit var adapter: HomeProjectAdapter
-    override fun getLayoutRes() = R.layout.fragment_home_newest_article
+    override fun getLayoutRes() = R.layout.layout_swipe_recycler
 
     override fun lazyInitData() {
         mViewModel.refreshProjects()

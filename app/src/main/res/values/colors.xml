@@ -7,6 +7,7 @@
     <color name="grey_771C1C1B">#771C1C1B</color>
     <color name="grey">#77FFFFFF</color>
     <color name="grey_E7E7E7">#E7E7E7</color>
+    <color name="grey_77E7E7E7">#FFE7E7E7</color>
     <color name="grey_AAAAAA">#AAAAAA</color>
 
     <color name="solid_red">#77FF0000</color>
@@ -32,4 +33,7 @@
     <color name="blue_804F9EFF">#804F9EFF</color>
     <color name="black">#000000</color>
     <color name="translucent_white">#22FFFFFF</color>
+    <color name="gold">#F2C425</color> <!-- 金色 -->
+    <color name="silver">#BAC0CE</color> <!-- 银色 -->
+    <color name="copper">#E89847</color> <!-- 铜色 -->
 </resources>

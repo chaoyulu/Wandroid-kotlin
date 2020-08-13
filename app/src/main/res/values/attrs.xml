@@ -13,4 +13,18 @@
         <attr name="wll_text_color" format="color" />
         <attr name="wll_text_size" format="dimension" />
     </declare-styleable>
+
+    <declare-styleable name="CircleTextHeadView">
+        <attr name="style" format="enum">
+            <enum name="STROKE" value="0" />
+            <enum name="FILL" value="1" />
+        </attr>
+
+        <attr name="stroke_width" format="dimension" />
+        <attr name="color" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="OvalShadowView">
+        <attr name="shadow_color" format="color" />
+    </declare-styleable>
 </resources>

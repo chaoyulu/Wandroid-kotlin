@@ -24,7 +24,7 @@ abstract class BaseActivity : AppCompatActivity() {
     abstract fun getLayoutRes(): Int
 
     private fun initToolbar() {
-        tvBack?.setOnClickListener {
+        ivBack?.setOnClickListener {
             onBackClick()
             finish()
         }
@@ -38,7 +38,7 @@ abstract class BaseActivity : AppCompatActivity() {
         // 返回额外的工作
     }
 
-    fun onRightIconClick() {
+    open fun onRightIconClick() {
         // Toolbar右上角按钮
     }
 
@@ -47,14 +47,6 @@ abstract class BaseActivity : AppCompatActivity() {
             it.isVisible = true
             it.setImageResource(iconRes)
         }
-    }
-
-    fun setBackText(text: String) {
-        tvBack?.text = text
-    }
-
-    fun setBackText(text: Int) {
-        tvBack?.setText(text)
     }
 
     fun setCenterText(text: String) {

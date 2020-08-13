@@ -12,24 +12,21 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder
 abstract class BaseRecyclerViewModelActivity<T, VM : BaseRecyclerViewModel> :
     BaseViewModelActivity<VM>() {
     override fun observe() {
-        observeStatus(getAdapter(), getSwipeRefreshLayout())
+        observeStatus()
     }
 
-    private fun observeStatus(
-        adapter: BaseQuickAdapter<T, BaseViewHolder>,
-        swipeRefreshLayout: SwipeRefreshLayout
-    ) {
+    private fun observeStatus() {
         mViewModel.loadMoreStatus.observe(this, Observer {
             when (it) {
-                LoadMoreStatus.Complete -> adapter.loadMoreModule.loadMoreComplete()
-                LoadMoreStatus.Fail -> adapter.loadMoreModule.loadMoreFail()
-                LoadMoreStatus.End -> adapter.loadMoreModule.loadMoreEnd()
+                LoadMoreStatus.Complete -> getAdapter().loadMoreModule.loadMoreComplete()
+                LoadMoreStatus.Fail -> getAdapter().loadMoreModule.loadMoreFail()
+                LoadMoreStatus.End -> getAdapter().loadMoreModule.loadMoreEnd()
                 else -> return@Observer
             }
         })
 
         mViewModel.refreshStatus.observe(this, Observer {
-            swipeRefreshLayout.isRefreshing = it
+            getSwipeRefreshLayout().isRefreshing = it
         })
     }
 

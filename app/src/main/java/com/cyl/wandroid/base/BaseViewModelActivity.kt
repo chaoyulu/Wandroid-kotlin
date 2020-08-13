@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModelProvider
 abstract class BaseViewModelActivity<VM : BaseViewModel> : BaseActivity() {
     protected open lateinit var mViewModel: VM
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         initViewModel()
+        super.onCreate(savedInstanceState)
         observe()
     }
 

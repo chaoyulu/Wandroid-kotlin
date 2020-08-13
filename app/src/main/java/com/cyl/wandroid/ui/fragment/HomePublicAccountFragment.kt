@@ -14,14 +14,14 @@ import com.cyl.wandroid.tools.IntentTools
 import com.cyl.wandroid.ui.activity.PublicAccountArticlesActivity
 import com.cyl.wandroid.ui.adapter.HomePublicAccountAdapter
 import com.cyl.wandroid.viewmodel.HomePublicAccountViewModel
-import kotlinx.android.synthetic.main.fragment_home_newest_article.*
+import kotlinx.android.synthetic.main.layout_swipe_recycler.*
 
 /**
  * 首页公众号Tab
  */
 class HomePublicAccountFragment :
     BaseRecyclerViewModelFragment<PublicAccountBean, HomePublicAccountViewModel>() {
-    override fun getLayoutRes() = R.layout.fragment_home_newest_article
+    override fun getLayoutRes() = R.layout.layout_swipe_recycler
 
     private lateinit var adapter: HomePublicAccountAdapter
 

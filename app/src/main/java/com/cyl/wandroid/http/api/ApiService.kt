@@ -77,4 +77,16 @@ interface ApiService {
         @Field("password") password: String,
         @Field("repassword") repassword: String
     ): ApiCommonResponse<UserBean>
+
+    // 获取个人积分数和排名
+    @GET("lg/coin/userinfo/json")
+    suspend fun getMyPointsInfo(): ApiCommonResponse<PointRankBean>
+
+    // 获取个人积分列表
+    @GET("lg/coin/list/{page}/json")
+    suspend fun getMyPointsList(@Path("page") page: Int): ApiCommonResponse<CommonArticleData<PointsListBean>>
+
+    // 获取积分排行榜
+    @GET("coin/rank/{page}/json")
+    suspend fun getAllPointsRank(@Path("page") page: Int): ApiCommonResponse<CommonArticleData<PointRankBean>>
 }

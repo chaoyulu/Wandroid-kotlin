@@ -35,4 +35,8 @@
     <string name="have_account">已有账号？</string>
     <string name="lose_username_password">用户名或密码为空</string>
     <string name="login_register">登录 / 注册</string>
+    <string name="my_points">我的积分</string>
+    <string name="points_level">等级:%1$d</string>
+    <string name="points_rank">排名:%1$s</string>
+    <string name="points_rank_title">积分排行</string>
 </resources>

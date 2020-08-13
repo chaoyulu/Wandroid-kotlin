@@ -17,7 +17,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="n">
-        <activity android:name=".ui.activity.MyPointsActivity"></activity>
+        <activity android:name=".ui.activity.PointsRankActivity"></activity>
+        <activity android:name=".ui.activity.MyPointsActivity" />
 
         <meta-data
             android:name="android.max_aspect"

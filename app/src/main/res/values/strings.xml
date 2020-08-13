@@ -37,4 +37,8 @@
     <string name="lose_username_password">username or password is null</string>
     <string name="login_register">Login / Register</string>
     <string name="ID" translatable="false">ID</string>
+    <string name="my_points">My Points</string>
+    <string name="points_level">Level:%1$d</string>
+    <string name="points_rank">Rank:%1$s</string>
+    <string name="points_rank_title">Points Rank</string>
 </resources>

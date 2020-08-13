@@ -26,8 +26,8 @@ import com.cyl.wandroid.viewmodel.HomeNewestArticleViewModel
 import com.youth.banner.Banner
 import com.youth.banner.config.IndicatorConfig
 import com.youth.banner.indicator.CircleIndicator
-import kotlinx.android.synthetic.main.fragment_home_newest_article.*
 import kotlinx.android.synthetic.main.header_view_fragment_home.view.*
+import kotlinx.android.synthetic.main.layout_swipe_recycler.*
 
 /**
  * 首页最新文章Tab
@@ -35,7 +35,7 @@ import kotlinx.android.synthetic.main.header_view_fragment_home.view.*
 class HomeNewestArticleFragment :
     BaseRecyclerViewModelFragment<ArticleBean, HomeNewestArticleViewModel>(), OnItemClickListener {
     private lateinit var adapter: HomeArticleAdapter
-    override fun getLayoutRes() = R.layout.fragment_home_newest_article
+    override fun getLayoutRes() = R.layout.layout_swipe_recycler
     private lateinit var banner: Banner<HomeBannerBean, HomeBannerAdapter>
 
     override fun lazyInitData() {
