@@ -17,6 +17,8 @@ import java.util.concurrent.TimeUnit
 object ApiEngine {
     private const val DEFAULT_TIME_OUT = 10L
     private var retrofit: Retrofit
+    val cookieJar =
+        PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(App.app))
 
     init {
         val httpLogging =
@@ -33,8 +35,6 @@ object ApiEngine {
         val size = 1024 * 1024 * 100L
         val cacheFile = File(App.app.cacheDir, "OKHttpCache")
         val cache = Cache(cacheFile, size)
-
-        val cookieJar = PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(App.app))
 
         val client = OkHttpClient.Builder().apply {
             connectTimeout(DEFAULT_TIME_OUT, TimeUnit.SECONDS)

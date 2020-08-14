@@ -4,13 +4,13 @@ import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.view.*
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.TextView
 import com.cyl.wandroid.R
+import com.cyl.wandroid.ext.setCircularCorner
 import com.cyl.wandroid.listener.OnTagClickListener
 import com.cyl.wandroid.tools.getScreenWidth
 import com.zhy.view.flowlayout.FlowLayout
@@ -69,11 +69,7 @@ class LocateTagViewDialog(
                 val bgColor = Color.WHITE
                 val tagTextColor = Color.BLACK
                 tv.setTextColor(tagTextColor)
-
-                val gradientDrawable = GradientDrawable()
-                gradientDrawable.setColor(bgColor)
-                gradientDrawable.cornerRadius = 20f
-                tv.background = gradientDrawable
+                tv.setCircularCorner(bgColor)
                 return tv
             }
         }

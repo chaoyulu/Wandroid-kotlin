@@ -15,9 +15,9 @@ import com.cyl.wandroid.common.bus.Bus
 import com.cyl.wandroid.common.bus.JUMP_TO_PROJECT_FRAGMENT
 import com.cyl.wandroid.http.bean.ArticleBean
 import com.cyl.wandroid.http.bean.HomeBannerBean
-import com.cyl.wandroid.tools.IntentTools
 import com.cyl.wandroid.tools.checkLoginThenAction
 import com.cyl.wandroid.tools.showNormal
+import com.cyl.wandroid.tools.start
 import com.cyl.wandroid.ui.activity.AgentWebActivity
 import com.cyl.wandroid.ui.activity.PublicAccountContainerActivity
 import com.cyl.wandroid.ui.adapter.HomeArticleAdapter
@@ -86,7 +86,7 @@ class HomeNewestArticleFragment :
         }
 
         headerView.hivPublicAccount.setOnClickListener {
-            IntentTools.start(mContext, PublicAccountContainerActivity::class.java)
+            start(mContext, PublicAccountContainerActivity::class.java)
         }
     }
 
@@ -121,7 +121,7 @@ class HomeNewestArticleFragment :
 
     override fun getSwipeRefreshLayout(): SwipeRefreshLayout = swipeRefreshLayout
     override fun onItemClick(adapter: BaseQuickAdapter<*, *>, view: View, position: Int) {
-        IntentTools.start(mContext, AgentWebActivity::class.java, Bundle().apply {
+        start(mContext, AgentWebActivity::class.java, Bundle().apply {
             putString(AgentWebActivity.URL, mViewModel.articles.value?.get(position)?.link)
         })
     }

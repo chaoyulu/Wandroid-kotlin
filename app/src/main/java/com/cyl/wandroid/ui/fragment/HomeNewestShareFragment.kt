@@ -11,7 +11,7 @@ import com.chad.library.adapter.base.listener.OnItemClickListener
 import com.cyl.wandroid.R
 import com.cyl.wandroid.base.BaseRecyclerViewModelFragment
 import com.cyl.wandroid.http.bean.ArticleBean
-import com.cyl.wandroid.tools.IntentTools
+import com.cyl.wandroid.tools.start
 import com.cyl.wandroid.ui.activity.AgentWebActivity
 import com.cyl.wandroid.ui.activity.OthersSharedActivity
 import com.cyl.wandroid.ui.adapter.HomeShareAdapter
@@ -62,14 +62,14 @@ class HomeNewestShareFragment :
     }
 
     override fun onItemClick(adapter: BaseQuickAdapter<*, *>, view: View, position: Int) {
-        IntentTools.start(mContext, AgentWebActivity::class.java, Bundle().apply {
+        start(mContext, AgentWebActivity::class.java, Bundle().apply {
             putString(AgentWebActivity.URL, mViewModel.articles.value?.get(position)?.link)
         })
     }
 
     override fun onItemChildClick(adapter: BaseQuickAdapter<*, *>, view: View, position: Int) {
         if (view.id == R.id.tvAuthor) {
-            IntentTools.start(mContext, OthersSharedActivity::class.java, Bundle().apply {
+            start(mContext, OthersSharedActivity::class.java, Bundle().apply {
                 mViewModel.articles.value?.get(position)?.let {
                     putInt(OthersSharedActivity.USER_ID, it.userId)
                     putString(OthersSharedActivity.SHARED_USER, it.shareUser)

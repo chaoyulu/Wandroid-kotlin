@@ -9,8 +9,11 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.listener.OnItemClickListener
 import com.cyl.wandroid.R
 import com.cyl.wandroid.base.BaseRecyclerViewModelActivity
+import com.cyl.wandroid.common.bus.Bus
+import com.cyl.wandroid.common.bus.REFRESH_ADD_SHARE_SUCCESS
+import com.cyl.wandroid.common.code.REQUEST_CODE_ADD_SHARE
 import com.cyl.wandroid.http.bean.ArticleBean
-import com.cyl.wandroid.tools.IntentTools
+import com.cyl.wandroid.tools.start
 import com.cyl.wandroid.ui.adapter.MySharedAdapter
 import com.cyl.wandroid.viewmodel.MySharedViewModel
 import kotlinx.android.synthetic.main.layout_swipe_recycler.*
@@ -40,6 +43,7 @@ class MySharedActivity : BaseRecyclerViewModelActivity<ArticleBean, MySharedView
 
     override fun initData() {
         mViewModel.refreshShared()
+        busObserve()
     }
 
     override fun initView() {
@@ -51,7 +55,7 @@ class MySharedActivity : BaseRecyclerViewModelActivity<ArticleBean, MySharedView
     override fun getLayoutRes() = R.layout.activity_my_shared
 
     override fun onItemClick(adapter: BaseQuickAdapter<*, *>, view: View, position: Int) {
-        IntentTools.start(this, AgentWebActivity::class.java, Bundle().apply {
+        start(this, AgentWebActivity::class.java, Bundle().apply {
             putString(AgentWebActivity.URL, mViewModel.sharedList.value?.get(position)?.link)
         })
     }
@@ -63,8 +67,20 @@ class MySharedActivity : BaseRecyclerViewModelActivity<ArticleBean, MySharedView
         }
     }
 
+    private fun busObserve() {
+        Bus.observe<Int>(REFRESH_ADD_SHARE_SUCCESS, this, observer = {
+            mViewModel.refreshShared()
+        })
+    }
+
     override fun onRightIconClick() {
         super.onRightIconClick()
-        IntentTools.start(this, AddShareActivity::class.java, needLogin = true)
+        start(
+            this,
+            AddShareActivity::class.java,
+            needLogin = true,
+            needResult = true,
+            requestCode = REQUEST_CODE_ADD_SHARE
+        )
     }
 }

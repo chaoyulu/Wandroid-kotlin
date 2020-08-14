@@ -11,6 +11,7 @@ import com.cyl.wandroid.R
 import com.cyl.wandroid.base.BaseActivity
 import com.cyl.wandroid.tools.whiteList
 import com.cyl.wandroid.ui.widget.GradientWebIndicator
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.just.agentweb.AgentWeb
 import com.just.agentweb.DefaultWebClient
 import com.just.agentweb.WebChromeClient
@@ -72,6 +73,7 @@ class AgentWebActivity : BaseActivity() {
     }
 
     override fun initView() {
+        setRightIcon(R.mipmap.icon_more)
     }
 
     override fun getLayoutRes() = R.layout.activity_agent_web
@@ -152,5 +154,12 @@ class AgentWebActivity : BaseActivity() {
             finish()
         }
         return false
+    }
+
+    override fun onRightIconClick() {
+        super.onRightIconClick()
+        val dialog = BottomSheetDialog(this)
+        dialog.setContentView(R.layout.fragment_home)
+        dialog.show()
     }
 }

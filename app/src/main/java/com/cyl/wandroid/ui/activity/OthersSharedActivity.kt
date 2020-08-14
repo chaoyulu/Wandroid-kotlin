@@ -10,7 +10,7 @@ import com.chad.library.adapter.base.listener.OnItemClickListener
 import com.cyl.wandroid.R
 import com.cyl.wandroid.base.BaseRecyclerViewModelActivity
 import com.cyl.wandroid.http.bean.ArticleBean
-import com.cyl.wandroid.tools.IntentTools
+import com.cyl.wandroid.tools.start
 import com.cyl.wandroid.ui.adapter.MySharedAdapter
 import com.cyl.wandroid.viewmodel.OthersSharedViewModel
 import kotlinx.android.synthetic.main.layout_swipe_recycler.*
@@ -63,7 +63,7 @@ class OthersSharedActivity : BaseRecyclerViewModelActivity<ArticleBean, OthersSh
     override fun getLayoutRes() = R.layout.activity_my_shared
 
     override fun onItemClick(adapter: BaseQuickAdapter<*, *>, view: View, position: Int) {
-        IntentTools.start(this, AgentWebActivity::class.java, Bundle().apply {
+        start(this, AgentWebActivity::class.java, Bundle().apply {
             putString(AgentWebActivity.URL, mViewModel.sharedList.value?.get(position)?.link)
         })
     }
@@ -77,6 +77,6 @@ class OthersSharedActivity : BaseRecyclerViewModelActivity<ArticleBean, OthersSh
 
     override fun onRightIconClick() {
         super.onRightIconClick()
-        IntentTools.start(this, MySharedActivity::class.java, needLogin = true)
+        start(this, MySharedActivity::class.java, needLogin = true)
     }
 }

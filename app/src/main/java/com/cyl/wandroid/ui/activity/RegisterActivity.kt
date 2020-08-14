@@ -2,8 +2,8 @@ package com.cyl.wandroid.ui.activity
 
 import com.cyl.wandroid.R
 import com.cyl.wandroid.base.BaseViewModelActivity
-import com.cyl.wandroid.tools.IntentTools
 import com.cyl.wandroid.tools.makeStatusBarTransparent
+import com.cyl.wandroid.tools.start
 import com.cyl.wandroid.viewmodel.RegisterViewModel
 import kotlinx.android.synthetic.main.activity_register.*
 
@@ -25,7 +25,7 @@ class RegisterActivity : BaseViewModelActivity<RegisterViewModel>() {
 
     private fun initClick() {
         stvLogin.setOnClickListener {
-            IntentTools.start(this, LoginActivity::class.java)
+            start(this, LoginActivity::class.java)
             finish()
         }
     }

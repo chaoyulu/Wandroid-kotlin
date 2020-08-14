@@ -4,7 +4,6 @@ import androidx.lifecycle.MutableLiveData
 import com.cyl.wandroid.base.BaseRecyclerViewModel
 import com.cyl.wandroid.http.api.RequestState
 import com.cyl.wandroid.repository.AddSharedRepository
-import kotlinx.coroutines.delay
 
 class AddSharedViewModel : BaseRecyclerViewModel() {
     private val addSharedRepository by lazy { AddSharedRepository() }
@@ -15,8 +14,7 @@ class AddSharedViewModel : BaseRecyclerViewModel() {
     fun submitShare(title: String, link: String) {
         launch(block = {
             requestState.value = RequestState.START
-//            addSharedRepository.addShared(title, link)
-            delay(3000)
+            addSharedRepository.addShared(title, link)
             sharedSuccess.value = true
             requestState.value = RequestState.END
         }, error = {

@@ -9,9 +9,9 @@ import com.cyl.wandroid.R
 import com.cyl.wandroid.base.BaseRecyclerViewModelActivity
 import com.cyl.wandroid.http.bean.PointsListBean
 import com.cyl.wandroid.listener.AppbarStateChangeListener
-import com.cyl.wandroid.tools.IntentTools
 import com.cyl.wandroid.tools.imgTint
 import com.cyl.wandroid.tools.makeStatusBarTransparent
+import com.cyl.wandroid.tools.start
 import com.cyl.wandroid.ui.adapter.MyPointsRecordAdapter
 import com.cyl.wandroid.viewmodel.MyPointsViewModel
 import com.google.android.material.appbar.AppBarLayout
@@ -93,6 +93,6 @@ class MyPointsActivity : BaseRecyclerViewModelActivity<PointsListBean, MyPointsV
 
     override fun onRightIconClick() {
         super.onRightIconClick()
-        IntentTools.start(this, PointsRankActivity::class.java)
+        start(this, PointsRankActivity::class.java)
     }
 }

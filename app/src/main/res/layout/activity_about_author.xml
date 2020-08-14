@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.AboutAuthorActivity">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_activity" />
+
+    <com.cyl.wandroid.ui.widget.ItemAboutAuthorView
+        android:id="@+id/github"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@color/yellow_77F8D073"
+        android:padding="20dp"
+        app:av_back_color="@color/yellow_F8D073"
+        app:av_name="@string/smartcyl"
+        app:av_radius="40dp"
+        app:av_title="@string/github"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:leadingIcon="@mipmap/icon_github" />
+
+    <com.cyl.wandroid.ui.widget.ItemAboutAuthorView
+        android:id="@+id/csdn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/red_80FF0000"
+        android:padding="20dp"
+        app:av_back_color="@color/solid_red"
+        app:av_name="@string/codercyl"
+        app:av_radius="40dp"
+        app:av_title="@string/csdn"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/github"
+        app:leadingIcon="@mipmap/icon_csdn" />
+</androidx.constraintlayout.widget.ConstraintLayout>

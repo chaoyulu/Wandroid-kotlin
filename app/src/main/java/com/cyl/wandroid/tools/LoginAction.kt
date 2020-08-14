@@ -12,7 +12,7 @@ fun checkLoginThenAction(context: Context, action: (() -> Unit)? = null): Boolea
         action?.invoke()
         true
     } else {
-        IntentTools.start(context, LoginActivity::class.java)
+        start(context, LoginActivity::class.java)
         false
     }
 }

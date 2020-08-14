@@ -9,7 +9,7 @@ import com.cyl.wandroid.base.BaseRecyclerViewModelFragment
 import com.cyl.wandroid.common.bus.Bus
 import com.cyl.wandroid.common.bus.SCROLL_HOME_PUBLIC_ACCOUNT_POSITION
 import com.cyl.wandroid.http.bean.PublicAccountBean
-import com.cyl.wandroid.tools.IntentTools
+import com.cyl.wandroid.tools.start
 import com.cyl.wandroid.ui.activity.PublicAccountArticlesActivity
 import com.cyl.wandroid.ui.adapter.HomePublicAccountAdapter
 import com.cyl.wandroid.viewmodel.HomePublicAccountViewModel
@@ -55,7 +55,7 @@ class HomePublicAccountFragment :
 
         adapter.setOnItemClickListener { _, _, position ->
             val accounts = mViewModel.accounts.value
-            IntentTools.start(
+            start(
                 mContext, PublicAccountArticlesActivity::class.java,
                 Bundle().apply {
                     putInt("position", position)

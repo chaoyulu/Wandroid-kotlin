@@ -10,7 +10,7 @@ import com.cyl.wandroid.R
 import com.cyl.wandroid.base.BaseRecyclerViewModelFragment
 import com.cyl.wandroid.http.bean.NavigationBean
 import com.cyl.wandroid.listener.OnTagClickListener
-import com.cyl.wandroid.tools.IntentTools
+import com.cyl.wandroid.tools.start
 import com.cyl.wandroid.ui.activity.AgentWebActivity
 import com.cyl.wandroid.ui.adapter.NavigationAdapter
 import com.cyl.wandroid.ui.widget.SectionItemDecoration
@@ -66,7 +66,7 @@ class NavigationFragment : BaseRecyclerViewModelFragment<NavigationBean, Navigat
     override fun getViewModelClass() = NavigationViewModel::class.java
 
     override fun onTagClick(itemPosition: Int, tagPosition: Int) {
-        IntentTools.start(mContext, AgentWebActivity::class.java, Bundle().apply {
+        start(mContext, AgentWebActivity::class.java, Bundle().apply {
             putString(
                 AgentWebActivity.URL,
                 mViewModel.navigation.value?.get(itemPosition)?.articles?.get(tagPosition)?.link

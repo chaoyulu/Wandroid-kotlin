@@ -5,15 +5,17 @@ import com.cyl.wandroid.R
 import com.cyl.wandroid.base.BaseViewModelActivity
 import com.cyl.wandroid.common.bus.Bus
 import com.cyl.wandroid.common.bus.REFRESH_LOGIN_SUCCESS
-import com.cyl.wandroid.tools.IntentTools
 import com.cyl.wandroid.tools.makeStatusBarTransparent
 import com.cyl.wandroid.tools.showError
+import com.cyl.wandroid.tools.start
+import com.cyl.wandroid.ui.dialog.LoadingDialog
 import com.cyl.wandroid.viewmodel.LoginViewModel
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : BaseViewModelActivity<LoginViewModel>() {
 
     override fun getViewModelClass() = LoginViewModel::class.java
+    private var loadingDialog: LoadingDialog? = null
 
     override fun initData() {
         initClick()
@@ -21,7 +23,7 @@ class LoginActivity : BaseViewModelActivity<LoginViewModel>() {
 
     private fun initClick() {
         stvRegister.setOnClickListener {
-            IntentTools.start(this, RegisterActivity::class.java)
+            start(this, RegisterActivity::class.java)
         }
 
         stvLogin.setOnClickListener {
@@ -36,6 +38,8 @@ class LoginActivity : BaseViewModelActivity<LoginViewModel>() {
             showError(R.string.lose_username_password)
             return
         }
+        if (loadingDialog == null) loadingDialog = LoadingDialog(this)
+        loadingDialog?.setDesc(R.string.logging)
         mViewModel.login(username, password)
     }
 
@@ -51,6 +55,10 @@ class LoginActivity : BaseViewModelActivity<LoginViewModel>() {
                 // 登录成功
                 Bus.post(REFRESH_LOGIN_SUCCESS, it)
                 finish()
+            })
+
+            loginStatusLiveData.observe(this@LoginActivity, Observer {
+                if (it) loadingDialog?.show() else loadingDialog?.dismiss()
             })
         }
     }

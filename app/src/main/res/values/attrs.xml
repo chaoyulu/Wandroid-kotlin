@@ -27,4 +27,12 @@
     <declare-styleable name="OvalShadowView">
         <attr name="shadow_color" format="color" />
     </declare-styleable>
+
+    <declare-styleable name="ItemAboutAuthorView">
+        <attr name="leadingIcon" format="reference|color" />
+        <attr name="av_title" format="string" />
+        <attr name="av_name" format="string" />
+        <attr name="av_radius" format="dimension" />
+        <attr name="av_back_color" format="color" />
+    </declare-styleable>
 </resources>

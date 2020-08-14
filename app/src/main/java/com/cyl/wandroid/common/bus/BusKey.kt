@@ -11,3 +11,6 @@ const val REFRESH_LOGIN_SUCCESS = "REFRESH_LOGIN_SUCCESS"
 
 // 退出登录成功，显示未登录信息
 const val REFRESH_LOGOUT_SUCCESS = "REFRESH_LOGOUT_SUCCESS"
+
+// 添加分享成功后跳转到我的分享页面需要刷新获取最新分享数据（仅从我的分享页面进入到分享文章页面才触发，从我的页面进入的不触发）
+const val REFRESH_ADD_SHARE_SUCCESS = "REFRESH_ADD_SHARE_SUCCESS"

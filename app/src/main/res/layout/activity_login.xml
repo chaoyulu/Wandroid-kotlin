@@ -67,7 +67,8 @@
                 android:hint="@string/account"
                 android:inputType="text"
                 android:paddingStart="20dp"
-                android:paddingEnd="10dp" />
+                android:paddingEnd="10dp"
+                android:textCursorDrawable="@drawable/shape_cursor" />
         </LinearLayout>
 
         <LinearLayout
@@ -93,7 +94,8 @@
                 android:hint="@string/password"
                 android:inputType="textPassword"
                 android:paddingStart="20dp"
-                android:paddingEnd="10dp" />
+                android:paddingEnd="10dp"
+                android:textCursorDrawable="@drawable/shape_cursor" />
         </LinearLayout>
     </LinearLayout>
 

@@ -11,7 +11,7 @@ import com.chad.library.adapter.base.listener.OnItemClickListener
 import com.cyl.wandroid.R
 import com.cyl.wandroid.base.BaseRecyclerViewModelActivity
 import com.cyl.wandroid.http.bean.ArticleBean
-import com.cyl.wandroid.tools.IntentTools
+import com.cyl.wandroid.tools.start
 import com.cyl.wandroid.ui.adapter.MyCollectionsAdapter
 import com.cyl.wandroid.viewmodel.MyCollectionsViewModel
 import kotlinx.android.synthetic.main.layout_swipe_recycler.*
@@ -64,7 +64,7 @@ class MyCollectionsActivity : BaseRecyclerViewModelActivity<ArticleBean, MyColle
     }
 
     override fun onItemClick(adapter: BaseQuickAdapter<*, *>, view: View, position: Int) {
-        IntentTools.start(this, AgentWebActivity::class.java, Bundle().apply {
+        start(this, AgentWebActivity::class.java, Bundle().apply {
             putString(AgentWebActivity.URL, mViewModel.collectionsList.value?.get(position)?.link)
         })
     }

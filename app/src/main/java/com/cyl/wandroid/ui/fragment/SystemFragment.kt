@@ -11,8 +11,8 @@ import com.cyl.wandroid.R
 import com.cyl.wandroid.base.BaseRecyclerViewModelFragment
 import com.cyl.wandroid.http.bean.SystemCategoryBean
 import com.cyl.wandroid.listener.OnTagClickListener
-import com.cyl.wandroid.tools.IntentTools
 import com.cyl.wandroid.tools.showError
+import com.cyl.wandroid.tools.start
 import com.cyl.wandroid.ui.activity.SystemDetailActivity
 import com.cyl.wandroid.ui.adapter.SystemCategoryAdapter
 import com.cyl.wandroid.ui.dialog.LocateTagViewDialog
@@ -68,7 +68,7 @@ class SystemFragment :
     }
 
     override fun onTagClick(itemPosition: Int, tagPosition: Int) {
-        IntentTools.start(mContext, SystemDetailActivity::class.java, Bundle().apply {
+        start(mContext, SystemDetailActivity::class.java, Bundle().apply {
             putInt("tagPosition", tagPosition)
             putParcelable("category", mViewModel.categories.value?.get(itemPosition))
         })

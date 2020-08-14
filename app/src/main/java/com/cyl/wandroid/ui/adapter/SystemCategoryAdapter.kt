@@ -1,6 +1,5 @@
 package com.cyl.wandroid.ui.adapter
 
-import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
@@ -8,6 +7,7 @@ import androidx.core.content.ContextCompat
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.cyl.wandroid.R
+import com.cyl.wandroid.ext.setCircularCorner
 import com.cyl.wandroid.http.bean.SystemCategoryBean
 import com.cyl.wandroid.listener.OnTagClickListener
 import com.zhy.view.flowlayout.FlowLayout
@@ -62,11 +62,7 @@ class SystemCategoryAdapter(
                             textColors[holder.layoutPosition % textColors.size]
                         )
                     tv.setTextColor(tagTextColor)
-
-                    val gradientDrawable = GradientDrawable()
-                    gradientDrawable.setColor(bgColor)
-                    gradientDrawable.cornerRadius = 20f
-                    tv.background = gradientDrawable
+                    tv.setCircularCorner(bgColor)
                     return tv
                 }
             }

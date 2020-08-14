@@ -13,7 +13,7 @@ import com.cyl.wandroid.R
 import com.cyl.wandroid.base.BaseRecyclerViewModelFragment
 import com.cyl.wandroid.http.bean.ArticleBean
 import com.cyl.wandroid.http.bean.SystemCategoryBean
-import com.cyl.wandroid.tools.IntentTools
+import com.cyl.wandroid.tools.start
 import com.cyl.wandroid.ui.activity.AgentWebActivity
 import com.cyl.wandroid.ui.adapter.PublicAccountArticlesAdapter
 import com.cyl.wandroid.viewmodel.SystemArticlesViewModel
@@ -79,7 +79,7 @@ class SystemSubFragment : BaseRecyclerViewModelFragment<ArticleBean, SystemArtic
     }
 
     override fun onItemClick(adapter: BaseQuickAdapter<*, *>, view: View, position: Int) {
-        IntentTools.start(mContext, AgentWebActivity::class.java, Bundle().apply {
+        start(mContext, AgentWebActivity::class.java, Bundle().apply {
             putString(AgentWebActivity.URL, mViewModel.articles.value?.get(position)?.link)
         })
     }

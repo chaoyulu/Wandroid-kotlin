@@ -21,7 +21,6 @@ class HomeBannerAdapter(banners: List<HomeBannerBean>?) :
 
     class BannerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageView: ImageView = itemView.findViewById(R.id.imageView)
-//        val title: TextView = itemView.findViewById(R.id.title)
     }
 
     override fun onBindView(
@@ -31,6 +30,5 @@ class HomeBannerAdapter(banners: List<HomeBannerBean>?) :
         size: Int
     ) {
         holder.imageView.loadImage(data.imagePath)
-//        holder.title.text = data.title
     }
 }

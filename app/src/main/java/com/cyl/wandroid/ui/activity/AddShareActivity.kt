@@ -3,8 +3,12 @@ package com.cyl.wandroid.ui.activity
 import androidx.lifecycle.Observer
 import com.cyl.wandroid.R
 import com.cyl.wandroid.base.BaseViewModelActivity
+import com.cyl.wandroid.common.bus.Bus
+import com.cyl.wandroid.common.bus.REFRESH_ADD_SHARE_SUCCESS
 import com.cyl.wandroid.http.api.RequestState
+import com.cyl.wandroid.tools.showError
 import com.cyl.wandroid.tools.showNormal
+import com.cyl.wandroid.tools.start
 import com.cyl.wandroid.ui.dialog.LoadingDialog
 import com.cyl.wandroid.viewmodel.AddSharedViewModel
 import kotlinx.android.synthetic.main.activity_add_share.*
@@ -38,14 +42,14 @@ class AddShareActivity : BaseViewModelActivity<AddSharedViewModel>() {
     private fun submit() {
         val title = etTitle.text.toString()
         val link = etLink.text.toString()
-//        if (title.isEmpty()) {
-//            showError(R.string.fill_share_title)
-//            return
-//        }
-//        if (link.isEmpty()) {
-//            showError(R.string.fill_share_link)
-//            return
-//        }
+        if (title.isEmpty()) {
+            showError(R.string.fill_share_title)
+            return
+        }
+        if (link.isEmpty()) {
+            showError(R.string.fill_share_link)
+            return
+        }
 
         if (loadingDialog == null) loadingDialog = LoadingDialog(this)
         mViewModel.submitShare(title, link)
@@ -56,6 +60,9 @@ class AddShareActivity : BaseViewModelActivity<AddSharedViewModel>() {
             sharedSuccess.observe(this@AddShareActivity, Observer {
                 if (it) {
                     showNormal(R.string.share_success)
+                    start(this@AddShareActivity, MySharedActivity::class.java, needLogin = true)
+                    Bus.post(REFRESH_ADD_SHARE_SUCCESS, 0)
+                    finish()
                 }
             })
 

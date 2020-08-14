@@ -24,7 +24,7 @@ class WatermarkLinearLayout(context: Context, attributeSet: AttributeSet) :
             R.styleable.WatermarkLinearLayout_wll_text_color,
             ContextCompat.getColor(context, R.color.translucent_white)
         )
-        val textSize = ta.getDimension(R.styleable.WatermarkLinearLayout_wll_text_size, 250f)
+        val textSize = ta.getDimension(R.styleable.WatermarkLinearLayout_wll_text_size, 300f)
         ta.recycle()
 
         paint.isDither = true

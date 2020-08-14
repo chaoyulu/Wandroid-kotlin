@@ -1,12 +1,12 @@
 package com.cyl.wandroid.ui.widget
 
 import android.content.Context
-import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import com.cyl.wandroid.R
+import com.cyl.wandroid.ext.setCircularCorner
 
 class MyInfoCardView(context: Context, attributeSet: AttributeSet) :
     ConstraintLayout(context, attributeSet) {
@@ -42,9 +42,6 @@ class MyInfoCardView(context: Context, attributeSet: AttributeSet) :
     }
 
     fun show() {
-        val gradientDrawable = GradientDrawable()
-        gradientDrawable.setColor(ContextCompat.getColor(context, backColor))
-        gradientDrawable.cornerRadius = borderRadius
-        background = gradientDrawable
+        setCircularCorner(ContextCompat.getColor(context, backColor), borderRadius)
     }
 }

@@ -51,4 +51,12 @@
     <string name="fill_share_title">请填写分享文章标题</string>
     <string name="fill_share_link">请填写分享文章链接</string>
     <string name="share_success">分享成功</string>
+    <string name="please_wait">请稍等…</string>
+    <string name="my_todo">我的待办</string>
+    <string name="want_share">我要分享</string>
+    <string name="browsing_history">浏览历史</string>
+    <string name="about_author">关于作者</string>
+    <string name="system_settings">系统设置</string>
+    <string name="logout">退出登录</string>
+    <string name="logging">正在登录</string>
 </resources>

@@ -9,12 +9,15 @@ import com.cyl.wandroid.sp.UserSpHelper
 class LoginViewModel : BaseViewModel() {
     private val loginRepository by lazy { LoginRepository() }
     val userBeanLiveData = MutableLiveData<UserBean>()
+    val loginStatusLiveData: MutableLiveData<Boolean> = MutableLiveData()
 
     fun login(username: String, password: String) {
         launch(block = {
+            loginStatusLiveData.value = true
             val userBean = loginRepository.login(username, password)
             userBeanLiveData.value = userBean
             UserSpHelper.newHelper().saveUserInfo(userBean)
+            loginStatusLiveData.value = false
         })
     }
 }
