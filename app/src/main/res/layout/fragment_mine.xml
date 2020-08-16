@@ -85,7 +85,7 @@
                     android:padding="15dp"
                     app:sBottomDividerLineMarginLR="40dp"
                     app:sLeftIconHeight="30dp"
-                    app:sLeftIconRes="@mipmap/icon_my_todo"
+                    app:sLeftIconRes="@mipmap/icon_my_collections"
                     app:sLeftIconWidth="30dp"
                     app:sLeftTextColor="@color/white"
                     app:sLeftTextString="@string/my_collections"
