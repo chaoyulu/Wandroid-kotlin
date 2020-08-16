@@ -1,5 +1,6 @@
 package com.cyl.wandroid.ui.fragment
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
@@ -11,6 +12,7 @@ import com.cyl.wandroid.R
 import com.cyl.wandroid.base.BaseRecyclerViewModelFragment
 import com.cyl.wandroid.http.bean.SystemCategoryBean
 import com.cyl.wandroid.listener.OnTagClickListener
+import com.cyl.wandroid.tools.imgTint
 import com.cyl.wandroid.tools.showError
 import com.cyl.wandroid.tools.start
 import com.cyl.wandroid.ui.activity.SystemDetailActivity
@@ -42,6 +44,7 @@ class SystemFragment :
         super.initView()
         setCenterText(R.string.home_system)
         setRightIcon(R.mipmap.icon_system_locate)
+        imgTint(ivRight,Color.BLACK)
     }
 
     override fun initRecyclerView() {

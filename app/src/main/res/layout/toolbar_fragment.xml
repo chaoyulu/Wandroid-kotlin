@@ -15,7 +15,6 @@
         android:layout_centerVertical="true"
         android:layout_marginEnd="10dp"
         android:contentDescription="@string/more"
-        android:tint="@color/orange_FF9800"
         android:visibility="gone" />
 
     <TextView
