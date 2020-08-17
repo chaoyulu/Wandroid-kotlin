@@ -1,11 +1,10 @@
 package com.cyl.wandroid.viewmodel
 
 import androidx.lifecycle.MutableLiveData
-import com.cyl.wandroid.base.BaseRecyclerViewModel
 import com.cyl.wandroid.http.bean.ArticleBean
 import com.cyl.wandroid.repository.HomeNewestShareRepository
 
-class HomeNewestShareViewModel : BaseRecyclerViewModel() {
+class HomeNewestShareViewModel : CollectViewModel() {
     private val homeNewestShareRepository by lazy { HomeNewestShareRepository() }
     private var page = 0
 

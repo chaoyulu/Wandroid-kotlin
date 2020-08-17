@@ -1,6 +1,7 @@
 package com.cyl.wandroid.ui.adapter
 
 import android.text.TextUtils
+import android.util.Log
 import androidx.core.view.isVisible
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.module.LoadMoreModule
@@ -56,6 +57,7 @@ class HomeArticleAdapter(layoutResId: Int = R.layout.item_home_article) :
                 else -> ""
             }
 
+            Log.e("=======", "position = ${holder.layoutPosition}  collect = ${item.collect}")
             setCollectionImgState(context, ivCollection, item.collect)
         }
     }

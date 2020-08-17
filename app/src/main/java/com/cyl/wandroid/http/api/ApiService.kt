@@ -95,8 +95,20 @@ interface ApiService {
     suspend fun getMyCollections(@Path("page") page: Int): ApiCommonResponse<CommonArticleData<ArticleBean>>
 
     // 收藏站内文章
-    @GET("lg/collect/{id}/json")
+    @POST("lg/collect/{id}/json")
     suspend fun collectArticle(@Path("id") id: Int)
+
+    // 从文章列表取消收藏
+    @POST("lg/uncollect_originId/{id}/json")
+    suspend fun cancelCollectFromArticleList(@Path("id") id: Int)
+
+    // 从收藏列表取消收藏
+    @POST("lg/uncollect/{id}/json")
+    @FormUrlEncoded
+    suspend fun cancelCollectFromCollectionList(
+        @Path("id") id: Int,
+        @Field("originId") originId: Int
+    )
 
     // 我的分享列表
     @GET("user/lg/private_articles/{page}/json")

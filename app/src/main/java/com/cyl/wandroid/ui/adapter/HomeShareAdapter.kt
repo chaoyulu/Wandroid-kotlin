@@ -15,7 +15,7 @@ class HomeShareAdapter(layoutResId: Int = R.layout.item_home_share) :
 
     // 放在这里避免第一项点击不触发
     init {
-        addChildClickViewIds(R.id.tvAuthor) // 点击查看他的分享
+        addChildClickViewIds(R.id.tvAuthor, R.id.ivCollection) // 点击查看他的分享
     }
 
     override fun convert(holder: BaseViewHolder, item: ArticleBean) {

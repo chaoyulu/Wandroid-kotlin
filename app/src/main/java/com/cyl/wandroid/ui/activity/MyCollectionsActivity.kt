@@ -1,7 +1,7 @@
 package com.cyl.wandroid.ui.activity
 
-import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -11,7 +11,7 @@ import com.chad.library.adapter.base.listener.OnItemClickListener
 import com.cyl.wandroid.R
 import com.cyl.wandroid.base.BaseRecyclerViewModelActivity
 import com.cyl.wandroid.http.bean.ArticleBean
-import com.cyl.wandroid.tools.start
+import com.cyl.wandroid.tools.checkLoginThenAction
 import com.cyl.wandroid.ui.adapter.MyCollectionsAdapter
 import com.cyl.wandroid.viewmodel.MyCollectionsViewModel
 import kotlinx.android.synthetic.main.layout_swipe_recycler.*
@@ -43,6 +43,10 @@ class MyCollectionsActivity : BaseRecyclerViewModelActivity<ArticleBean, MyColle
 
     override fun getViewModelClass() = MyCollectionsViewModel::class.java
 
+    override fun getViewModelArticles(): MutableLiveData<MutableList<ArticleBean>> {
+        return mViewModel.articles
+    }
+
     override fun initData() {
         mViewModel.refreshCollections()
     }
@@ -57,18 +61,30 @@ class MyCollectionsActivity : BaseRecyclerViewModelActivity<ArticleBean, MyColle
     override fun observe() {
         super.observe()
         mViewModel.apply {
-            collectionsList.observe(this@MyCollectionsActivity, Observer {
+            articles.observe(this@MyCollectionsActivity, Observer {
                 adapter.setList(it)
+            })
+
+            collectLiveData.observe(this@MyCollectionsActivity, Observer {
+                if (it.second) {
+                    // 收藏
+                    mViewModel.refreshCollections()
+                } else {
+                    // 取消收藏
+                    val index = mViewModel.removeCollectItem(it.first, mViewModel.articles)
+                    adapter.removeAt(index)
+                }
             })
         }
     }
 
     override fun onItemClick(adapter: BaseQuickAdapter<*, *>, view: View, position: Int) {
-        start(this, AgentWebActivity::class.java, Bundle().apply {
-            putString(AgentWebActivity.URL, mViewModel.collectionsList.value?.get(position)?.link)
-        })
+        onItemClickToAgentWeb(position, false)
     }
 
     override fun onItemChildClick(adapter: BaseQuickAdapter<*, *>, view: View, position: Int) {
+        if (view.id == R.id.ivCollection && checkLoginThenAction(this)) {
+            cancelCollectItemClick(position)
+        }
     }
 }

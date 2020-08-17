@@ -1,14 +1,10 @@
 package com.cyl.wandroid.viewmodel
 
 import androidx.lifecycle.MutableLiveData
-import com.cyl.wandroid.base.BaseRecyclerViewModel
 import com.cyl.wandroid.http.bean.ArticleBean
-import com.cyl.wandroid.http.bean.PublicAccountBean
-import com.cyl.wandroid.repository.HomePublicAccountRepository
 import com.cyl.wandroid.repository.ProjectArticlesRepository
-import com.cyl.wandroid.repository.PublicAccountArticlesRepository
 
-class ProjectArticlesViewModel : BaseRecyclerViewModel() {
+class ProjectArticlesViewModel : CollectViewModel() {
     private val projectArticlesRepository by lazy { ProjectArticlesRepository() }
     private var page = 1
     private val pageStart = 1 // 从第一页开始

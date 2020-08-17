@@ -10,8 +10,12 @@ import kotlinx.android.synthetic.main.item_home_article.view.*
 
 class MyCollectionsAdapter(layoutResId: Int = R.layout.item_collection) :
     BaseQuickAdapter<ArticleBean, BaseViewHolder>(layoutResId), LoadMoreModule {
-    override fun convert(holder: BaseViewHolder, item: ArticleBean) {
+
+    init {
         addChildClickViewIds(R.id.ivCollection)
+    }
+
+    override fun convert(holder: BaseViewHolder, item: ArticleBean) {
         holder.itemView.apply {
             tvTitle.text = item.title
             tvDate.text = item.niceDate

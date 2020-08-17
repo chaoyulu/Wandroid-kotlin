@@ -1,14 +1,13 @@
 package com.cyl.wandroid.viewmodel
 
 import androidx.lifecycle.MutableLiveData
-import com.cyl.wandroid.base.BaseRecyclerViewModel
 import com.cyl.wandroid.http.bean.ArticleBean
 import com.cyl.wandroid.repository.MyCollectionsRepository
 
-class MyCollectionsViewModel : BaseRecyclerViewModel() {
+class MyCollectionsViewModel : CollectViewModel() {
     private val myCollectionsRepository by lazy { MyCollectionsRepository() }
 
-    val collectionsList: MutableLiveData<MutableList<ArticleBean>> = MutableLiveData()
+    val articles: MutableLiveData<MutableList<ArticleBean>> = MutableLiveData()
     private val pageStart = 0
     private var page = pageStart
 
@@ -27,16 +26,16 @@ class MyCollectionsViewModel : BaseRecyclerViewModel() {
                 // 下拉刷新
                 setRefreshStatus(true)
                 val list = myCollectionsRepository.getMyCollections(page)
-                collectionsList.value = mutableListOf<ArticleBean>().apply { addAll(list.datas) }
+                articles.value = mutableListOf<ArticleBean>().apply { addAll(list.datas) }
                 page = list.curPage
                 setRefreshStatus(false)
             } else {
                 // 上拉加载更多
                 setLoadMoreStart()
                 val data = myCollectionsRepository.getMyCollections(page)
-                val list = collectionsList.value ?: mutableListOf()
+                val list = articles.value ?: mutableListOf()
                 list.addAll(data.datas)
-                collectionsList.value = list
+                articles.value = list
                 page = data.curPage
                 setLoadMoreFinishStatus(data.offset, data.total)
             }

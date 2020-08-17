@@ -1,17 +1,26 @@
 package com.cyl.wandroid.ui.activity
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.net.Uri
 import android.view.KeyEvent
 import android.view.ViewGroup
 import android.webkit.ConsoleMessage
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
+import androidx.lifecycle.Observer
 import com.cyl.wandroid.R
-import com.cyl.wandroid.base.BaseActivity
+import com.cyl.wandroid.base.BaseViewModelActivity
+import com.cyl.wandroid.common.bus.Bus
+import com.cyl.wandroid.common.bus.CANCEL_COLLECT_SUCCESS
+import com.cyl.wandroid.common.bus.COLLECT_SUCCESS
+import com.cyl.wandroid.listener.OnAgentWebBottomDialogClickListener
+import com.cyl.wandroid.tools.copyText
+import com.cyl.wandroid.tools.showNormal
 import com.cyl.wandroid.tools.whiteList
+import com.cyl.wandroid.ui.dialog.AgentWebBottomSheetDialog
 import com.cyl.wandroid.ui.widget.GradientWebIndicator
-import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.cyl.wandroid.viewmodel.CollectViewModel
 import com.just.agentweb.AgentWeb
 import com.just.agentweb.DefaultWebClient
 import com.just.agentweb.WebChromeClient
@@ -19,16 +28,27 @@ import com.just.agentweb.WebViewClient
 import kotlinx.android.synthetic.main.activity_agent_web.*
 import kotlinx.android.synthetic.main.toolbar_activity.*
 
-class AgentWebActivity : BaseActivity() {
+class AgentWebActivity : BaseViewModelActivity<CollectViewModel>(),
+    OnAgentWebBottomDialogClickListener {
     private lateinit var url: String
     private var agentWeb: AgentWeb? = null
+    private var isCollect = false
+    private var id = 0
+    private var showCollectItem = true
 
     companion object {
         const val URL: String = "url"
+        const val IS_COLLECT = "isCollect"
+        const val ID = "id"
+        const val SHOW_COLLECT_ITEM = "show_collect_item"
     }
 
     override fun initData() {
         url = intent?.extras?.getString(URL) ?: return
+        isCollect = intent?.extras?.getBoolean(IS_COLLECT) ?: return
+        id = intent?.extras?.getInt(ID) ?: return
+        showCollectItem = intent?.extras?.getBoolean(SHOW_COLLECT_ITEM, true) ?: return
+
         initAgentWeb()
         showCloseIcon()
     }
@@ -158,8 +178,49 @@ class AgentWebActivity : BaseActivity() {
 
     override fun onRightIconClick() {
         super.onRightIconClick()
-        val dialog = BottomSheetDialog(this)
-        dialog.setContentView(R.layout.fragment_home)
-        dialog.show()
+        AgentWebBottomSheetDialog(
+            this,
+            listener = this,
+            isCollect = isCollect,
+            showCollectItem = showCollectItem
+        ).show()
     }
+
+    override fun onCollectionClick() {
+        if (isCollect) {
+            // 取消收藏
+            mViewModel.cancelCollectFromArticleList(id)
+        } else {
+            // 加入收藏
+            mViewModel.collect(id)
+        }
+    }
+
+    override fun refreshWebPage() {
+        agentWeb?.urlLoader?.reload()
+    }
+
+    override fun copyLink() {
+        copyText(url, url)
+        showNormal(R.string.link_copy_success)
+    }
+
+    override fun openInBrowser() {
+        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
+    }
+
+    override fun onShare() {
+    }
+
+    override fun observe() {
+        mViewModel.apply {
+            collectLiveData.observe(this@AgentWebActivity, Observer {
+                showNormal(if (it.second) R.string.already_add_collection else R.string.already_cancel_collection)
+                isCollect = it.second
+                Bus.post(if (it.second) COLLECT_SUCCESS else CANCEL_COLLECT_SUCCESS, it.first)
+            })
+        }
+    }
+
+    override fun getViewModelClass() = CollectViewModel::class.java
 }

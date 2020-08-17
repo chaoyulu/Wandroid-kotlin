@@ -19,6 +19,11 @@ import kotlinx.android.synthetic.main.item_home_project.view.*
 
 class HomeProjectAdapter(layoutResId: Int = R.layout.item_home_project) :
     BaseQuickAdapter<ArticleBean, BaseViewHolder>(layoutResId), LoadMoreModule {
+
+    init {
+        addChildClickViewIds(R.id.ivCollection)
+    }
+
     override fun convert(holder: BaseViewHolder, item: ArticleBean) {
         holder.itemView.apply {
             tvTitle.text = item.title

@@ -14,3 +14,9 @@ const val REFRESH_LOGOUT_SUCCESS = "REFRESH_LOGOUT_SUCCESS"
 
 // 添加分享成功后跳转到我的分享页面需要刷新获取最新分享数据（仅从我的分享页面进入到分享文章页面才触发，从我的页面进入的不触发）
 const val REFRESH_ADD_SHARE_SUCCESS = "REFRESH_ADD_SHARE_SUCCESS"
+
+// 收藏文章成功
+const val COLLECT_SUCCESS = "COLLECT_SUCCESS"
+
+// 取消收藏文章成功
+const val CANCEL_COLLECT_SUCCESS = "CANCEL_COLLECT_SUCCESS"

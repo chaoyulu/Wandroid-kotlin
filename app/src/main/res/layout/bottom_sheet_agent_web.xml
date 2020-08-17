@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_bottom_sheet_bg"
+    android:paddingTop="20dp">
+
+    <com.allen.library.SuperTextView
+        android:id="@+id/stvCollection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:sLeftIconRes="@mipmap/icon_collect"
+        app:sLeftTextString="加入收藏"
+        app:sLeftViewMarginLeft="20dp" />
+
+    <com.allen.library.SuperTextView
+        android:id="@+id/stvRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/stvCollection"
+        app:sLeftIconRes="@mipmap/icon_collect"
+        app:sLeftTextString="刷新页面"
+        app:sLeftViewMarginLeft="20dp" />
+
+    <com.allen.library.SuperTextView
+        android:id="@+id/stvCopyLink"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/stvRefresh"
+        app:sLeftIconRes="@mipmap/icon_collect"
+        app:sLeftTextString="复制链接"
+        app:sLeftViewMarginLeft="20dp" />
+
+    <com.allen.library.SuperTextView
+        android:id="@+id/stvBrowserOpen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/stvCopyLink"
+        app:sLeftIconRes="@mipmap/icon_collect"
+        app:sLeftTextString="浏览器打开"
+        app:sLeftViewMarginLeft="20dp" />
+
+    <com.allen.library.SuperTextView
+        android:id="@+id/stvShare"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/stvBrowserOpen"
+        app:sLeftIconRes="@mipmap/icon_collect"
+        app:sLeftTextString="分享"
+        app:sLeftViewMarginLeft="20dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

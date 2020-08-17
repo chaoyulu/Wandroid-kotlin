@@ -2,6 +2,7 @@ package com.cyl.wandroid.ui.fragment
 
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -11,8 +12,8 @@ import com.chad.library.adapter.base.listener.OnItemClickListener
 import com.cyl.wandroid.R
 import com.cyl.wandroid.base.BaseRecyclerViewModelFragment
 import com.cyl.wandroid.http.bean.ArticleBean
+import com.cyl.wandroid.tools.checkLoginThenAction
 import com.cyl.wandroid.tools.start
-import com.cyl.wandroid.ui.activity.AgentWebActivity
 import com.cyl.wandroid.ui.activity.OthersSharedActivity
 import com.cyl.wandroid.ui.adapter.HomeShareAdapter
 import com.cyl.wandroid.viewmodel.HomeNewestShareViewModel
@@ -52,6 +53,10 @@ class HomeNewestShareFragment :
 
     override fun getViewModelClass() = HomeNewestShareViewModel::class.java
 
+    override fun getViewModelArticles(): MutableLiveData<MutableList<ArticleBean>> {
+        return mViewModel.articles
+    }
+
     override fun observe() {
         super.observe()
         mViewModel.apply {
@@ -62,9 +67,7 @@ class HomeNewestShareFragment :
     }
 
     override fun onItemClick(adapter: BaseQuickAdapter<*, *>, view: View, position: Int) {
-        start(mContext, AgentWebActivity::class.java, Bundle().apply {
-            putString(AgentWebActivity.URL, mViewModel.articles.value?.get(position)?.link)
-        })
+        onItemClickToAgentWeb(position)
     }
 
     override fun onItemChildClick(adapter: BaseQuickAdapter<*, *>, view: View, position: Int) {
@@ -75,6 +78,8 @@ class HomeNewestShareFragment :
                     putString(OthersSharedActivity.SHARED_USER, it.shareUser)
                 }
             })
+        } else if (view.id == R.id.ivCollection && checkLoginThenAction(mContext)) {
+            collectItemChildClick(position)
         }
     }
 }

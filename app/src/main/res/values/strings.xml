@@ -64,5 +64,10 @@
     <string name="github" translatable="false">Github</string>
     <string name="csdn" translatable="false">CSDN</string>
     <string name="codercyl" translatable="false">CoderCyl</string>
-    <string name="smartcyl">SmartCyl</string>
+    <string name="smartcyl" translatable="false">SmartCyl</string>
+    <string name="link_copy_success">Link Copy Success</string>
+    <string name="already_add_collection">Already Add Collection</string>
+    <string name="already_cancel_collection">Already Cancel Collection</string>
+    <string name="add_collection">Add Collection</string>
+    <string name="cancel_collection">Cancel Collection</string>
 </resources>

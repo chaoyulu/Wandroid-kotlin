@@ -1,16 +1,16 @@
 package com.cyl.wandroid.viewmodel
 
 import androidx.lifecycle.MutableLiveData
-import com.cyl.wandroid.base.BaseRecyclerViewModel
 import com.cyl.wandroid.http.bean.ArticleBean
 import com.cyl.wandroid.http.bean.HomeBannerBean
 import com.cyl.wandroid.repository.HomeTopArticleRepository
 
-class HomeNewestArticleViewModel : BaseRecyclerViewModel() {
+class HomeNewestArticleViewModel : CollectViewModel() {
     private val homeTopArticleRepository by lazy { HomeTopArticleRepository() }
 
     val articles: MutableLiveData<MutableList<ArticleBean>> = MutableLiveData()
     val banners = MutableLiveData<List<HomeBannerBean>>()
+
     private var page = 0
 
     // 获取置顶文章和第一页首页文章
@@ -51,7 +51,6 @@ class HomeNewestArticleViewModel : BaseRecyclerViewModel() {
             setLoadMoreFinishStatus(homePageArticles.offset, homePageArticles.total)
         })
     }
-
 
     fun getHomeBanner() {
         launch(block = {
