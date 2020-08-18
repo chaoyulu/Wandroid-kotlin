@@ -61,6 +61,10 @@ abstract class BaseActivity : AppCompatActivity() {
         tvCenter?.setText(text)
     }
 
+    fun setCenterTextColor(color: Int) {
+        tvCenter?.setTextColor(color)
+    }
+
     fun showCloseIcon() {
         ivClose?.isVisible = true
     }

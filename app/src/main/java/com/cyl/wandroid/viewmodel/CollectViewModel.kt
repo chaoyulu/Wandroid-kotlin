@@ -1,6 +1,5 @@
 package com.cyl.wandroid.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.cyl.wandroid.base.BaseRecyclerViewModel
 import com.cyl.wandroid.common.bus.Bus
@@ -42,11 +41,9 @@ open class CollectViewModel : BaseRecyclerViewModel() {
         status: Boolean,
         articles: MutableLiveData<MutableList<ArticleBean>>
     ) {
-        Log.e("BaseViewModel", "BaseViewModel ==>  $this   id ==> $id   status ==>  $status")
         val list = articles.value
         if (list.isNullOrEmpty()) return
         list.forEach {
-            Log.e("BaseViewModel", "it.id ==>  ${it.id}")
             if (id == it.id) {
                 it.collect = status
                 return@forEach

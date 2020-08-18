@@ -1,7 +1,6 @@
 package com.cyl.wandroid.base
 
 import android.os.Bundle
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -67,7 +66,6 @@ abstract class BaseRecyclerViewModelFragment<T, VM : BaseRecyclerViewModel> :
         })
         Bus.observe<Int>(CANCEL_COLLECT_SUCCESS, viewLifecycleOwner, observer = {
             // it是文章id
-            Log.e("=============", "BaseFragment ==>   $this")
             (mViewModel as CollectViewModel).updateCollectStatus(it, false, getViewModelArticles())
         })
     }

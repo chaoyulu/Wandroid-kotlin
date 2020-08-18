@@ -81,6 +81,7 @@ class MineFragment : BaseViewModelFragment<MineViewModel>() {
             start(mContext, AddShareActivity::class.java, needLogin = true)
         }
         stvMyTodo.setOnClickListener {
+            start(mContext, MyTodoActivity::class.java, needLogin = true)
         }
         stvLookHistory.setOnClickListener {
         }

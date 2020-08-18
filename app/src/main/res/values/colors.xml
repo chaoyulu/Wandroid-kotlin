@@ -33,6 +33,7 @@
     <color name="blue_804F9EFF">#804F9EFF</color>
     <color name="black">#000000</color>
     <color name="translucent_white">#22FFFFFF</color>
+    <color name="translucent_white_44FFFFFF">#44FFFFFF</color>
     <color name="gold">#F2C425</color> <!-- 金色 -->
     <color name="silver">#BAC0CE</color> <!-- 银色 -->
     <color name="copper">#E89847</color> <!-- 铜色 -->

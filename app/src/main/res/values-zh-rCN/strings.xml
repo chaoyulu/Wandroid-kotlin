@@ -64,4 +64,17 @@
     <string name="already_cancel_collection">已取消收藏</string>
     <string name="add_collection">加入收藏</string>
     <string name="cancel_collection">取消收藏</string>
+    <string name="empty_text">暂无数据</string>
+    <string name="no_collections">暂无收藏</string>
+    <string name="deleting">正在删除…</string>
+    <string name="no_share">暂无分享，点击右上角+进行分享</string>
+    <string name="to_do">待办</string>
+    <string name="done">已办</string>
+    <string name="todo_date">待办日期：%1$s</string>
+    <string name="todo_date2">待办日期</string>
+    <string name="completion_date">完成日期：%1$s</string>
+    <string name="overdue">过期</string>
+    <string name="add_todo">新增待办</string>
+    <string name="update_todo">修改待办</string>
+    <string name="detail">详情</string>
 </resources>

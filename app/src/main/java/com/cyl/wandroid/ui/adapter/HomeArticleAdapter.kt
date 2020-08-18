@@ -57,7 +57,6 @@ class HomeArticleAdapter(layoutResId: Int = R.layout.item_home_article) :
                 else -> ""
             }
 
-            Log.e("=======", "position = ${holder.layoutPosition}  collect = ${item.collect}")
             setCollectionImgState(context, ivCollection, item.collect)
         }
     }

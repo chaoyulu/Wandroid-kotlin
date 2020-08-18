@@ -7,4 +7,8 @@ class MySharedRepository {
     suspend fun getMyShared(page: Int): ShareBean {
         return ApiEngine.getApiService().getMyShared(page).getApiData()
     }
+
+    suspend fun deleteMyShare(id: Int) {
+        ApiEngine.getApiService().deleteMyShare(id).getApiData()
+    }
 }

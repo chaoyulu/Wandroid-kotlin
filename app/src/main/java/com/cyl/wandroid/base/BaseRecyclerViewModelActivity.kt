@@ -52,6 +52,7 @@ abstract class BaseRecyclerViewModelActivity<T, VM : BaseRecyclerViewModel> :
     override fun initView() {
         initRecyclerView()
         initRefreshLayout()
+        collectBusObserve()
     }
 
     abstract fun getAdapter(): BaseQuickAdapter<T, BaseViewHolder>
@@ -77,7 +78,7 @@ abstract class BaseRecyclerViewModelActivity<T, VM : BaseRecyclerViewModel> :
         return MutableLiveData()
     }
 
-    // 文章列表点击收藏按钮触发的事件封装
+    // 文章列表点击收藏按钮触发的事件A封装
     /**
      * 文章列表点击收藏按钮触发的事件封装
      * isFromCollectActivity 是否是MyCollectionsActivity

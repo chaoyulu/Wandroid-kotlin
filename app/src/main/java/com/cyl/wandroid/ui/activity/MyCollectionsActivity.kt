@@ -13,6 +13,7 @@ import com.cyl.wandroid.base.BaseRecyclerViewModelActivity
 import com.cyl.wandroid.http.bean.ArticleBean
 import com.cyl.wandroid.tools.checkLoginThenAction
 import com.cyl.wandroid.ui.adapter.MyCollectionsAdapter
+import com.cyl.wandroid.ui.widget.EmptyView
 import com.cyl.wandroid.viewmodel.MyCollectionsViewModel
 import kotlinx.android.synthetic.main.layout_swipe_recycler.*
 
@@ -34,6 +35,9 @@ class MyCollectionsActivity : BaseRecyclerViewModelActivity<ArticleBean, MyColle
         recyclerView.adapter = adapter
         adapter.loadMoreModule.setOnLoadMoreListener { mViewModel.loadMoreCollections() }
         adapter.setOnItemClickListener(this)
+        val emptyView = EmptyView(this)
+        emptyView.setEmptyInfo(textRes = R.string.no_collections)
+        adapter.setEmptyView(emptyView)
         adapter.setOnItemChildClickListener(this)
     }
 

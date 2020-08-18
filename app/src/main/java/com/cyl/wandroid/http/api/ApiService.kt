@@ -96,11 +96,11 @@ interface ApiService {
 
     // 收藏站内文章
     @POST("lg/collect/{id}/json")
-    suspend fun collectArticle(@Path("id") id: Int)
+    suspend fun collectArticle(@Path("id") id: Int): ApiCommonResponse<Any>
 
     // 从文章列表取消收藏
     @POST("lg/uncollect_originId/{id}/json")
-    suspend fun cancelCollectFromArticleList(@Path("id") id: Int)
+    suspend fun cancelCollectFromArticleList(@Path("id") id: Int): ApiCommonResponse<Any>
 
     // 从收藏列表取消收藏
     @POST("lg/uncollect/{id}/json")
@@ -108,7 +108,7 @@ interface ApiService {
     suspend fun cancelCollectFromCollectionList(
         @Path("id") id: Int,
         @Field("originId") originId: Int
-    )
+    ): ApiCommonResponse<Any>
 
     // 我的分享列表
     @GET("user/lg/private_articles/{page}/json")
@@ -127,4 +127,48 @@ interface ApiService {
     suspend fun addShare(
         @Field("title") title: String, @Field("link") link: String
     ): ApiCommonResponse<ShareBean>
+
+    // 删除我的分享
+    @POST("lg/user_article/delete/{id}/json")
+    suspend fun deleteMyShare(@Path("id") id: Int): ApiCommonResponse<Any>
+
+    // 获取TODO列表
+    @GET("lg/todo/v2/list/{page}/json")
+    suspend fun getMyTodo(
+        @Path("page") page: Int, @Query("status") status: Int, @Query("type") type: Int,
+        @Query("priority") priority: Int, @Query("orderby") orderby: Int
+    ): ApiCommonResponse<CommonArticleData<TodoBean>>
+
+    // 新增待办
+    @POST("lg/todo/add/json")
+    @FormUrlEncoded
+    suspend fun addMyTodo(
+        @Field("title") title: String,
+        @Field("content") content: String,
+        @Field("date") date: String,
+        @Field("type") type: Int,
+        @Field("priority") priority: Int
+    ): ApiCommonResponse<TodoBean>
+
+    // 更新待办
+    @POST("lg/todo/update/{id}/json")
+    @FormUrlEncoded
+    suspend fun updateMyTodo(
+        @Path("id") id: Int, @Field("title") title: String, @Field("content") content: String,
+        @Field("date") date: String, @Field("status") status: Int, @Field("type") type: Int,
+        @Field("priority") priority: Int
+    ): ApiCommonResponse<TodoBean>
+
+    // 更新待办状态，例如将未完成修改成完成
+    @POST("lg/todo/done/{id}/json")
+    @FormUrlEncoded
+    suspend fun updateMyTodoStatus(
+        @Path("id") id: Int,
+        @Field("status") status: Int
+    ): ApiCommonResponse<CommonArticleData<Any>>
+
+
+    // 删除待办
+    @POST("lg/todo/delete/83/json")
+    suspend fun deleteMyTodo(@Path("id") id: Int): ApiCommonResponse<CommonArticleData<Any>>
 }

@@ -70,4 +70,17 @@
     <string name="already_cancel_collection">Already Cancel Collection</string>
     <string name="add_collection">Add Collection</string>
     <string name="cancel_collection">Cancel Collection</string>
+    <string name="empty_text">No Data</string>
+    <string name="no_collections">No Collections</string>
+    <string name="deleting">Deleting</string>
+    <string name="no_share">No Share,Tab top right icon to share</string>
+    <string name="to_do">Do</string>
+    <string name="done">Done</string>
+    <string name="todo_date">TODO Date:%1$s</string>
+    <string name="todo_date2">TODO Date</string>
+    <string name="completion_date">Completion Date:%1$s</string>
+    <string name="overdue">Overdue</string>
+    <string name="add_todo">Add TODO</string>
+    <string name="update_todo">Update TODO</string>
+    <string name="detail">Detail</string>
 </resources>
