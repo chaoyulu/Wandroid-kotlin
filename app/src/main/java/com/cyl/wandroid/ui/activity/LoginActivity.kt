@@ -4,6 +4,7 @@ import androidx.lifecycle.Observer
 import com.cyl.wandroid.R
 import com.cyl.wandroid.base.BaseViewModelActivity
 import com.cyl.wandroid.common.bus.Bus
+import com.cyl.wandroid.common.bus.MARK_COLLECT_LOGIN_SUCCESS
 import com.cyl.wandroid.common.bus.REFRESH_LOGIN_SUCCESS
 import com.cyl.wandroid.tools.makeStatusBarTransparent
 import com.cyl.wandroid.tools.showError
@@ -54,6 +55,7 @@ class LoginActivity : BaseViewModelActivity<LoginViewModel>() {
             userBeanLiveData.observe(this@LoginActivity, Observer {
                 // 登录成功
                 Bus.post(REFRESH_LOGIN_SUCCESS, it)
+                Bus.post(MARK_COLLECT_LOGIN_SUCCESS, it)
                 finish()
             })
 

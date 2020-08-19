@@ -17,7 +17,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="n">
-        <activity android:name=".ui.activity.AddOrUpdateTodoActivity"></activity>
+        <activity android:name=".ui.activity.QaActivity"></activity>
+        <activity android:name=".ui.activity.AddOrUpdateTodoActivity" />
         <activity android:name=".ui.activity.MyTodoActivity" />
         <activity android:name=".ui.activity.AboutAuthorActivity" />
 

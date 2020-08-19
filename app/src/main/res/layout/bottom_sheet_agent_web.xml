@@ -24,7 +24,7 @@
         android:padding="15dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/stvCollection"
-        app:sLeftIconRes="@mipmap/icon_collect"
+        app:sLeftIconRes="@mipmap/icon_refresh"
         app:sLeftTextString="刷新页面"
         app:sLeftViewMarginLeft="20dp" />
 
@@ -35,7 +35,7 @@
         android:padding="15dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/stvRefresh"
-        app:sLeftIconRes="@mipmap/icon_collect"
+        app:sLeftIconRes="@mipmap/icon_copy_link"
         app:sLeftTextString="复制链接"
         app:sLeftViewMarginLeft="20dp" />
 
@@ -46,7 +46,7 @@
         android:padding="15dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/stvCopyLink"
-        app:sLeftIconRes="@mipmap/icon_collect"
+        app:sLeftIconRes="@mipmap/icon_browser"
         app:sLeftTextString="浏览器打开"
         app:sLeftViewMarginLeft="20dp" />
 
@@ -57,7 +57,7 @@
         android:padding="15dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/stvBrowserOpen"
-        app:sLeftIconRes="@mipmap/icon_collect"
+        app:sLeftIconRes="@mipmap/icon_share_grey"
         app:sLeftTextString="分享"
         app:sLeftViewMarginLeft="20dp" />
 

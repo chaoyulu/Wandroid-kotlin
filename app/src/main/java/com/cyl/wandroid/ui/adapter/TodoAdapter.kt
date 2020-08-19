@@ -3,6 +3,7 @@ package com.cyl.wandroid.ui.adapter
 import android.graphics.Color
 import androidx.core.view.isVisible
 import com.chad.library.adapter.base.BaseQuickAdapter
+import com.chad.library.adapter.base.module.LoadMoreModule
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.cyl.wandroid.R
 import com.cyl.wandroid.ext.toColor
@@ -14,7 +15,7 @@ import com.cyl.wandroid.tools.millisSecondsToDate
 import kotlinx.android.synthetic.main.item_my_todo.view.*
 
 class TodoAdapter(private val status: Int, layoutResId: Int = R.layout.item_my_todo) :
-    BaseQuickAdapter<TodoBean, BaseViewHolder>(layoutResId) {
+    BaseQuickAdapter<TodoBean, BaseViewHolder>(layoutResId), LoadMoreModule {
 
     init {
         addChildClickViewIds(R.id.ivStatus, R.id.ivDelete)

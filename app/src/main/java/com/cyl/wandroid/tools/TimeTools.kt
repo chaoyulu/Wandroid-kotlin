@@ -24,3 +24,11 @@ fun millisSecondsToDate(millisSeconds: Long, format: String = DATE_FORMAT_1): Da
     val dateFormat = SimpleDateFormat(format, Locale.getDefault())
     return dateFormat.parse(s)
 }
+
+// 日期字符串转Calendar
+fun dateStringToCalendar(dateString: String, format: String = DATE_FORMAT_2): Calendar {
+    val dateFormat = SimpleDateFormat(format, Locale.getDefault())
+    val calendar = Calendar.getInstance()
+    calendar.time = dateFormat.parse(dateString)!!
+    return calendar
+}

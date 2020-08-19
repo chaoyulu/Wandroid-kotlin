@@ -15,4 +15,15 @@ class MyTodoRepository {
         return ApiEngine.getApiService().getMyTodo(page, status, type, priority, orderby)
             .getApiData()
     }
+
+    suspend fun deleteMyTodo(id: Int) {
+        ApiEngine.getApiService().deleteMyTodo(id).getApiData()
+    }
+
+    suspend fun updateMyTodoStatus(
+        id: Int,
+        status: Int
+    ): TodoBean {
+        return ApiEngine.getApiService().updateMyTodoStatus(id, status).getApiData()
+    }
 }

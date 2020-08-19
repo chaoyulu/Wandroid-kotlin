@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_bottom_sheet_bg"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rv_topbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp">
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:gravity="start|center_vertical"
+            android:paddingStart="@dimen/pickerview_topbar_padding"
+            android:paddingEnd="@dimen/pickerview_topbar_padding"
+            android:text="@string/pickerview_cancel"
+            android:textAllCaps="false"
+            android:textColor="@drawable/selector_pickerview_btn"
+            android:textSize="@dimen/pickerview_topbar_btn_textsize" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/btnSubmit"
+            android:layout_toEndOf="@+id/btnCancel"
+            android:gravity="center"
+            android:textColor="@color/pickerview_topbar_title"
+            android:textSize="@dimen/pickerview_topbar_title_textsize" />
+
+        <Button
+            android:id="@id/btnSubmit"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:background="@android:color/transparent"
+            android:gravity="end|center_vertical"
+            android:paddingStart="@dimen/pickerview_topbar_padding"
+            android:paddingEnd="@dimen/pickerview_topbar_padding"
+            android:text="@string/pickerview_submit"
+            android:textAllCaps="false"
+            android:textColor="@drawable/selector_pickerview_btn"
+            android:textSize="@dimen/pickerview_topbar_btn_textsize" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/timepicker"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:minHeight="150dp"
+        android:orientation="horizontal">
+
+        <com.contrarywind.view.WheelView
+            android:id="@+id/year"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.96" />
+
+        <com.contrarywind.view.WheelView
+            android:id="@+id/month"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <com.contrarywind.view.WheelView
+            android:id="@+id/day"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <com.contrarywind.view.WheelView
+            android:id="@+id/hour"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <com.contrarywind.view.WheelView
+            android:id="@+id/min"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <com.contrarywind.view.WheelView
+            android:id="@+id/second"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+    </LinearLayout>
+</LinearLayout>

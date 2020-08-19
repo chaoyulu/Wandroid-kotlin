@@ -24,7 +24,7 @@ class HomeNewestProjectViewModel : BaseRecyclerViewModel() {
     // pageInit = 0则视为刷新，否则就是加载更多
     private fun getHomeNewestProjects() {
         launch(block = {
-            if (page == 0) {
+            if (page == pageStart) {
                 val data = homeNewestProjectRepository.getHomeNewestProject(pageStart)
                 setRefreshStatus(true)
                 // 下拉刷新

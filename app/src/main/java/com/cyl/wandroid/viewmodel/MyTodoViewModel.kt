@@ -10,6 +10,9 @@ class MyTodoViewModel : BaseRecyclerViewModel() {
     private val pageStart = 1
     private var page = pageStart
     val todoLiveData: MutableLiveData<MutableList<TodoBean>> = MutableLiveData()
+    val requestStatusLiveData = MutableLiveData<Boolean>() // true 请求开始 显示对话框 、false 请求结束 隐藏对话框
+    val deleteTodoLiveData = MutableLiveData<Int>() // Int是索引
+    val updateTodoLiveData = MutableLiveData<Pair<Int, TodoBean>>() // 返回修改状态成功后的索引和TodoBean
 
     fun refreshMyTodo(status: Int) {
         page = pageStart
@@ -46,5 +49,62 @@ class MyTodoViewModel : BaseRecyclerViewModel() {
                 setLoadMoreFinishStatus(data.offset, data.total)
             }
         })
+    }
+
+    fun deleteMyTodo(id: Int) {
+        launch(block = {
+            requestStatusLiveData.value = true
+            myTodoRepository.deleteMyTodo(id)
+            var index = -1
+            todoLiveData.value?.forEachIndexed { i, todoBean ->
+                if (todoBean.id == id) {
+                    index = i
+                    return@forEachIndexed
+                }
+            }
+            todoLiveData.value?.removeAt(index)
+            deleteTodoLiveData.value = index
+            requestStatusLiveData.value = false
+        }, error = {
+            requestStatusLiveData.value = false
+        })
+    }
+
+    fun updateMyTodoStatus(id: Int, status: Int) {
+        launch(block = {
+            requestStatusLiveData.value = true
+            val todoBean = myTodoRepository.updateMyTodoStatus(id, status)
+
+            var index = -1
+            todoLiveData.value?.forEachIndexed { i, bean ->
+                if (bean.id == id) {
+                    index = i
+                    return@forEachIndexed
+                }
+            }
+            todoLiveData.value?.removeAt(index)
+            updateTodoLiveData.value = index to todoBean
+            requestStatusLiveData.value = false
+        }, error = { requestStatusLiveData.value = false })
+    }
+
+    // 添加成功，将新添加的放在第一个
+    fun addTodoSuccess(todoBean: TodoBean) {
+        val list = todoLiveData.value
+        list?.add(0, todoBean)
+        todoLiveData.value = list
+    }
+
+    // 修改成功，根据id搜索，将其修改
+    fun updateTodoSuccess(todoBean: TodoBean) {
+        // 当前页面删除，另一页面增加
+        todoLiveData.value?.forEachIndexed { index, bean ->
+            if (todoBean.id == bean.id) {
+                val list = todoLiveData.value
+                list?.set(index, todoBean)
+                todoLiveData.value = list
+                return@forEachIndexed
+            }
+        }
     }
 }

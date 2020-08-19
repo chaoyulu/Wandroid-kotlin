@@ -165,10 +165,13 @@ interface ApiService {
     suspend fun updateMyTodoStatus(
         @Path("id") id: Int,
         @Field("status") status: Int
-    ): ApiCommonResponse<CommonArticleData<Any>>
+    ): ApiCommonResponse<TodoBean>
 
 
     // 删除待办
-    @POST("lg/todo/delete/83/json")
-    suspend fun deleteMyTodo(@Path("id") id: Int): ApiCommonResponse<CommonArticleData<Any>>
+    @POST("lg/todo/delete/{id}/json")
+    suspend fun deleteMyTodo(@Path("id") id: Int): ApiCommonResponse<Any>
+
+    @GET("wenda/list/{page}/json")
+    suspend fun getQA(@Path("page") page: Int): ApiCommonResponse<CommonArticleData<ArticleBean>>
 }

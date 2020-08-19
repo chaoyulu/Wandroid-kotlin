@@ -19,6 +19,7 @@ import com.cyl.wandroid.tools.checkLoginThenAction
 import com.cyl.wandroid.tools.start
 import com.cyl.wandroid.ui.activity.MyTodoActivity
 import com.cyl.wandroid.ui.activity.PublicAccountContainerActivity
+import com.cyl.wandroid.ui.activity.QaActivity
 import com.cyl.wandroid.ui.adapter.HomeArticleAdapter
 import com.cyl.wandroid.ui.adapter.HomeBannerAdapter
 import com.cyl.wandroid.viewmodel.HomeNewestArticleViewModel
@@ -86,6 +87,10 @@ class HomeNewestArticleFragment :
 
         headerView.hivPublicAccount.setOnClickListener {
             start(mContext, PublicAccountContainerActivity::class.java)
+        }
+
+        headerView.hivQA.setOnClickListener {
+            start(mContext, QaActivity::class.java)
         }
 
         headerView.hivTodo.setOnClickListener {

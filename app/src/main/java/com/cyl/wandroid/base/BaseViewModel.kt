@@ -1,5 +1,6 @@
 package com.cyl.wandroid.base
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.cyl.wandroid.http.api.ApiException
@@ -23,6 +24,7 @@ open class BaseViewModel : ViewModel() {
             try {
                 block()
             } catch (e: Exception) {
+                Log.e("ErrorERROR", "===> ${e.localizedMessage}")
                 parseError(e)
                 onError()
                 error?.invoke(e) // 捕获ApiCommonResponse类中的异常信息

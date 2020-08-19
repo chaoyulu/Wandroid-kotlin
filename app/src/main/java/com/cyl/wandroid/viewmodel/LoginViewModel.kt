@@ -18,6 +18,6 @@ class LoginViewModel : BaseViewModel() {
             userBeanLiveData.value = userBean
             UserSpHelper.newHelper().saveUserInfo(userBean)
             loginStatusLiveData.value = false
-        })
+        }, error = { loginStatusLiveData.value = false })
     }
 }

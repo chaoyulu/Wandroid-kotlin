@@ -8,8 +8,8 @@ import com.cyl.wandroid.repository.AddUpdateMyTodoRepository
 class AddUpdateMyTodoViewModel : BaseViewModel() {
     private val addUpdateMyTodoRepository by lazy { AddUpdateMyTodoRepository() }
     val requestStatusLiveData = MutableLiveData<Boolean>() // true 请求开始 显示对话框 、false 请求结束 隐藏对话框
-    val addTodoLiveData = MutableLiveData<TodoBean>()
-    val updateTodoLiveData = MutableLiveData<TodoBean>()
+    val addTodoLiveData = MutableLiveData<TodoBean>() // 返回添加成功后的TodoBean
+    val updateTodoLiveData = MutableLiveData<TodoBean>() // 返回修改成功后的TodoBean
 
     fun addMyTodo(title: String, content: String, date: String, type: Int = 0, priority: Int = 0) {
         launch(block = {

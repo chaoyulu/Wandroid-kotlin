@@ -83,4 +83,9 @@
     <string name="add_todo">Add TODO</string>
     <string name="update_todo">Update TODO</string>
     <string name="detail">Detail</string>
+    <string name="click_to_select_todo_date">Click To Select Date</string>
+    <string name="cancel">Cancel</string>
+    <string name="confirm">Confirm</string>
+    <string name="is_delete_the_todo">Delete the TODO?</string>
+    <string name="is_delete_the_share">Delete the Share?</string>
 </resources>

@@ -19,6 +19,7 @@ import com.cyl.wandroid.tools.checkLoginThenAction
 import com.cyl.wandroid.tools.start
 import com.cyl.wandroid.ui.adapter.MySharedAdapter
 import com.cyl.wandroid.ui.dialog.LoadingDialog
+import com.cyl.wandroid.ui.dialog.OperateTipDialog
 import com.cyl.wandroid.ui.widget.EmptyView
 import com.cyl.wandroid.viewmodel.MySharedViewModel
 import kotlinx.android.synthetic.main.layout_swipe_recycler.*
@@ -120,8 +121,16 @@ class MySharedActivity : BaseRecyclerViewModelActivity<ArticleBean, MySharedView
     }
 
     override fun onDeleteClick(position: Int) {
-        if (loadingDialog == null) loadingDialog = LoadingDialog(this)
-        loadingDialog?.setDesc(R.string.deleting)
-        mViewModel.sharedList.value?.get(position)?.id?.let { mViewModel.deleteMyShare(it) }
+        OperateTipDialog(this, desc = R.string.is_delete_the_share, listener = object :
+            OperateTipDialog.OnTipDialogClickListener {
+            override fun onCancel() {
+            }
+
+            override fun onConfirm() {
+                if (loadingDialog == null) loadingDialog = LoadingDialog(this@MySharedActivity)
+                loadingDialog?.setDesc(R.string.deleting)
+                mViewModel.sharedList.value?.get(position)?.id?.let { mViewModel.deleteMyShare(it) }
+            }
+        }).show()
     }
 }

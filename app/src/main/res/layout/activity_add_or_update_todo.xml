@@ -80,9 +80,10 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:background="@drawable/shape_add_share_et_bg"
+        android:background="@drawable/shape_todo_date_bg"
         android:gravity="center"
-        android:hint="@string/todo_date2"
+        android:hint="@string/click_to_select_todo_date"
         android:padding="15dp"
-        android:text="2020-10-20" />
+        android:textColor="@color/white"
+        android:textColorHint="@color/white" />
 </LinearLayout>
