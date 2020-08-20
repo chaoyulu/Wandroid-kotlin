@@ -167,11 +167,22 @@ interface ApiService {
         @Field("status") status: Int
     ): ApiCommonResponse<TodoBean>
 
-
     // 删除待办
     @POST("lg/todo/delete/{id}/json")
     suspend fun deleteMyTodo(@Path("id") id: Int): ApiCommonResponse<Any>
 
+
     @GET("wenda/list/{page}/json")
     suspend fun getQA(@Path("page") page: Int): ApiCommonResponse<CommonArticleData<ArticleBean>>
+
+    // 更新待办状态，例如将未完成修改成完成
+    @POST("article/query/{page}/json")
+    @FormUrlEncoded
+    suspend fun search(
+        @Path("page") page: Int,
+        @Field("k") k: String
+    ): ApiCommonResponse<CommonArticleData<ArticleBean>>
+
+    @GET("hotkey/json")
+    suspend fun getHotKey(): ApiCommonResponse<List<HotKeyBean>>
 }

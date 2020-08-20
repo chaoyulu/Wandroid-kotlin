@@ -6,6 +6,7 @@ import com.cyl.wandroid.common.bus.Bus
 import com.cyl.wandroid.common.bus.CANCEL_COLLECT_SUCCESS
 import com.cyl.wandroid.common.bus.COLLECT_SUCCESS
 import com.cyl.wandroid.http.bean.ArticleBean
+import com.cyl.wandroid.http.bean.UserBean
 import com.cyl.wandroid.repository.CollectionRepository
 
 open class CollectViewModel : BaseRecyclerViewModel() {
@@ -28,14 +29,23 @@ open class CollectViewModel : BaseRecyclerViewModel() {
         })
     }
 
-    fun cancelCollectFromCollectionList(id: Int, originId: Int) {
+    fun cancelCollectFromCollectionList(viewModel: MyCollectionsViewModel, id: Int, originId: Int) {
         launch(block = {
             collectRepository.cancelCollectFromCollectionList(id, originId)
-            collectLiveData.value = id to false // 取消成功
+            var index = -1
+            viewModel.articles.value?.forEachIndexed { i, bean ->
+                if (bean.id == id) {
+                    index = i
+                    return@forEachIndexed
+                }
+            }
+            viewModel.articles.value?.removeAt(index)
+            viewModel.deleteCollectLiveData.value = index
             Bus.post(CANCEL_COLLECT_SUCCESS, originId)
         })
     }
 
+    // 更新单个的收藏状态
     fun updateCollectStatus(
         id: Int,
         status: Boolean,
@@ -51,6 +61,30 @@ open class CollectViewModel : BaseRecyclerViewModel() {
         }
         articles.value = list
     }
+
+    // 更新整个文章列表的收藏状态
+    fun updateAllCollectsStatusTrue(
+        userBean: UserBean,
+        articles: MutableLiveData<MutableList<ArticleBean>>
+    ) {
+        val collectIds = userBean.collectIds
+        val list = articles.value
+        if (list.isNullOrEmpty()) return
+        list.forEach {
+            it.collect = collectIds.contains(it.id)
+        }
+        articles.value = list
+    }
+
+    fun updateAllCollectsStatusFalse(articles: MutableLiveData<MutableList<ArticleBean>>) {
+        val list = articles.value
+        if (list.isNullOrEmpty()) return
+        list.forEach {
+            it.collect = false
+        }
+        articles.value = list
+    }
+
 
     fun removeCollectItem(id: Int, articles: MutableLiveData<MutableList<ArticleBean>>): Int {
         articles.value?.forEachIndexed { index, articleBean ->

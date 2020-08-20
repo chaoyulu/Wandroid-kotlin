@@ -2,38 +2,37 @@ package com.cyl.wandroid.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import com.cyl.wandroid.http.bean.ArticleBean
-import com.cyl.wandroid.repository.MyCollectionsRepository
+import com.cyl.wandroid.repository.SearchRepository
 
-class MyCollectionsViewModel : CollectViewModel() {
-    private val myCollectionsRepository by lazy { MyCollectionsRepository() }
+class SearchViewModel : CollectViewModel() {
+    private val searchRepository by lazy { SearchRepository() }
+    val articles = MutableLiveData<MutableList<ArticleBean>>()
 
-    val articles: MutableLiveData<MutableList<ArticleBean>> = MutableLiveData()
-    val deleteCollectLiveData = MutableLiveData<Int>() // Int是索引
     private val pageStart = 0
     private var page = pageStart
 
-    fun refreshCollections() {
+    fun refreshSearch(k: String) {
         page = pageStart
-        getCollectionsList()
+        search(k)
     }
 
-    fun loadMoreCollections() {
-        getCollectionsList()
+    fun loadMoreSearch(k: String) {
+        search(k)
     }
 
-    private fun getCollectionsList() {
+    private fun search(k: String) {
         launch(block = {
             if (page == pageStart) {
                 // 下拉刷新
                 setRefreshStatus(true)
-                val list = myCollectionsRepository.getMyCollections(page)
-                articles.value = mutableListOf<ArticleBean>().apply { addAll(list.datas) }
-                page = list.curPage
+                val data = searchRepository.search(pageStart, k)
+                articles.value = mutableListOf<ArticleBean>().apply { addAll(data.datas) }
+                page = data.curPage
                 setRefreshStatus(false)
             } else {
                 // 上拉加载更多
                 setLoadMoreStart()
-                val data = myCollectionsRepository.getMyCollections(page)
+                val data = searchRepository.search(page, k)
                 val list = articles.value ?: mutableListOf()
                 list.addAll(data.datas)
                 articles.value = list

@@ -17,10 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="n">
-        <activity android:name=".ui.activity.QaActivity"></activity>
-        <activity android:name=".ui.activity.AddOrUpdateTodoActivity" />
-        <activity android:name=".ui.activity.MyTodoActivity" />
-        <activity android:name=".ui.activity.AboutAuthorActivity" />
+        <activity android:name=".ui.activity.SearchActivity"></activity>
 
         <meta-data
             android:name="android.max_aspect"
@@ -60,6 +57,10 @@
         <activity android:name=".ui.activity.PointsRankActivity" />
         <activity android:name=".ui.activity.MyPointsActivity" />
         <activity android:name=".ui.activity.AddShareActivity" />
+        <activity android:name=".ui.activity.QaActivity" />
+        <activity android:name=".ui.activity.AddOrUpdateTodoActivity" />
+        <activity android:name=".ui.activity.MyTodoActivity" />
+        <activity android:name=".ui.activity.AboutAuthorActivity" />
     </application>
 
 </manifest>

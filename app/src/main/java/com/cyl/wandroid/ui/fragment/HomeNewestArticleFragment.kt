@@ -1,5 +1,6 @@
 package com.cyl.wandroid.ui.fragment
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import androidx.lifecycle.MutableLiveData
@@ -17,6 +18,7 @@ import com.cyl.wandroid.http.bean.ArticleBean
 import com.cyl.wandroid.http.bean.HomeBannerBean
 import com.cyl.wandroid.tools.checkLoginThenAction
 import com.cyl.wandroid.tools.start
+import com.cyl.wandroid.ui.activity.AgentWebActivity
 import com.cyl.wandroid.ui.activity.MyTodoActivity
 import com.cyl.wandroid.ui.activity.PublicAccountContainerActivity
 import com.cyl.wandroid.ui.activity.QaActivity
@@ -55,6 +57,13 @@ class HomeNewestArticleFragment :
             adapter = HomeBannerAdapter(mViewModel.banners.value)
             indicator = CircleIndicator(activity)
             setIndicatorGravity(IndicatorConfig.Direction.RIGHT)
+
+            setOnBannerListener { data, _ ->
+                start(mContext, AgentWebActivity::class.java, Bundle().apply {
+                    putString(AgentWebActivity.URL, (data as HomeBannerBean?)?.url)
+                    putBoolean(AgentWebActivity.SHOW_COLLECT_ITEM, false)
+                })
+            }
         }
     }
 

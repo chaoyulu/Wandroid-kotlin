@@ -8,10 +8,13 @@ import com.cyl.wandroid.repository.RegisterRepository
 class RegisterViewModel : BaseViewModel() {
     private val registerRepository by lazy { RegisterRepository() }
     val userBeanLiveData = MutableLiveData<UserBean>()
+    val registerStatusLiveData = MutableLiveData<Boolean>()
 
-    fun register(username: String, password: String, repassword: String) {
+    fun register(username: String, password: String, rePassword: String) {
         launch(block = {
-            userBeanLiveData.value = registerRepository.register(username, password, repassword)
-        })
+            registerStatusLiveData.value = true
+            userBeanLiveData.value = registerRepository.register(username, password, rePassword)
+            registerStatusLiveData.value = false
+        }, error = { registerStatusLiveData.value = false })
     }
 }

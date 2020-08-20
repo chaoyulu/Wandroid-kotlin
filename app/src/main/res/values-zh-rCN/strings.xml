@@ -11,7 +11,6 @@
     <string name="home_newest_project">热门项目</string>
     <string name="home_newest_share">广场</string>
     <string name="home_public_account">公众号</string>
-    <string name="home_search">搜索</string>
     <string name="collection">收藏</string>
     <string name="stick">置顶</string>
     <string name="new_">新</string>
@@ -82,4 +81,8 @@
     <string name="confirm">确定</string>
     <string name="is_delete_the_todo">是否删除这条待办？</string>
     <string name="is_delete_the_share">是否删除这条分享？</string>
+    <string name="input_username">请输入用户名</string>
+    <string name="input_password">请输入密码</string>
+    <string name="password_again">再次输入密码</string>
+    <string name="search">搜索</string>
 </resources>

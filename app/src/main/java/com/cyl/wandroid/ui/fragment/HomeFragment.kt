@@ -7,6 +7,8 @@ import com.cyl.wandroid.R
 import com.cyl.wandroid.base.BaseFragment
 import com.cyl.wandroid.ext.addOnPageChangedListener
 import com.cyl.wandroid.ext.addOnTabChangeListener
+import com.cyl.wandroid.tools.start
+import com.cyl.wandroid.ui.activity.SearchActivity
 import com.cyl.wandroid.ui.adapter.ViewPagerAdapter
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.layout_tab.*
@@ -53,6 +55,8 @@ class HomeFragment : BaseFragment() {
     }
 
     override fun initView() {
-
+        ivSearch.setOnClickListener {
+            start(mContext, SearchActivity::class.java)
+        }
     }
 }

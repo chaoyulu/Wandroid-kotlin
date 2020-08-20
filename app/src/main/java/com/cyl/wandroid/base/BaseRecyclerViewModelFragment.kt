@@ -7,10 +7,9 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.loadmore.LoadMoreStatus
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
-import com.cyl.wandroid.common.bus.Bus
-import com.cyl.wandroid.common.bus.CANCEL_COLLECT_SUCCESS
-import com.cyl.wandroid.common.bus.COLLECT_SUCCESS
+import com.cyl.wandroid.common.bus.*
 import com.cyl.wandroid.http.bean.ArticleBean
+import com.cyl.wandroid.http.bean.UserBean
 import com.cyl.wandroid.tools.start
 import com.cyl.wandroid.ui.activity.AgentWebActivity
 import com.cyl.wandroid.viewmodel.CollectViewModel
@@ -67,6 +66,16 @@ abstract class BaseRecyclerViewModelFragment<T, VM : BaseRecyclerViewModel> :
         Bus.observe<Int>(CANCEL_COLLECT_SUCCESS, viewLifecycleOwner, observer = {
             // it是文章id
             (mViewModel as CollectViewModel).updateCollectStatus(it, false, getViewModelArticles())
+        })
+        // 登录/注册成功后标记出已收藏的文章
+        Bus.observe<UserBean>(MARK_COLLECT_LOGIN_SUCCESS, viewLifecycleOwner, observer = {
+            (mViewModel as CollectViewModel).updateAllCollectsStatusTrue(
+                it, getViewModelArticles()
+            )
+        })
+        // 退出登录标记收藏文章为false
+        Bus.observe<Boolean>(MARK_COLLECT_LOGOUT_SUCCESS, viewLifecycleOwner, observer = {
+            (mViewModel as CollectViewModel).updateAllCollectsStatusFalse(getViewModelArticles())
         })
     }
 

@@ -6,6 +6,7 @@ import com.cyl.wandroid.base.BaseViewModelActivity
 import com.cyl.wandroid.common.bus.Bus
 import com.cyl.wandroid.common.bus.MARK_COLLECT_LOGIN_SUCCESS
 import com.cyl.wandroid.common.bus.REFRESH_LOGIN_SUCCESS
+import com.cyl.wandroid.ext.hideSoftInput
 import com.cyl.wandroid.tools.makeStatusBarTransparent
 import com.cyl.wandroid.tools.showError
 import com.cyl.wandroid.tools.start
@@ -28,6 +29,7 @@ class LoginActivity : BaseViewModelActivity<LoginViewModel>() {
         }
 
         stvLogin.setOnClickListener {
+            it.hideSoftInput()
             login()
         }
     }

@@ -14,7 +14,20 @@
         android:background="@color/white"
         android:elevation="1dp">
 
-        <include layout="@layout/layout_tab" />
+        <include
+            layout="@layout/layout_tab"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center" />
+
+        <ImageView
+            android:id="@+id/ivSearch"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginEnd="20dp"
+            android:contentDescription="@string/wan_an_zuo"
+            android:src="@mipmap/icon_search" />
     </FrameLayout>
 
     <androidx.viewpager.widget.ViewPager

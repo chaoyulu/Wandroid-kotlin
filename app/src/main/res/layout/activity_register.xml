@@ -55,6 +55,7 @@
                 android:src="@mipmap/home_header_icon_todo" />
 
             <EditText
+                android:id="@+id/etUsername"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:autofillHints="@string/account"
@@ -65,7 +66,8 @@
                 android:hint="@string/account"
                 android:inputType="text"
                 android:paddingStart="20dp"
-                android:paddingEnd="10dp" />
+                android:paddingEnd="10dp"
+                android:textCursorDrawable="@drawable/shape_cursor" />
         </LinearLayout>
 
         <LinearLayout
@@ -83,6 +85,7 @@
                 android:src="@mipmap/home_header_icon_todo" />
 
             <EditText
+                android:id="@+id/etPassword"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:autofillHints="@string/password"
@@ -90,7 +93,8 @@
                 android:hint="@string/password"
                 android:inputType="textPassword"
                 android:paddingStart="20dp"
-                android:paddingEnd="10dp" />
+                android:paddingEnd="10dp"
+                android:textCursorDrawable="@drawable/shape_cursor" />
         </LinearLayout>
 
         <LinearLayout
@@ -108,6 +112,7 @@
                 android:src="@mipmap/home_header_icon_todo" />
 
             <EditText
+                android:id="@+id/etRePassword"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:autofillHints="@string/password"
@@ -115,7 +120,8 @@
                 android:hint="@string/repassword"
                 android:inputType="textPassword"
                 android:paddingStart="20dp"
-                android:paddingEnd="10dp" />
+                android:paddingEnd="10dp"
+                android:textCursorDrawable="@drawable/shape_cursor" />
         </LinearLayout>
     </LinearLayout>
 

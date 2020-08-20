@@ -73,11 +73,11 @@ class MyCollectionsActivity : BaseRecyclerViewModelActivity<ArticleBean, MyColle
                 if (it.second) {
                     // 收藏
                     mViewModel.refreshCollections()
-                } else {
-                    // 取消收藏
-                    val index = mViewModel.removeCollectItem(it.first, mViewModel.articles)
-                    adapter.removeAt(index)
                 }
+            })
+
+            deleteCollectLiveData.observe(this@MyCollectionsActivity, Observer {
+                if (it != -1) adapter.removeAt(it)
             })
         }
     }

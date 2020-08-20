@@ -9,7 +9,6 @@
     <string name="home_newest_project">NewestProject</string>
     <string name="home_newest_share">NewestShare</string>
     <string name="home_public_account">PublicAccount</string>
-    <string name="home_search">Search</string>
     <string name="collection">Collection</string>
     <string name="stick">Stick</string>
     <string name="new_">New</string>
@@ -88,4 +87,8 @@
     <string name="confirm">Confirm</string>
     <string name="is_delete_the_todo">Delete the TODO?</string>
     <string name="is_delete_the_share">Delete the Share?</string>
+    <string name="input_username">Input User Name</string>
+    <string name="input_password">Input Password</string>
+    <string name="password_again">Password again</string>
+    <string name="search">Search</string>
 </resources>

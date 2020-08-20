@@ -14,6 +14,7 @@ import com.cyl.wandroid.http.bean.ArticleBean
 import com.cyl.wandroid.tools.start
 import com.cyl.wandroid.ui.activity.AgentWebActivity
 import com.cyl.wandroid.viewmodel.CollectViewModel
+import com.cyl.wandroid.viewmodel.MyCollectionsViewModel
 
 /**
  * 在使用RecyclerView的Activity界面使用
@@ -88,7 +89,12 @@ abstract class BaseRecyclerViewModelActivity<T, VM : BaseRecyclerViewModel> :
         getViewModelArticles().value?.get(position)?.let {
             if (it.collect) {
                 if (isFromCollectActivity) {
-                    viewModel.cancelCollectFromCollectionList(it.id, it.originId)
+                    val myCollectionsViewModel = mViewModel as MyCollectionsViewModel
+                    viewModel.cancelCollectFromCollectionList(
+                        myCollectionsViewModel,
+                        it.id,
+                        it.originId
+                    )
                 } else {
                     viewModel.cancelCollectFromArticleList(it.id)
                 }
@@ -100,9 +106,9 @@ abstract class BaseRecyclerViewModelActivity<T, VM : BaseRecyclerViewModel> :
 
     // 取消收藏
     open fun cancelCollectItemClick(position: Int) {
-        val viewModel = mViewModel as CollectViewModel
+        val viewModel = mViewModel as MyCollectionsViewModel
         getViewModelArticles().value?.get(position)?.let {
-            viewModel.cancelCollectFromCollectionList(it.id, it.originId)
+            viewModel.cancelCollectFromCollectionList(viewModel, it.id, it.originId)
         }
     }
 
