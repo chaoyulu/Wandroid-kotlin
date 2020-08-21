@@ -25,6 +25,7 @@
     <style name="FullScreenTheme" parent="Theme.AppCompat.Light">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@drawable/splash</item>
         <item name="android:windowFullscreen">true</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
     </style>
