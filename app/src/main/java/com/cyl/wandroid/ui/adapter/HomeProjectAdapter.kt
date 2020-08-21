@@ -7,6 +7,8 @@ import com.chad.library.adapter.base.module.LoadMoreModule
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.cyl.wandroid.R
 import com.cyl.wandroid.ext.loadImage
+import com.cyl.wandroid.ext.setCircularCorner
+import com.cyl.wandroid.ext.toColor
 import com.cyl.wandroid.http.bean.ArticleBean
 import com.cyl.wandroid.tools.setCollectionImgState
 import kotlinx.android.synthetic.main.item_home_article.view.tvAuthor
@@ -33,7 +35,8 @@ class HomeProjectAdapter(layoutResId: Int = R.layout.item_home_project) :
             } else if (!TextUtils.isEmpty(item.shareUser)) {
                 tvAuthor.text = item.shareUser
             }
-
+            tvLabel.setCircularCorner(R.color.solid_green.toColor(context), 5f)
+            tvLabel2.setCircularCorner(R.color.solid_red.toColor(context), 5f)
             // 标签
             val tags = item.tags
             when {

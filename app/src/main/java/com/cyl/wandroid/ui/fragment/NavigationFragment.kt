@@ -1,5 +1,6 @@
 package com.cyl.wandroid.ui.fragment
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -10,12 +11,17 @@ import com.cyl.wandroid.R
 import com.cyl.wandroid.base.BaseRecyclerViewModelFragment
 import com.cyl.wandroid.http.bean.NavigationBean
 import com.cyl.wandroid.listener.OnTagClickListener
+import com.cyl.wandroid.tools.imgTint
+import com.cyl.wandroid.tools.showError
 import com.cyl.wandroid.tools.start
 import com.cyl.wandroid.ui.activity.AgentWebActivity
 import com.cyl.wandroid.ui.adapter.NavigationAdapter
+import com.cyl.wandroid.ui.dialog.LocateTagViewDialog
 import com.cyl.wandroid.ui.widget.SectionItemDecoration
+import com.cyl.wandroid.ui.widget.SmoothTopScroller
 import com.cyl.wandroid.viewmodel.NavigationViewModel
 import kotlinx.android.synthetic.main.layout_swipe_recycler.*
+import kotlinx.android.synthetic.main.toolbar_fragment.*
 
 /**
  * 导航
@@ -36,6 +42,8 @@ class NavigationFragment : BaseRecyclerViewModelFragment<NavigationBean, Navigat
 
     override fun initView() {
         setCenterText(R.string.home_navigation)
+        setRightIcon(R.mipmap.icon_system_locate)
+        imgTint(ivRight, Color.BLACK)
         super.initView()
     }
 
@@ -72,5 +80,33 @@ class NavigationFragment : BaseRecyclerViewModelFragment<NavigationBean, Navigat
                 mViewModel.navigation.value?.get(itemPosition)?.articles?.get(tagPosition)?.link
             )
         })
+    }
+
+    override fun onRightIconClick() {
+        super.onRightIconClick()
+        val navigation: List<NavigationBean>? = mViewModel.navigation.value
+        if (navigation.isNullOrEmpty()) {
+            // 没有数据
+            showError(R.string.no_valid_data)
+        } else {
+            val titles = getTitles(navigation)
+            LocateTagViewDialog(mContext, titles,
+                object : OnTagClickListener {
+                    override fun onTagClick(itemPosition: Int, tagPosition: Int) {
+                        val scroller = SmoothTopScroller(mContext)
+                        scroller.targetPosition = itemPosition
+                        recyclerView.layoutManager?.startSmoothScroll(scroller)
+                    }
+                }).show()
+        }
+    }
+
+    private fun getTitles(navigation: List<NavigationBean>?): List<String> {
+        if (navigation.isNullOrEmpty()) return emptyList()
+        val titles = mutableListOf<String>()
+        navigation.forEach {
+            titles.add(it.name)
+        }
+        return titles
     }
 }

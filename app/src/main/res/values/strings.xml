@@ -91,4 +91,6 @@
     <string name="input_password">Input Password</string>
     <string name="password_again">Password again</string>
     <string name="search">Search</string>
+    <string name="open_source">Open Source</string>
+    <string name="thanks_open">Thanks All The Follow Open Source Authors</string>
 </resources>

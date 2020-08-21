@@ -14,7 +14,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.coorchice.library.SuperTextView
+    <TextView
         android:id="@+id/tvLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -27,11 +27,9 @@
         app:layout_constraintBaseline_toBaselineOf="@id/tvAuthor"
         app:layout_constraintLeft_toRightOf="@id/tvAuthor"
         app:layout_constraintTop_toTopOf="parent"
-        app:stv_corner="2dp"
-        app:stv_solid="@color/colorPrimary"
         tools:ignore="SmallSp" />
 
-    <com.coorchice.library.SuperTextView
+    <TextView
         android:id="@+id/tvLabel2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -44,8 +42,6 @@
         app:layout_constraintBaseline_toBaselineOf="@id/tvAuthor"
         app:layout_constraintLeft_toRightOf="@id/tvLabel"
         app:layout_constraintTop_toTopOf="parent"
-        app:stv_corner="2dp"
-        app:stv_solid="@color/errorColor"
         tools:ignore="SmallSp" />
 
     <TextView

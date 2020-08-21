@@ -61,7 +61,7 @@ class MyTodoFragment : BaseRecyclerViewModelFragment<TodoBean, MyTodoViewModel>(
             mViewModel.loadMoreMyTodo(status)
         }
         val emptyView = EmptyView(mContext)
-        emptyView.setEmptyInfo(icon = R.mipmap.icon_no_data2, textColor = R.color.white)
+        emptyView.setEmptyInfo(icon = R.mipmap.icon_empty, textColor = R.color.white)
         adapter.setEmptyView(emptyView)
     }
 

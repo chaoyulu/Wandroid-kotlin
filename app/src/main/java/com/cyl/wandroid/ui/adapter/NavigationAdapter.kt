@@ -1,6 +1,5 @@
 package com.cyl.wandroid.ui.adapter
 
-import android.graphics.Paint
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.chad.library.adapter.base.BaseQuickAdapter
@@ -17,7 +16,7 @@ class NavigationAdapter(
 
     private lateinit var onTagClickListener: OnTagClickListener
 
-    public fun setOnTagClickListener(onTagClickListener: OnTagClickListener) {
+    fun setOnTagClickListener(onTagClickListener: OnTagClickListener) {
         this.onTagClickListener = onTagClickListener
     }
 
@@ -32,8 +31,7 @@ class NavigationAdapter(
                 )
                 textView.layoutParams = params
                 textView.text = item.articles[i].title
-                textView.setPadding(50, 40, 50, 40)
-                textView.paint.flags = Paint.UNDERLINE_TEXT_FLAG
+                textView.setPadding(100, 50, 100, 50)
                 llTitle.addView(textView)
 
                 textView.setOnClickListener {

@@ -14,8 +14,8 @@
         android:paddingStart="0dp"
         android:paddingEnd="10dp"
         android:text="@string/stick"
-        android:textSize="12sp"
         android:textColor="@android:color/holo_red_light"
+        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,8 +26,8 @@
         android:paddingStart="0dp"
         android:paddingEnd="10dp"
         android:text="@string/new_"
-        android:textSize="12sp"
         android:textColor="@android:color/holo_red_light"
+        android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@id/tvStick"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -69,7 +69,7 @@
         app:layout_constraintTop_toBottomOf="@id/tvTitle"
         tools:ignore="SmallSp" />
 
-    <com.coorchice.library.SuperTextView
+    <TextView
         android:id="@+id/tvLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -82,11 +82,9 @@
         app:layout_constraintBaseline_toBaselineOf="@id/tvDate"
         app:layout_constraintLeft_toRightOf="@id/tvDate"
         app:layout_constraintTop_toBottomOf="@id/tvTitle"
-        app:stv_corner="2dp"
-        app:stv_solid="@color/solid_green"
         tools:ignore="SmallSp" />
 
-    <com.coorchice.library.SuperTextView
+    <TextView
         android:id="@+id/tvLabel2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -99,8 +97,6 @@
         app:layout_constraintBaseline_toBaselineOf="@id/tvDate"
         app:layout_constraintLeft_toRightOf="@id/tvLabel"
         app:layout_constraintTop_toBottomOf="@id/tvTitle"
-        app:stv_corner="2dp"
-        app:stv_solid="@color/solid_red"
         tools:ignore="SmallSp" />
 
     <ImageView

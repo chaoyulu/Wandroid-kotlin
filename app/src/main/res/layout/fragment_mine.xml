@@ -126,7 +126,6 @@
                     app:sShapeSelectorPressedColor="@color/green_804CAF50"
                     app:sUseShape="true" />
 
-
                 <com.allen.library.SuperTextView
                     android:id="@+id/stvAddShare"
                     android:layout_width="match_parent"
@@ -170,21 +169,21 @@
                     app:sShapeSelectorPressedColor="@color/red_80FF0000"
                     app:sUseShape="true" />
 
-                <!-- <com.allen.library.SuperTextView
-                     android:id="@+id/stvAboutAuthor"
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:padding="15dp"
-                     android:visibility="gone"
-                     app:sLeftIconHeight="30dp"
-                     app:sLeftIconRes="@mipmap/icon_about"
-                     app:sLeftIconWidth="30dp"
-                     app:sLeftTextColor="@color/white"
-                     app:sLeftTextString="@string/about_author"
-                     app:sLeftViewMarginLeft="20dp"
-                     app:sShapeSelectorNormalColor="@color/solid_red"
-                     app:sShapeSelectorPressedColor="@color/red_80FF0000"
-                     app:sUseShape="true" />-->
+                <com.allen.library.SuperTextView
+                    android:id="@+id/stvOpenSource"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:visibility="visible"
+                    app:sLeftIconHeight="30dp"
+                    app:sLeftIconRes="@mipmap/icon_open_source"
+                    app:sLeftIconWidth="30dp"
+                    app:sLeftTextColor="@color/white"
+                    app:sLeftTextString="@string/open_source"
+                    app:sLeftViewMarginLeft="20dp"
+                    app:sShapeSelectorNormalColor="@color/solid_red"
+                    app:sShapeSelectorPressedColor="@color/red_80FF0000"
+                    app:sUseShape="true" />
 
                 <com.allen.library.SuperTextView
                     android:id="@+id/stvAboutAuthor"

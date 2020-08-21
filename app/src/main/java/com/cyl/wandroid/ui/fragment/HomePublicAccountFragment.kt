@@ -12,6 +12,7 @@ import com.cyl.wandroid.http.bean.PublicAccountBean
 import com.cyl.wandroid.tools.start
 import com.cyl.wandroid.ui.activity.PublicAccountArticlesActivity
 import com.cyl.wandroid.ui.adapter.HomePublicAccountAdapter
+import com.cyl.wandroid.ui.widget.SpaceItemDecoration
 import com.cyl.wandroid.viewmodel.HomePublicAccountViewModel
 import kotlinx.android.synthetic.main.layout_swipe_recycler.*
 
@@ -52,6 +53,7 @@ class HomePublicAccountFragment :
         recyclerView.layoutManager = manager
         adapter = HomePublicAccountAdapter()
         recyclerView.adapter = adapter
+        recyclerView.addItemDecoration(SpaceItemDecoration(30))
 
         adapter.setOnItemClickListener { _, _, position ->
             val accounts = mViewModel.accounts.value

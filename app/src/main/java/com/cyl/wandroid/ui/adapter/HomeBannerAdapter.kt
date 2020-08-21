@@ -29,6 +29,6 @@ class HomeBannerAdapter(banners: List<HomeBannerBean>?) :
         position: Int,
         size: Int
     ) {
-        holder.imageView.loadImage(data.imagePath)
+        holder.imageView.loadImage(data.imagePath, R.mipmap.icon_banner_place_holder)
     }
 }

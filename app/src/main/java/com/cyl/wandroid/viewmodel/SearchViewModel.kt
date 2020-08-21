@@ -2,11 +2,13 @@ package com.cyl.wandroid.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import com.cyl.wandroid.http.bean.ArticleBean
+import com.cyl.wandroid.http.bean.HotKeyBean
 import com.cyl.wandroid.repository.SearchRepository
 
 class SearchViewModel : CollectViewModel() {
     private val searchRepository by lazy { SearchRepository() }
     val articles = MutableLiveData<MutableList<ArticleBean>>()
+    val hotKeysLiveData = MutableLiveData<List<HotKeyBean>>()
 
     private val pageStart = 0
     private var page = pageStart
@@ -39,6 +41,12 @@ class SearchViewModel : CollectViewModel() {
                 page = data.curPage
                 setLoadMoreFinishStatus(data.offset, data.total)
             }
+        })
+    }
+
+    fun getHotKey() {
+        launch(block = {
+            hotKeysLiveData.value = searchRepository.getHotKey()
         })
     }
 }

@@ -10,6 +10,7 @@ import com.cyl.wandroid.common.bus.MARK_COLLECT_LOGOUT_SUCCESS
 import com.cyl.wandroid.common.bus.REFRESH_LOGIN_SUCCESS
 import com.cyl.wandroid.http.bean.UserBean
 import com.cyl.wandroid.sp.UserSpHelper
+import com.cyl.wandroid.tools.showNormal
 import com.cyl.wandroid.tools.start
 import com.cyl.wandroid.ui.activity.*
 import com.cyl.wandroid.viewmodel.MineViewModel
@@ -86,6 +87,7 @@ class MineFragment : BaseViewModelFragment<MineViewModel>() {
             start(mContext, MyTodoActivity::class.java, needLogin = true)
         }
         stvLookHistory.setOnClickListener {
+            showNormal("正在开发中...")
         }
         stvAboutAuthor.setOnClickListener {
             start(mContext, AboutAuthorActivity::class.java)
@@ -93,9 +95,9 @@ class MineFragment : BaseViewModelFragment<MineViewModel>() {
         stvLogout.setOnClickListener {
             mViewModel.logout()
         }
-//        stvSystemSetting.setOnClickListener {
-//            start(mContext, MyCollectionsActivity::class.java)
-//        }
+        stvOpenSource.setOnClickListener {
+            start(mContext, OpenSourceActivity::class.java)
+        }
     }
 
     override fun observe() {

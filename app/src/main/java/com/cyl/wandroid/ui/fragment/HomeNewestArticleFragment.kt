@@ -28,6 +28,8 @@ import com.cyl.wandroid.viewmodel.HomeNewestArticleViewModel
 import com.youth.banner.Banner
 import com.youth.banner.config.IndicatorConfig
 import com.youth.banner.indicator.CircleIndicator
+import com.youth.banner.transformer.AlphaPageTransformer
+import com.youth.banner.transformer.ScaleInTransformer
 import kotlinx.android.synthetic.main.header_view_fragment_home.view.*
 import kotlinx.android.synthetic.main.layout_swipe_recycler.*
 
@@ -64,6 +66,9 @@ class HomeNewestArticleFragment :
                     putBoolean(AgentWebActivity.SHOW_COLLECT_ITEM, false)
                 })
             }
+
+            addPageTransformer(AlphaPageTransformer())
+            addPageTransformer(ScaleInTransformer())
         }
     }
 

@@ -85,4 +85,6 @@
     <string name="input_password">请输入密码</string>
     <string name="password_again">再次输入密码</string>
     <string name="search">搜索</string>
+    <string name="open_source">开源框架</string>
+    <string name="thanks_open">感谢以下所有开源作者</string>
 </resources>
