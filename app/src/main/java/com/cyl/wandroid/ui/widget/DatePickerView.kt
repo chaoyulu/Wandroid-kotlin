@@ -71,11 +71,6 @@ class DatePickerView() {
             it.setWindowAnimations(R.style.picker_view_slide_anim) //修改动画样式
             it.setGravity(Gravity.BOTTOM) //改成Bottom,底部显示
             it.setDimAmount(0.5f)
-
-//            val drawable = GradientDrawable()
-//            drawable.cornerRadius = 500f
-//            drawable.setColor(Color.WHITE)
-//            it.decorView.background = drawable
         }
     }
 
