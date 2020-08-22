@@ -6,10 +6,10 @@ import android.graphics.Color
 import android.view.Gravity
 import android.view.ViewGroup
 import android.widget.FrameLayout
-import com.bigkoo.pickerview.R
 import com.bigkoo.pickerview.builder.TimePickerBuilder
 import com.bigkoo.pickerview.listener.OnTimeSelectListener
 import com.bigkoo.pickerview.view.TimePickerView
+import com.cyl.wandroid.R
 import com.cyl.wandroid.listener.OnDatePickerSelectListener
 import com.cyl.wandroid.tools.DATE_FORMAT_2
 import com.cyl.wandroid.tools.millisSecondsToDateString
