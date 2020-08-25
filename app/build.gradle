@@ -17,6 +17,15 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        release {
+            keyAlias 'wandroid'
+            keyPassword 'wandroid'
+            storeFile file('../wandroid.jks')
+            storePassword 'wandroid'
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false

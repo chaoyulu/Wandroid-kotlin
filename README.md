@@ -52,7 +52,15 @@
 
 `BaseFragment`、`BaseViewModelFragment`、`BaseRecyclerViewFragment`同理。
 
+### Apk下载体验
 
+[下载链接](https://www.ncfwwl.com/b/fBSLQ1)
+
+
+
+二维码下载
+
+![qrcode](https://github.com/SmartCyl/Wandroid-kotlin/blob/master/images/qrcode.png)
 
 ### 更新日志
 
