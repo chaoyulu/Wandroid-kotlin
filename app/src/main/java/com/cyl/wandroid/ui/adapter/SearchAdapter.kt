@@ -5,7 +5,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.module.LoadMoreModule
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.cyl.wandroid.R
-import com.cyl.wandroid.ext.toSearchAuthorColorString
+import com.cyl.wandroid.ext.makeTextHighlightForMultiKeys
 import com.cyl.wandroid.ext.toSearchTitleColorString
 import com.cyl.wandroid.http.bean.ArticleBean
 import com.cyl.wandroid.tools.setCollectionImgState
@@ -29,9 +29,9 @@ class SearchAdapter(layoutResId: Int = R.layout.item_collection) :
             tvDate.text = item.niceDate
 
             if (!TextUtils.isEmpty(item.author)) {
-                tvAuthor.text = item.author.toSearchAuthorColorString(key)
+                tvAuthor.text = item.author.makeTextHighlightForMultiKeys(key)
             } else if (!TextUtils.isEmpty(item.shareUser)) {
-                tvAuthor.text = item.shareUser.toSearchAuthorColorString(key)
+                tvAuthor.text = item.shareUser.makeTextHighlightForMultiKeys(key)
             }
 
             setCollectionImgState(context, ivCollection, item.collect)
