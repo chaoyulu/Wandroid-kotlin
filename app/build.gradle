@@ -12,7 +12,7 @@ android {
         minSdkVersion 23
         targetSdkVersion 29
         versionCode 1
-        versionName "1.0.1"
+        versionName "1.0.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -21,7 +21,7 @@ android {
         release {
             keyAlias 'wandroid'
             keyPassword 'wandroid'
-            storeFile file('../wandroid.jks')
+            storeFile file('../wandroid_new.jks')
             storePassword 'wandroid'
         }
     }
@@ -30,6 +30,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {

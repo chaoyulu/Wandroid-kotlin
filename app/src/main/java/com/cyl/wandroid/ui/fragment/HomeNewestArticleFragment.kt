@@ -3,8 +3,10 @@ package com.cyl.wandroid.ui.fragment
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.chad.library.adapter.base.BaseQuickAdapter
@@ -13,10 +15,15 @@ import com.chad.library.adapter.base.listener.OnItemClickListener
 import com.cyl.wandroid.R
 import com.cyl.wandroid.base.BaseRecyclerViewModelFragment
 import com.cyl.wandroid.common.bus.Bus
+import com.cyl.wandroid.common.bus.HOME_TODO_STATUS_CHANGED
 import com.cyl.wandroid.common.bus.JUMP_TO_PROJECT_FRAGMENT
 import com.cyl.wandroid.http.bean.ArticleBean
 import com.cyl.wandroid.http.bean.HomeBannerBean
+import com.cyl.wandroid.http.bean.TodoBean
+import com.cyl.wandroid.sp.UserSpHelper
+import com.cyl.wandroid.tools.DATE_FORMAT_2
 import com.cyl.wandroid.tools.checkLoginThenAction
+import com.cyl.wandroid.tools.millisSecondsToDateString
 import com.cyl.wandroid.tools.start
 import com.cyl.wandroid.ui.activity.AgentWebActivity
 import com.cyl.wandroid.ui.activity.MyTodoActivity
@@ -24,7 +31,9 @@ import com.cyl.wandroid.ui.activity.PublicAccountContainerActivity
 import com.cyl.wandroid.ui.activity.QaActivity
 import com.cyl.wandroid.ui.adapter.HomeArticleAdapter
 import com.cyl.wandroid.ui.adapter.HomeBannerAdapter
+import com.cyl.wandroid.ui.widget.AdvertiseView
 import com.cyl.wandroid.viewmodel.HomeNewestArticleViewModel
+import com.cyl.wandroid.viewmodel.MyTodoViewModel
 import com.youth.banner.Banner
 import com.youth.banner.config.IndicatorConfig
 import com.youth.banner.indicator.CircleIndicator
@@ -43,9 +52,54 @@ class HomeNewestArticleFragment :
     override fun getLayoutRes() = R.layout.layout_swipe_recycler
     private lateinit var banner: Banner<HomeBannerBean, HomeBannerAdapter>
 
+    private lateinit var myTodoViewModel: MyTodoViewModel
+    private lateinit var headerView: View
+
     override fun lazyInitData() {
         mViewModel.refreshHomeNewestArticle()
         mViewModel.getHomeBanner()
+
+        getMyTodo()
+    }
+
+    private fun getMyTodo() {
+        myTodoViewModel = ViewModelProvider(this).get(MyTodoViewModel::class.java)
+        refreshMyTodo()
+        busObserve()
+        myTodoViewModel.todoLiveData.observe(viewLifecycleOwner, Observer {
+            val todayTodoList = it.filter { todoBean: TodoBean ->
+                todoBean.dateStr == millisSecondsToDateString(
+                    System.currentTimeMillis(),
+                    DATE_FORMAT_2
+                )
+            }
+            if (todayTodoList.isNullOrEmpty()) {
+                headerView.advertiseView.isVisible = false
+                headerView.advertiseView.pause()
+            } else {
+                headerView.advertiseView.isVisible = true
+                headerView.advertiseView.init(todayTodoList)
+                headerView.advertiseView.start()
+
+                headerView.advertiseView.setOnAdClickListener(object :
+                    AdvertiseView.OnAdClickListener {
+                    override fun onAdClick(index: Int) {
+                        start(mContext, MyTodoActivity::class.java, needLogin = true)
+                    }
+                })
+            }
+        })
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        headerView.advertiseView.pause()
+    }
+
+    private fun refreshMyTodo() {
+        if (UserSpHelper.newHelper().isLogin()) {
+            myTodoViewModel.refreshMyTodo(MyTodoFragment.STATUS_TO_DO)
+        }
     }
 
     override fun initView() {
@@ -73,7 +127,10 @@ class HomeNewestArticleFragment :
     }
 
     override fun initRefreshLayout() {
-        swipeRefreshLayout.setOnRefreshListener { mViewModel.refreshHomeNewestArticle() }
+        swipeRefreshLayout.setOnRefreshListener {
+            mViewModel.refreshHomeNewestArticle()
+            refreshMyTodo()
+        }
     }
 
     override fun initRecyclerView() {
@@ -84,9 +141,9 @@ class HomeNewestArticleFragment :
             mViewModel.loadMoreArticles()
         }
 
-        val headerView =
+        headerView =
             LayoutInflater.from(mContext).inflate(R.layout.header_view_fragment_home, null)
-        setHeaderMenuClick(headerView)
+        setHeaderMenuClick()
         adapter.addHeaderView(headerView)
         banner = headerView.findViewById(R.id.banner)
         recyclerView.adapter = adapter
@@ -94,7 +151,7 @@ class HomeNewestArticleFragment :
         adapter.setOnItemChildClickListener(this)
     }
 
-    private fun setHeaderMenuClick(headerView: View) {
+    private fun setHeaderMenuClick() {
         headerView.hivProject.setOnClickListener {
             Bus.post(JUMP_TO_PROJECT_FRAGMENT, R.id.project)
         }
@@ -123,6 +180,18 @@ class HomeNewestArticleFragment :
                 setBanners(it)
             })
         }
+    }
+
+    // 新增或修改TODO成功后要刷新首页的TODO信息
+    private fun busObserve() {
+        Bus.observe<Boolean>(HOME_TODO_STATUS_CHANGED, viewLifecycleOwner, observer = {
+            if (it) {
+                refreshMyTodo()
+            } else {
+                headerView.advertiseView.isVisible = false
+                headerView.advertiseView.pause()
+            }
+        })
     }
 
     override fun getViewModelArticles(): MutableLiveData<MutableList<ArticleBean>> {

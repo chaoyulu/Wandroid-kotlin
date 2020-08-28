@@ -7,6 +7,7 @@ import com.cyl.wandroid.R
 import com.cyl.wandroid.base.BaseViewModelActivity
 import com.cyl.wandroid.common.bus.ADD_TODO_SUCCESS
 import com.cyl.wandroid.common.bus.Bus
+import com.cyl.wandroid.common.bus.HOME_TODO_STATUS_CHANGED
 import com.cyl.wandroid.common.bus.UPDATE_TODO_SUCCESS
 import com.cyl.wandroid.http.bean.TodoBean
 import com.cyl.wandroid.listener.OnDatePickerSelectListener
@@ -148,10 +149,12 @@ class AddOrUpdateTodoActivity : BaseViewModelActivity<AddUpdateMyTodoViewModel>(
 
             addTodoLiveData.observe(this@AddOrUpdateTodoActivity, Observer {
                 Bus.post(ADD_TODO_SUCCESS, it)
+                Bus.post(HOME_TODO_STATUS_CHANGED, true) // true表示已登录
                 finish()
             })
             updateTodoLiveData.observe(this@AddOrUpdateTodoActivity, Observer {
                 Bus.post(UPDATE_TODO_SUCCESS, it)
+                Bus.post(HOME_TODO_STATUS_CHANGED, true)
                 finish()
             })
         }

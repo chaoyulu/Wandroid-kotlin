@@ -4,6 +4,7 @@ import androidx.lifecycle.Observer
 import com.cyl.wandroid.R
 import com.cyl.wandroid.base.BaseViewModelActivity
 import com.cyl.wandroid.common.bus.Bus
+import com.cyl.wandroid.common.bus.HOME_TODO_STATUS_CHANGED
 import com.cyl.wandroid.common.bus.MARK_COLLECT_LOGIN_SUCCESS
 import com.cyl.wandroid.common.bus.REFRESH_LOGIN_SUCCESS
 import com.cyl.wandroid.ext.hideSoftInput
@@ -45,6 +46,7 @@ class RegisterActivity : BaseViewModelActivity<RegisterViewModel>() {
             userBeanLiveData.observe(this@RegisterActivity, Observer {
                 Bus.post(REFRESH_LOGIN_SUCCESS, it)
                 Bus.post(MARK_COLLECT_LOGIN_SUCCESS, it)
+                Bus.post(HOME_TODO_STATUS_CHANGED, true)
                 start(this@RegisterActivity, MainActivity::class.java)
                 finish()
             })

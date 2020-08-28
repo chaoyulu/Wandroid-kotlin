@@ -12,6 +12,7 @@ import com.cyl.wandroid.R
 import com.cyl.wandroid.base.BaseRecyclerViewModelFragment
 import com.cyl.wandroid.common.bus.ADD_TODO_SUCCESS
 import com.cyl.wandroid.common.bus.Bus
+import com.cyl.wandroid.common.bus.HOME_TODO_STATUS_CHANGED
 import com.cyl.wandroid.common.bus.UPDATE_TODO_SUCCESS
 import com.cyl.wandroid.http.bean.TodoBean
 import com.cyl.wandroid.tools.checkLoginThenAction
@@ -84,6 +85,7 @@ class MyTodoFragment : BaseRecyclerViewModelFragment<TodoBean, MyTodoViewModel>(
 
             deleteTodoLiveData.observe(viewLifecycleOwner, Observer {
                 if (it != -1) adapter.removeAt(it)
+                Bus.post(HOME_TODO_STATUS_CHANGED, true) // true表示已登录
             })
 
             updateTodoLiveData.observe(viewLifecycleOwner, Observer {
@@ -95,6 +97,7 @@ class MyTodoFragment : BaseRecyclerViewModelFragment<TodoBean, MyTodoViewModel>(
                 val list = fragment.mViewModel.todoLiveData.value
                 list?.add(0, it.second)
                 fragment.mViewModel.todoLiveData.value = list
+                Bus.post(HOME_TODO_STATUS_CHANGED, true) // true表示已登录
             })
         }
     }

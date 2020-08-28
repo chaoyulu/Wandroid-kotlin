@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer
 import com.cyl.wandroid.R
 import com.cyl.wandroid.base.BaseViewModelFragment
 import com.cyl.wandroid.common.bus.Bus
+import com.cyl.wandroid.common.bus.HOME_TODO_STATUS_CHANGED
 import com.cyl.wandroid.common.bus.MARK_COLLECT_LOGOUT_SUCCESS
 import com.cyl.wandroid.common.bus.REFRESH_LOGIN_SUCCESS
 import com.cyl.wandroid.http.bean.UserBean
@@ -47,6 +48,7 @@ class MineFragment : BaseViewModelFragment<MineViewModel>() {
         Bus.observe<UserBean>(REFRESH_LOGIN_SUCCESS, viewLifecycleOwner, observer = {
             UserSpHelper.newHelper().saveUserInfo(it)
             infoWhenLogin(userBean = it)
+            Bus.post(HOME_TODO_STATUS_CHANGED, true)
         })
     }
 
@@ -105,6 +107,7 @@ class MineFragment : BaseViewModelFragment<MineViewModel>() {
             // 退出登录后的操作
             infoWhenLogout()
             Bus.post(MARK_COLLECT_LOGOUT_SUCCESS, false)
+            Bus.post(HOME_TODO_STATUS_CHANGED, false)
         })
     }
 
